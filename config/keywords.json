@@ -1,7 +1,7 @@
 {
   "jobs": [
     {
-      "keyword": "HBM CoWoS advanced packaging semiconductor outlook report analysis filetype:pdf",
+      "keyword": "HBM CoWoS advanced packaging semiconductor outlook report analysis filetype:pdf -sustainability -esg -ipo -prospectus",
       "label": "Semiconductor: CoWoS / HBM / Advanced Packaging",
       "lang": "en",
       "region": "us-en",
@@ -37,8 +37,7 @@
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "globalxetfs.com", "roboglobal.com", "ishares.com",
-        "ssga.com", "invesco.com", "sec.gov"
+        "globalxetfs.com", "roboglobal.com", "ishares.com", "sec.gov"
       ]
     },
     {
