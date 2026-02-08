@@ -29,16 +29,34 @@
       ]
     },
     {
-      "keyword": "TSMC quarterly results earnings investor presentation annual report financial filetype:pdf",
-      "label": "TSMC IR & Earnings",
+      "keyword": "AI cloud infrastructure data center hyperscaler GPU compute outlook report forecast filetype:pdf",
+      "label": "AI / Cloud Infrastructure",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "tsmc.com",
-        "sec.gov"
+        "deloitte.com",
+        "mckinsey.com",
+        "bcg.com",
+        "accenture.com",
+        "ey.com",
+        "pwc.com",
+        "kpmg.com",
+        "bain.com",
+        "gartner.com",
+        "idc.com",
+        "iea.org",
+        "spglobal.com",
+        "goldmansachs.com",
+        "morganstanley.com",
+        "jpmorgan.com",
+        "blackrock.com",
+        "nvidia.com",
+        "microsoft.com",
+        "cloud.google.com",
+        "aws.amazon.com"
       ]
     },
     {
@@ -53,6 +71,8 @@
         "globalxetfs.com",
         "roboglobal.com",
         "ishares.com",
+        "ssga.com",
+        "invesco.com",
         "sec.gov"
       ]
     },
