@@ -38,7 +38,7 @@ CONFIG_PATH = os.path.join(REPO_ROOT, "config", "keywords.json")
 REPORTS_DIR = os.path.join(REPO_ROOT, "reports")
 INDEX_PATH = os.path.join(REPO_ROOT, "index.md")
 RETENTION_DAYS = 30
-MAX_SUMMARY_CHARS = 500  # 摘要長度上限
+MAX_SUMMARY_CHARS = 500
 
 UA = {
     "User-Agent": (
@@ -98,18 +98,15 @@ def domain(url: str) -> str:
 
 
 def slugify(text: str, max_len: int = 60) -> str:
-    """Convert text to filesystem-safe slug."""
     s = re.sub(r"[^\w\s-]", "", text.lower())
     s = re.sub(r"[\s_]+", "-", s).strip("-")
     return s[:max_len] if s else "untitled"
 
 
 def make_summary(text: str, max_chars: int = MAX_SUMMARY_CHARS) -> str:
-    """Extract first N chars as summary, cut at sentence boundary."""
     if len(text) <= max_chars:
         return text
     cut = text[:max_chars]
-    # try to cut at last sentence-ending punctuation
     for sep in ["。", ". ", "！", "! ", "？", "? ", "\n"]:
         idx = cut.rfind(sep)
         if idx > max_chars // 3:
@@ -118,52 +115,71 @@ def make_summary(text: str, max_chars: int = MAX_SUMMARY_CHARS) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Search
+# Search — ddgs first, duckduckgo_search fallback
 # ---------------------------------------------------------------------------
 
 def ddg_search_candidates(keyword: str, region: str, timelimit: str, max_results: int = 30):
     last_err = None
 
-    # 1) duckduckgo_search
+    # 1) Try ddgs (new package name)
+    try:
+        from ddgs import DDGS
+        with DDGS() as ddgs:
+            try:
+                res = list(ddgs.text(
+                    keywords=keyword,
+                    region=region,
+                    timelimit=timelimit,
+                    max_results=max_results,
+                ))
+            except TypeError:
+                try:
+                    res = list(ddgs.text(
+                        query=keyword,
+                        region=region,
+                        timelimit=timelimit,
+                        max_results=max_results,
+                    ))
+                except TypeError:
+                    res = list(ddgs.text(
+                        keyword,
+                        region=region,
+                        timelimit=timelimit,
+                        max_results=max_results,
+                    ))
+        if res:
+            print(f"  [OK] candidates={len(res)} (ddgs)")
+            return res
+    except ImportError:
+        print("  [INFO] ddgs not installed, trying duckduckgo_search...")
+    except Exception as e:
+        last_err = e
+        print(f"  [WARN] ddgs failed: {e}")
+        time.sleep(2.0)
+
+    # 2) Try duckduckgo_search (legacy)
     try:
         from duckduckgo_search import DDGS
         backends = ["auto", "lite", "html"]
         for be in backends:
             try:
                 with DDGS() as ddgs:
-                    res = list(
-                        ddgs.text(
-                            keywords=keyword,
-                            region=region,
-                            timelimit=timelimit,
-                            max_results=max_results,
-                            backend=be,
-                        )
-                    )
+                    res = list(ddgs.text(
+                        keywords=keyword,
+                        region=region,
+                        timelimit=timelimit,
+                        max_results=max_results,
+                        backend=be,
+                    ))
                 if res:
-                    print(f"  [OK] backend={be} candidates={len(res)}")
+                    print(f"  [OK] backend={be} candidates={len(res)} (duckduckgo_search)")
                     return res
             except Exception as e:
                 last_err = e
                 print(f"  [WARN] backend={be}: {e}")
-                time.sleep(1.0)
-    except ImportError as e:
-        last_err = e
-
-    # 2) ddgs fallback
-    try:
-        from ddgs import DDGS
-        with DDGS() as ddgs:
-            try:
-                res = list(ddgs.text(query=keyword, region=region, timelimit=timelimit, max_results=max_results))
-            except TypeError:
-                try:
-                    res = list(ddgs.text(keywords=keyword, region=region, timelimit=timelimit, max_results=max_results))
-                except TypeError:
-                    res = list(ddgs.text(keyword, region=region, timelimit=timelimit, max_results=max_results))
-        if res:
-            print(f"  [OK] candidates={len(res)} (ddgs)")
-            return res
+                time.sleep(2.0)
+    except ImportError:
+        pass
     except Exception as e:
         last_err = e
 
@@ -293,12 +309,10 @@ def run_one_keyword(job: dict, date_str: str) -> dict | None:
     folder_path = os.path.join(REPORTS_DIR, folder_name)
     os.makedirs(folder_path, exist_ok=True)
 
-    # items.json
     items_path = os.path.join(folder_path, "items.json")
     with open(items_path, "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=2)
 
-    # summary.md
     md_path = os.path.join(folder_path, "summary.md")
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(f"# {keyword}\n\n")
@@ -333,7 +347,6 @@ def cleanup_old_reports():
         folder_path = os.path.join(REPORTS_DIR, name)
         if not os.path.isdir(folder_path):
             continue
-        # Extract date from folder name: YYYY-MM-DD_slug
         m = re.match(r"^(\d{4}-\d{2}-\d{2})_", name)
         if not m:
             continue
@@ -362,7 +375,6 @@ def generate_index():
             if not os.path.isfile(summary_path):
                 continue
 
-            # Read first line for keyword
             with open(summary_path, "r", encoding="utf-8") as f:
                 first_line = f.readline().strip().lstrip("# ")
 
@@ -403,7 +415,6 @@ def main():
     print("Auto Keyword Research (GitHub Actions)")
     print("=" * 60)
 
-    # Load config
     if not os.path.isfile(CONFIG_PATH):
         print(f"[ERROR] Config not found: {CONFIG_PATH}")
         sys.exit(1)
@@ -423,7 +434,7 @@ def main():
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     results = []
 
-    for job in jobs:
+    for idx, job in enumerate(jobs):
         try:
             result = run_one_keyword(job, date_str)
             if result:
@@ -431,12 +442,15 @@ def main():
         except Exception as e:
             print(f"  [ERROR] {job.get('keyword', '?')}: {e}")
 
-        # pause between keywords to avoid rate limit
-        time.sleep(random.uniform(2.0, 4.0))
+        # longer pause between keywords to avoid rate limit
+        if idx < len(jobs) - 1:
+            wait = random.uniform(5.0, 10.0)
+            print(f"  [WAIT] {wait:.1f}s before next keyword...")
+            time.sleep(wait)
 
     # Cleanup old reports
     print(f"\n{'='*60}")
-    print("Cleanup: removing reports older than {RETENTION_DAYS} days...")
+    print(f"Cleanup: removing reports older than {RETENTION_DAYS} days...")
     cleanup_old_reports()
 
     # Generate index
