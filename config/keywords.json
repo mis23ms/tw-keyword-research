@@ -1,44 +1,54 @@
 {
   "jobs": [
     {
-      "keyword": "advanced packaging CoWoS HBM supply chain outlook",
-      "lang": "en",
-      "region": "us-en",
-      "timelimit": "w",
-      "target": 5,
-      "minlen": 800
-    },
-    {
-      "keyword": "TSMC earnings presentation outlook",
+      "keyword": "semiconductor industry outlook 2025 2026 pdf site:deloitte.com OR site:mckinsey.com OR site:kpmg.com OR site:ey.com OR site:pwc.com OR site:semi.org",
+      "label": "Semiconductor / CoWoS / HBM Outlook",
       "lang": "en",
       "region": "us-en",
       "timelimit": "m",
       "target": 5,
-      "minlen": 800
+      "minlen": 600,
+      "pdf_only": true
     },
     {
-      "keyword": "humanoid robot supply chain market outlook",
+      "keyword": "site:investor.tsmc.com filetype:pdf presentation OR results OR earnings OR transcript",
+      "label": "TSMC Earnings & IR",
       "lang": "en",
       "region": "us-en",
-      "timelimit": "m",
+      "timelimit": "y",
       "target": 5,
-      "minlen": 800
+      "minlen": 400,
+      "pdf_only": true
     },
     {
-      "keyword": "aerospace defense supply chain outlook",
+      "keyword": "humanoid robot market outlook forecast 2025 2026 pdf site:mckinsey.com OR site:goldmansachs.com OR site:morganstanley.com OR site:ark-invest.com OR site:iea.org",
+      "label": "Humanoid Robot Industry Outlook",
       "lang": "en",
       "region": "us-en",
-      "timelimit": "m",
+      "timelimit": "y",
       "target": 5,
-      "minlen": 800
+      "minlen": 600,
+      "pdf_only": true
     },
     {
-      "keyword": "biopharma industry outlook clinical trials trends report",
+      "keyword": "aerospace defense industry outlook 2025 2026 pdf site:deloitte.com OR site:ey.com OR site:pwc.com OR site:kpmg.com OR site:bain.com OR site:bcg.com",
+      "label": "Aerospace & Defense Outlook",
       "lang": "en",
       "region": "us-en",
-      "timelimit": "m",
+      "timelimit": "y",
       "target": 5,
-      "minlen": 800
+      "minlen": 600,
+      "pdf_only": true
+    },
+    {
+      "keyword": "biopharma industry outlook clinical trials 2025 2026 pdf site:mckinsey.com OR site:deloitte.com OR site:ey.com OR site:iqvia.com OR site:evaluate.com",
+      "label": "BioPharma Industry Outlook",
+      "lang": "en",
+      "region": "us-en",
+      "timelimit": "y",
+      "target": 5,
+      "minlen": 600,
+      "pdf_only": true
     }
   ]
 }
