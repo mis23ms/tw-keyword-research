@@ -1,9 +1,12 @@
 # 📊 Auto Keyword Research — Report Index
 
-Last updated: (awaiting first run)
+Last updated: 2026-02-08 06:43 UTC
 
 Schedule: Every **Wednesday & Saturday** at 12:00 Taiwan Time
 
 ---
 
-_No reports yet._
+### 2026-02-08
+
+- [aerospace defense supply chain outlook](reports/2026-02-08_aerospace-defense-supply-chain-outlook/summary.md)
+
