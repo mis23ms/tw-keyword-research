@@ -6,86 +6,79 @@
 
 ---
 
-## 1. [PDF] European Life Sciences Deals Overview Q1 2025 `[📄]`
+## 1. Deloitte Tech Trends Facing a fast-moving future `[📄]`
 
-🔗 [assets.kpmg.com](https://assets.kpmg.com/content/dam/kpmgsites/ch/pdf/kpmg-ch-european-life-sciences-deals-overview-2025-q1.pdf)
+🔗 [mkto.deloitte.com](https://mkto.deloitte.com/rs/712-CNF-326/images/deloitte-2023-sap-tech-trends-report.pdf)
 
-European Life Sciences Deals
-Overview Q1 2025
-Deal Monitor
-KPMG Life Sciences
+Deloitte Tech Trends
+Facing a fast-moving future
+SAP solutions in focus
+Introduction
+                                                                                                                                             Introduction
 
 
-
-
-Overall, the value and number of deals involving European targets continued to
-decline in Q1 2025. Year-over-year, VC & growth capital deal value increased, while
-M&A and IPO & follow-on deal values decreased
-
-European M&A deal value totaled $3.8b in Q1.
+How will your organization navigate future uncertainty        areas of business of technology, cyber and trust,           Through the glass: Immersive
 
 ---
 
-## 2. Future of Health | Strategy& - PwC `[📄]`
+## 2. Report on the ClinicalTrials.gov Modernization Effort `[📄]`
 
-🔗 [www.pwc.com](https://www.pwc.com/co/es/prensa/Articulos/strategy-and-future-of-health.pdf)
+🔗 [www.nlm.nih.gov](https://www.nlm.nih.gov/od/bor/NLM_BOR_CTG_WG_Modernization_Update_Report_20241031_508.pdf)
 
-Future of
-Health
-How to transform
-BioPharma for
-the upcoming
-LIFEcare system
+Report on the ClinicalTrials.gov Modernization Effort
 
 
+ Summary of Progress: 2023-24
 
 
-#FutureOfHealth
-Contacts
-Global                                  United Kingdom                        Japan
-Ron Chopoorian                          Thalita Marinho                       Daisuke Baba
-Global Health Industries Leader         Partner,                              Partner,
-Partner,                                PwC Strategy& UK                      PwC Strategy& Japan
+ November 2024
+Report on the ClinicalTrials.gov Modernization Effort | Summary of Progress: 2023–24
+
+
+
+
+Contents
+1.    Introduction ..............................................................................................................................................
 
 ---
 
-## 3. The changing dynamics of pharma outsourcing in Asia - PwC `[📄]`
+## 3. A Platform for Biomedical Discovery and Data-Powered Health `[📄]`
 
-🔗 [www.pwc.com](https://www.pwc.com/sg/en/industries/assets/publication-change-asia.pdf)
+🔗 [www.nlm.nih.gov](https://www.nlm.nih.gov/pubs/plan/lrp17/NLM_StrategicReport2017_2027.pdf)
 
-Industries
-Pharmaceutical
-
-
-
-
-The changing dynamics of
-pharma outsourcing in Asia:
-Are you readjusting your sights?
-
-
+A Platform for Biomedical
+Discovery and
+Data-Powered Health
+Strategic Plan 2017–2027
+For more information about the National Library of Medicine, see:
+                      http://www.nlm.nih.gov
+A Platform for
+Biomedical Discovery and
+Data-Powered Health
 
 
-The changing dynamics of pharma outsourcing in Asia:
-Are you readjusting your sights?                       1
-Table of Contents
+National Library of Medicine
+Strategic Plan 2017–2027
+Report of the NLM Board of Regents
 
-Ⅰ. Introduction											                                                                          3
 
-Ⅱ.
+
+
+       December 2017
+       U.S.
 
 ---
 
-## Rejected candidates (27 total)
+## Rejected candidates (37 total)
 
-- ❌ `dedup-url` — [www.iqvia.com](https://www.iqvia.com/-/media/iqvia/pdfs/events/presentation_global-meds-webinar_public.pdf) — _[PDF] The Global Use of Medicines 2025: Outlook to_
-- ❌ `domain not in allowed list (www.wsgr.com)` — [www.wsgr.com](https://www.wsgr.com/a/web/gEuCQLokismzrfqFuRYswR/lsreport-jan-26.pdf) — _[PDF] THE LIFE SCIENCES REPORT - Wilson Sonsini_
-- ❌ `domain not in allowed list (tsptalent.com)` — [tsptalent.com](https://tsptalent.com/wp-content/uploads/2025/08/2025-Q3-POPsights-Report-1.pdf) — _[PDF] 2025 - Q3 POPsights Report - TSP Talent Solu_
-- ❌ `domain not in allowed list (resources.indegene.com)` — [resources.indegene.com](https://resources.indegene.com/indegene/articles/global-life-sciences-industry-trends-2025.pdf) — _[PDF] Global Life Sciences Industry Trends 2025 | _
-- ❌ `domain not in allowed list (www.goldmansachs.com)` — [www.goldmansachs.com](https://www.goldmansachs.com/pdfs/insights/goldman-sachs-exchanges/the-healthcare-outlook-macro-challenges-and-biotech-innovations/transcript.pdf) — _[PDF] The Healthcare Outlook: Macro Challenges and_
-- ❌ `domain not in allowed list (intuitionlabs.ai)` — [intuitionlabs.ai](https://intuitionlabs.ai/pdfs/us-biotech-job-market-2025-trends-data-analysis.pdf) — _[PDF] US Biotech Job Market: 2025 Trends, Data & A_
-- ❌ `domain not in allowed list (www.lek.com)` — [www.lek.com](https://www.lek.com/sites/default/files/insights/pdf-attachments/clinical-biopharma-outlook.pdf) — _[PDF] L.E.K. Consulting's Clinical and eClinical P_
-- ❌ `domain not in allowed list (www.delanceystreetpartners.com)` — [www.delanceystreetpartners.com](https://www.delanceystreetpartners.com/wp-content/uploads/2025/02/DSP-Pharma-Services-2024-Year-in-Review.pdf) — _[PDF] Outsourced Pharmaceutical Services 2024 Year_
+- ❌ `domain not in allowed list (www.pharmaceuticalcommerce.com)` — [www.pharmaceuticalcommerce.com](https://www.pharmaceuticalcommerce.com/view/2014-biopharma-cold-chain-forecast) — _2014 Biopharma cold-chain forecast | Pharmaceutica_
+- ❌ `blacklisted` — [www.linkedin.com](https://www.linkedin.com/pulse/biopharma-digital-inflection-point-how-ai-health-powering-farmer-qe6ve) — _Biopharma at a Digital Inflection Point: How AI an_
+- ❌ `domain not in allowed list (www.biopharmadive.com)` — [www.biopharmadive.com](https://www.biopharmadive.com/news/amgen-maritide-obesity-phase-2-data-monthly/733996/) — _Amgen obesity drug cuts weight in study, but resul_
+- ❌ `domain not in allowed list (www.royaltypharma.com)` — [www.royaltypharma.com](https://www.royaltypharma.com/news/royalty-pharma-acquires-royalty-interest-in-alnylams-amvuttra-for-310-million-from-blackstone-life-sciences/) — _Royalty Pharma Acquires Royalty Interest in... | R_
+- ❌ `domain not in allowed list (www.pharmalive.com)` — [www.pharmalive.com](https://www.pharmalive.com/qa-with-franco-negron-ceo-of-simtra-biopharma-solutions/) — _A look at trends impacting biopharma and Simtra's _
+- ❌ `domain not in allowed list (www.wral.com)` — [www.wral.com](https://www.wral.com/story/the-biopharma-clinical-research-and-diagnostic-ecosystem-how-the-intersecting-industries-are-active-in-the-triangle/20021055/) — _The biopharma , clinical research and diagnostic e_
+- ❌ `domain not in allowed list (insider-trades.news)` — [insider-trades.news](https://insider-trades.news/articles/mineralys-insider-trades-signal-confidence--volatility-in-biopharma-market/) — _Mineralys Insider Trades Signal Confidence & Volat_
+- ❌ `domain not in allowed list (www.statnews.com)` — [www.statnews.com](https://www.statnews.com/2019/12/04/a-clinical-trial-for-huntingtons-opens-the-door-to-hope-for-some-patients-but-only-so-many-can-get-in/) — _Huntington's clinical trial opens a door to hope —_
 
-_...+19 more_
+_...+29 more_
 

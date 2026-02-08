@@ -6,122 +6,71 @@
 
 ---
 
-## 1. SPACE THREAT ASSESSMENT 2024 - Aerospace Security `[📄]`
+## 1. FY 2026 DEFENSE SPACE BUDGET: EMERGENCE OF GOLDEN DOME `[📄]`
 
-🔗 [aerospace.csis.org](http://aerospace.csis.org/wp-content/uploads/2024/04/240417_Swope_SpaceThreatAssessment_2024.pdf)
+🔗 [csps.aerospace.org](https://csps.aerospace.org/sites/default/files/2025-08/FY26BudgetBrief_20250805.pdf)
 
-APRIL 2024         A REPORT OF
-                      THE CSIS
-                    AEROSPACE
-                      SECURITY
-                       PROJECT
+CENTER FOR SPACE
+                                                                     POLICY AND STRATEGY
+BUDGET BRIEF | AUGUST 2025
 
 
 
 
-SPACE
-T H R E AT
-ASSESSMENT
-2024
-Authors
-CLAYTON SWOPE
-KARI A. BINGEN
-MAKENA YOUNG
-MADELEINE CHANG
-STEPHANIE SONGER
-JEREMY TAMMELLEO
-Foreword
-ERIC FANNING
-APRIL 2024
+FY 2026 DEFENSE SPACE BUDGET:
+EMERGENCE OF GOLDEN DOME
+
+
+Robert S. Wilson
 
 
 
-
-SPACE
-T H R E AT
-ASSESSMENT
-2024
-Authors
-CLAYTON SWOPE
-KARI A.
+The fiscal year (FY) 2026 budget process reveals large-scale changes in the top-line budget and priorities
+for defense space activities. 1 In June 2025, the new Trump administration released its FY 2026 budget
+submission, requesting $26.3 billion for the United States Space Force.
 
 ---
 
-## 2. From Earth to Uchū - Aerospace Security `[📄]`
+## 2. Chapter One Defence and military analysis - iiss.org `[📄]`
 
-🔗 [aerospace.csis.org](http://aerospace.csis.org/wp-content/uploads/2024/08/240823_Bingen_Earth_Uchu-min.pdf)
+🔗 [www.iiss.org](https://www.iiss.org/globalassets/media-library---content--migration/files/publications/military-balance/2025-military-balance/the-military-balance-2025_defence-spending-and-procurement-trends.pdf)
 
-AUGUST 2024
+Chapter One
 
-
-
-
-From Earth to Uchū
-The Evolution of Japan’s Space Security Policy and a
-Blueprint for Strengthening the U.S.-Japan Space
-Security Partnership
-
-
-
-
-AUTHORS
-
-Kari A. Bingen
-Makena Young
-
-
-
-
-A Report of the CSIS Aerospace Security Project
-AUGUST 2024
-
-
-
-
-From Earth to Uchū
-The Evolution of Japan’s Space Security Policy and a
-Blueprint for Strengthening the U.S.-Japan Space
-Security Partnership
-
-
-
-AUTHORS
-
-Kari A.
+Defence and military analysis
+Re-baselining the defence industry
+Russia’s war in Ukraine has harshly exposed               to air-defence missiles. At the gathering, MAFAT
+the inventory reductions within many NATO                 head Daniel Gold urged industry to embrace mass
+members that took place after the end of the Cold         production and automation and argued further for
+War. Traditionally, rectifying this would have been       domestic innovation.
 
 ---
 
-## 3. GOLD RUSH - aerospace.csis.org `[📄]`
+## 3. RESEARCH REPORT Defending Europe Without the United the ... `[📄]`
 
-🔗 [aerospace.csis.org](http://aerospace.csis.org/wp-content/uploads/2024/11/241001_Bingen_Gold_Rush-min.pdf)
+🔗 [www.iiss.org](https://www.iiss.org/globalassets/media-library---content--migration/files/research-papers/2025/05/defending-europe-without-the-united-states/iiss_executive-summary-defending-europe-without-the-united-states_costs-and-consequences_052025.pdf)
 
-OCTOBER 2024
+RESEARCH REPORT
 
+Defending Europe                                                                          Defending Europe Without
 
+Without the United                                                                        the United States:
+                                                                                          Costs and Consequences
 
-
-                     GOLD RUSH
-  The 2024 Commercial Remote Sensing Global Rankings
-
-
-
-
-                                         AUTHORS
-
-                 Kari A.
+States: Costs                                                                             Ben Barry; Douglas Barrie; Henry Boyd; Nick Childs;
 
 ---
 
-## Rejected candidates (26 total)
+## Rejected candidates (22 total)
 
-- ❌ `blacklisted` — [en.wikipedia.org](https://en.wikipedia.org/wiki/Russian_Aerospace_Forces) — _Russian Aerospace Forces - Wikipedia_
-- ❌ `dedup-url` — [www.accenture.com](https://www.accenture.com/content/dam/accenture/final/industry/aerospace-and-defense/document/Commercial-Aerospace-Insight-Report-April-2025.pdf) — _Commercial Aerospace Insight Report | Accenture_
-- ❌ `dedup-url` — [assets.kpmg.com](https://assets.kpmg.com/content/dam/kpmg/sa/pdf/2025/emerging-trends-for-a-and-d.pdf) — _[PDF] Emerging trends in aerospace and defense 202_
-- ❌ `domain not in allowed list (assets.bbhub.io)` — [assets.bbhub.io](https://assets.bbhub.io/professional/sites/41/EU-Defense-Outlook.pdf) — _[PDF] Defense Spending Outlook - Bloomberg Profess_
-- ❌ `domain not in allowed list (www.raymondjames.com)` — [www.raymondjames.com](https://www.raymondjames.com/-/media/rj/dotcom/files/corporations-and-institutions/investment-banking/industry-insight/defense_and_space_quarterly.pdf) — _[PDF] Defense & Space Quarterly Market Report - Ra_
-- ❌ `domain not in allowed list (www.semiconductors.org)` — [www.semiconductors.org](https://www.semiconductors.org/wp-content/uploads/2025/07/SIA-State-of-the-Industry-Report-2025.pdf) — _[PDF] 2025 State of the U.S. Semiconductor Industr_
-- ❌ `domain not in allowed list (www.faa.gov)` — [www.faa.gov](https://www.faa.gov/data_research/aviation/aerospace_forecasts/2025-commercial-space.pdf) — _[PDF] Commercial Space | FAA Aerospace Forecast Fi_
-- ❌ `domain not in allowed list (publications.iadb.org)` — [publications.iadb.org](https://publications.iadb.org/publications/english/document/Aerospace-Industry-Current-Status-and-Trends-of-the-Global-Value-Chain.pdf) — _[PDF] Aerospace Industry: Current Status and Trend_
+- ❌ `domain not in allowed list (www.faa.gov)` — [www.faa.gov](https://www.faa.gov/dataresearch/aviation/aerospaceforecasts/faa-aerospace-forecast-fy-2024-2044) — _FAA AEROSPACE FY2024-2044 FORECAST_
+- ❌ `domain not in allowed list (files.gao.gov)` — [files.gao.gov](https://files.gao.gov/assets/gao-26-107664.pdf) — _GAO-26-107664, DEFENSE RESEARCH AND ENGINEERING: A_
+- ❌ `blocked: HTTP 403` — [web-assets.bcg.com](https://web-assets.bcg.com/89/ae/c2e4220a46de92eca8efa1fff85c/bcg-aerospace-and-defense-needs-to-double-down-on-digital-nov-2020.pdf) — _Aerospace and defense_
+- ❌ `domain not in allowed list (viewer.joomag.com)` — [viewer.joomag.com](https://viewer.joomag.com/market-research-update-global-aerospace-and-defense-telemetry-market-2016/0917209001512382061) — _Market Research Update Global Aerospace and Defens_
+- ❌ `domain not in allowed list (archive.md)` — [archive.md](https://archive.md/x54Ah) — _AEI forecasts favorable M&A conditions for aerospa_
+- ❌ `domain not in allowed list (www.dailymotion.com)` — [www.dailymotion.com](https://www.dailymotion.com/playlist/x1q7l9) — _Aerospace and Defense by Teknoport - Dailymotion_
+- ❌ `blacklisted` — [in.pinterest.com](https://in.pinterest.com/jackwatson20/aerospace-and-defense/) — _11 Aerospace and defense ideas to save today | aer_
+- ❌ `domain not in allowed list (www.marketresearch.com)` — [www.marketresearch.com](https://www.marketresearch.com/Barnes-Reports-v2737/Germany-Aerospace-Defense-Telemetry-Forecast-38240092/) — _2024 Germany Aerospace And Defense Telemetry Forec_
 
-_...+18 more_
+_...+14 more_
 
