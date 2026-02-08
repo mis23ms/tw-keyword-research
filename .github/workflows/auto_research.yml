@@ -2,7 +2,6 @@ name: Auto Keyword Research
 
 on:
   schedule:
-    - cron: '0 4 * * 3'
     - cron: '0 4 * * 6'
   workflow_dispatch:
 
@@ -12,7 +11,7 @@ permissions:
 jobs:
   research:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
