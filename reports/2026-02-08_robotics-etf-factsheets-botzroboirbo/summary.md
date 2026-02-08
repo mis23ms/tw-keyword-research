@@ -1,7 +1,7 @@
 # Robotics ETF Factsheets (BOTZ/ROBO/IRBO)
 
 - Date: 2026-02-08
-- ⚠️ **SKIP**: Only 0 PDFs (need 2). Skips: {'fetch-fail-or-not-pdf': 42, 'blacklisted': 5}
+- ⚠️ **SKIP**: Only 0 PDFs (need 2). Skips: {'fetch-fail-or-not-pdf': 38, 'blacklisted': 4}
 - Sources: 0 PDF(s)
 
 ---

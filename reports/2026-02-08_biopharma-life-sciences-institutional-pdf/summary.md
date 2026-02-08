@@ -1,7 +1,7 @@
 # BioPharma / Life Sciences (Institutional PDF)
 
 - Date: 2026-02-08
-- ⚠️ **SKIP**: Only 0 PDFs (need 2). Skips: {'fetch-fail-or-not-pdf': 28, 'dedup-url': 2}
+- ⚠️ **SKIP**: Only 0 PDFs (need 2). Skips: {'fetch-fail-or-not-pdf': 30}
 - Sources: 0 PDF(s)
 
 ---
