@@ -6,60 +6,59 @@
 
 ---
 
-## 1. [PDF] Global X Robotics & Artificial Intelligence ETF - Semi-Annual Shareholder Report `[📄]`
+## 1. rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-gb `[📄]`
 
-🔗 [assets.globalxetfs.com](https://assets.globalxetfs.com/funds/documents/botz/prospectus-regulatory/Semi-Annual-Shareholder-Report.pdf)
+🔗 [ishares.com](https://www.ishares.com/uk/individual/en/literature/fact-sheet/rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-gb.pdf)
 
-Global X Funds
-
-Global X Robotics & Artificial Intelligence
-ETF
-Ticker: BOTZ
-Principal Listing Exchange: Nasdaq
-Semi-Annual Shareholder Report: May 31, 2025
-This semi-annual shareholder report contains important information about the Global X Robotics & Artificial Intelligence ETF (the "Fund") for the period
-from December 1, 2024 to May 31, 2025. You can find additional information about the Fund at https://www.globalxetfs.com/funds/botz/.
+1 Source: BlackRock People & Money / YouGov Plc. as of October 2025.
+iShares, part of the BlackRock family, specialises in exchange-traded funds (ETFs) engineered to help you meet your investment goals.
+-
+Individual InvestorI manage my own money
+-
+Professional InvestorsI consult with, or represent, organisations, beneficiaries or institutions
+These terms and conditions govern your use of this website (www.ishares.com).
 
 ---
 
-## 2. [PDF] 2025 Summary Prospectus | Global X Robotics & Artificial Intelligence ETF `[📄]`
+## 2. rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-ch `[📄]`
 
-🔗 [assets.globalxetfs.com](https://assets.globalxetfs.com/dev/documents/botz/prospectus-regulatory/Summary-Prospectus.pdf)
+🔗 [ishares.com](https://www.ishares.com/ch/individual/en/literature/fact-sheet/rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-ch.pdf)
 
-April 1, 2025
+PASSIVE
 
-                Global X Robotics & Artificial Intelligence ETF
-
-                                                       NASDAQ: BOTZ
-
-
-                                      2025 Summary Prospectus
-
-Before you invest, you may want to review the Fund's Prospectus, which contains more information about the Fund and its risks.
+                 iShares Automation & Robotics UCITS ETF
+ RBOT            U.S. Dollar (Accumulating)
+                 iShares IV plc
+                                                                                                                             December 2025
+Unless otherwise stated, Performance, Portfolio Breakdowns and Net Assets information as at: 31-Dec-2025. All other data
+as at 06-Jan-2026.
+This document is marketing material. For Investors in Switzerland.
 
 ---
 
-## 3. [PDF] Index Methodology Summary - Global X ETFs `[📄]`
+## 3. BOTZ - assets.globalxetfs.com `[📄]`
 
-🔗 [assets.globalxetfs.com](https://assets.globalxetfs.com/dev/documents/botz/Index-Methodology-Summary.pdf)
+🔗 [globalxetfs.com](https://assets.globalxetfs.com/dev/documents/botz/Fact-Sheet.pdf)
+
+ETF Category: Thematic -
 
 BOTZ
-                                                                                                                                     ETF Category:
-                                      Robotics & Artificial Intelligence ETF
-                                                                                                                                     Growth - Disruptive Technology
+                                                                       Global X Robotics & Artificial
+                                                                                                                               Disruptive Technology
+                                                                       Intelligence ETF                                        As of 3/31/2025
 
 ---
 
-## Rejected candidates (9 total)
+## Rejected candidates (30 total)
 
-- ❌ `dedup-title` — [assets.globalxetfs.com](https://assets.globalxetfs.com/funds/documents/botz/Fact-Sheet_BOTZ.pdf) — _BOTZ - assets.globalxetfs.com_
-- ❌ `domain not in allowed list (globalxetfs.eu)` — [globalxetfs.eu](https://globalxetfs.eu/content/files/UCITS-BOTZ-IM.pdf) — _Global X Robotics & Artificial Intelligence UCITS _
-- ❌ `domain not in allowed list (etfdb.com)` — [etfdb.com](https://etfdb.com/advisor_reports/BOTZ/) — _BOTZ - ETF Database_
-- ❌ `domain not in allowed list (files.globalxetfs.com.au)` — [files.globalxetfs.com.au](https://files.globalxetfs.com.au/ROBO_Factsheet_ea1ca32c9d.pdf) — _ROBO - files.globalxetfs.com.au_
-- ❌ `domain not in allowed list (f.hubspotusercontent40.net)` — [f.hubspotusercontent40.net](https://f.hubspotusercontent40.net/hubfs/7764048/Factsheets/ETF/ROBO+Global+Robotics+and+Automation+ETF+Factsheet.pdf) — _ROBO Robotics & Automation ETF Factsheet_
-- ❌ `domain not in allowed list (d32ijn7u0aqfv4.cloudfront.net)` — [d32ijn7u0aqfv4.cloudfront.net](https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/raw/PDF-Robo-1.5-Portfolio-Details.pdf) — _**PDF - Robo 1.5 Portfolio Details_
-- ❌ `domain not in allowed list (dcba.lacounty.gov)` — [dcba.lacounty.gov](https://dcba.lacounty.gov/wp-content/uploads/2021/03/Annual-Report-Guide.pdf) — _Annual report template_
-- ❌ `domain not in allowed list (www.schwab.wallst.com)` — [www.schwab.wallst.com](https://www.schwab.wallst.com/schwab/Prospect/research/etfs/reports/reportRetrieve.asp?reportType=etfrc) — _[PDF] Global X Robotics & Artificial Intelligence _
+- ❌ `domain not in allowed list (etfdb.com)` — [etfdb.com](https://etfdb.com/tool/etf-comparison/BOTZ-ROBO/) — _BOTZ vs. ROBO : Head-To-Head ETF Comparison | ETF _
+- ❌ `domain not in allowed list (www.roboglobaletfs.com)` — [www.roboglobaletfs.com](https://www.roboglobaletfs.com/robo) — _ROBO Summary - ROBO Global Robotics & Automation I_
+- ❌ `domain not in allowed list (7764048.fs1.hubspotusercontent-na1.net)` — [7764048.fs1.hubspotusercontent-na1.net](https://7764048.fs1.hubspotusercontent-na1.net/hubfs/7764048/Factsheets/ETF/ROBO+ETF/ROBO+ETF+Factsheet.pdf) — _ROBO Robotics & Automation ETF Factsheet_
+- ❌ `domain not in allowed list (www.mezzi.com)` — [www.mezzi.com](https://www.mezzi.com/blog/botz-vs-robo-vs-irbo-vs-aiq-ai-automation-etf-diversified-robotics) — _BOTZ vs ROBO vs IRBO vs AIQ - Best AI/ automation _
+- ❌ `domain not in allowed list (finance.yahoo.com)` — [finance.yahoo.com](https://finance.yahoo.com/news/robotic-etfs-choice-2020-223910681.html) — _Are Robotic ETFs the Right Choice for 2020?_
+- ❌ `domain not in allowed list (8figures.com)` — [8figures.com](https://8figures.com/blog/portfolio-allocations/ai-investing-with-etfs-a-practical-guide-to-software-robotics-and-semiconductors) — _AI Investing with ETFs : A Practical Guide to Soft_
+- ❌ `domain not in allowed list (finviz.com)` — [finviz.com](https://finviz.com/quote.ashx?t=ROBO&ty=c&ta=1&p=d&bd=bd-piechart&tt=tt-table) — _ROBO - ROBO Global Robotics and Automation Index E_
+- ❌ `domain not in allowed list (www.investopedia.com)` — [www.investopedia.com](https://www.investopedia.com/investing/top-etfs-capitalizing-artificial-intelligence/) — _Top AI ETFs_
 
-_...+1 more_
+_...+22 more_
 

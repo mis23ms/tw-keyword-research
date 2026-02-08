@@ -3,9 +3,10 @@
     "keyword": "Semiconductor: CoWoS / HBM / Advanced Packaging",
     "folder": "2026-02-08_semiconductor-cowos-hbm-advanced-packaging",
     "count": 3,
-    "full_text": 2,
-    "link_only": 1,
-    "status": "OK"
+    "full_text": 3,
+    "link_only": 0,
+    "status": "OK",
+    "job_success": true
   },
   {
     "keyword": "TSMC IR & Earnings",
@@ -13,7 +14,8 @@
     "count": 0,
     "full_text": 0,
     "link_only": 0,
-    "status": "SKIP"
+    "status": "SKIP",
+    "job_success": false
   },
   {
     "keyword": "Robotics ETF Factsheets (BOTZ/ROBO/IRBO)",
@@ -21,22 +23,16 @@
     "count": 3,
     "full_text": 3,
     "link_only": 0,
-    "status": "OK"
+    "status": "OK",
+    "job_success": true
   },
   {
     "keyword": "Aerospace & Defense (Institutional PDF)",
     "folder": "2026-02-08_aerospace-defense-institutional-pdf",
-    "count": 3,
-    "full_text": 3,
+    "count": 0,
+    "full_text": 0,
     "link_only": 0,
-    "status": "OK"
-  },
-  {
-    "keyword": "BioPharma / Life Sciences (Institutional PDF)",
-    "folder": "2026-02-08_biopharma-life-sciences-institutional-pdf",
-    "count": 3,
-    "full_text": 3,
-    "link_only": 0,
-    "status": "OK"
+    "status": "SKIP",
+    "job_success": false
   }
 ]

@@ -1,38 +1,38 @@
 [
   {
-    "title": "Integrated Package-to-System Thermal Solution Evolution for High-Performance 2.5D CoWoS-R Advanced Packaging Technology Development - IEEE Xplore",
-    "url": "https://ieeexplore.ieee.org/iel8/11037936/11037952/11038268.pdf",
-    "domain": "ieeexplore.ieee.org",
-    "lang": "en",
-    "type": "PDF",
-    "link_only": true,
-    "content_type": "text/html;charset=UTF-8",
-    "size_bytes": 53923,
-    "fetch_status": "ok",
-    "summary": "_(PDF confirmed; text extraction: ok. Kept as link-only.)_"
-  },
-  {
-    "title": "[PDF] Financial results - Micron Investor Relations",
-    "url": "https://investors.micron.com/static-files/530bd7ed-a8c8-4687-af4a-8c129f740e09",
-    "domain": "investors.micron.com",
+    "title": "AI Technology and the Markets - IEEE Electronics Packaging Society",
+    "url": "https://eps.ieee.org/images/files/HIR_Presentations/SEMICON_W_2025/Oct_8_Vardaman_.pdf",
+    "domain": "ieee.org",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 4691654,
+    "size_bytes": 2035269,
     "fetch_status": "ok",
-    "summary": "Financial\nresults\nFQ1 2026\n\fSafe harbor statement\nDuring the course of this meeting, we may make projections or other forward-looking statements regarding market demand\nand supply, market and pricing trends and drivers, the impact of technologies such as AI, contractual terms, cost reductions,\nour manufacturing projects and related investments, expected product volume production, our market position, expected"
+    "summary": "AI Technology and the Markets\n\n                                  E. Jan Vardaman, President and\n                                                         Founder\n\n\n\n\n          © 2025 TechSearch International, Inc.\n\f                       Data Centers Driving AI Growth\n• Applications driving growth\n  – Providing AI services to organizations\n    that cannot afford to build on their AI\n    models\n  – Managing large amounts of data such as\n    commercialization of 5G services, smart"
   },
   {
-    "title": "[PDF] AMD CDNA™ 4 ARCHITECTURE",
-    "url": "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna-4-architecture-whitepaper.pdf",
-    "domain": "www.amd.com",
+    "title": "State of the Semiconductor Industry - PwC",
+    "url": "https://www.pwc.com/gx/en/industries/technology/state-of-the-semiconductor-industry-report.pdf",
+    "domain": "pwc.com",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 2703210,
+    "size_bytes": 5485537,
     "fetch_status": "ok",
-    "summary": "INTRODUCING\n\nAMD CDNA™ 4\nARCHITECTURE\nBreakthrough AI and HPC Acceleration with Enhanced AI\nCapabilities, Advanced Precisions, and High Efficiency\n\fINTRODUCTION\nThe data center landscape has been fundamentally transformed by GPUs and accelerated computing. Accelerated\ncomputing was initially embraced in the scientific community to complement existing general-purpose CPUs for\nparticular workloads such as seismic analysis and molecular dynamics."
+    "summary": "State of the\nSemiconductor\nIndustry\n\nTrends and drivers shaping\nthe semiconductor landscape\n\fTable of Contents\n\n\n\n\n Raising stakes towards a      Memory enters a new frontier\n trillion-dollar industry\n\n\n\n\n 03                            06\n Automotive semis shift into   Adapting to decoupling:\n higher gear                   Strategies for resilience\n\n\n\n\n 13                            19\n The renaissance of purpose-   Artificial intelligence—from\n built silicon                 scale to diversity"
+  },
+  {
+    "title": "PwC_Semiconductor and Beyond_2026",
+    "url": "https://www.pwc.com/gx/en/industries/technology/pwc-semiconductor-and-beyond-2026-full-report.pdf",
+    "domain": "pwc.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 9665408,
+    "fetch_status": "ok",
+    "summary": "Semiconductor and beyond\nGlobal semiconductor industry outlook 2026\n\f         1   Foreword\n         2   Demand Analysis\n             Semiconductors power innovation and everyday life\n\n         3   Supply Analysis\n             The race for semiconductor supremacy\n\n         4   What’s Next?\n             Opportunities in semiconductor : AI and beyond\n\n\n\n\nAgenda\n\f      Foreword\n      The semiconductor industry is undergoing rapid               Our deep industry expertise enables us to provide"
   }
 ]

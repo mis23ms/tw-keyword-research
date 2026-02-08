@@ -2,58 +2,102 @@
 
 - Date: 2026-02-08
 - ✅ 3 PDF(s)
-- 📄 Full-text: 2
-- 🔗 Link-only: 1
+- 📄 Full-text: 3
 
 ---
 
-## 1. Integrated Package-to-System Thermal Solution Evolution for High-Performance 2.5D CoWoS-R Advanced Packaging Technology Development - IEEE Xplore `[🔗 link-only]`
+## 1. AI Technology and the Markets - IEEE Electronics Packaging Society `[📄]`
 
-🔗 [ieeexplore.ieee.org](https://ieeexplore.ieee.org/iel8/11037936/11037952/11038268.pdf)
+🔗 [ieee.org](https://eps.ieee.org/images/files/HIR_Presentations/SEMICON_W_2025/Oct_8_Vardaman_.pdf)
 
-- Size: 52 KB | Status: ok
+AI Technology and the Markets
 
-_(PDF confirmed; text extraction: ok. Kept as link-only.)_
+                                  E. Jan Vardaman, President and
+                                                         Founder
 
----
 
-## 2. [PDF] Financial results - Micron Investor Relations `[📄]`
 
-🔗 [investors.micron.com](https://investors.micron.com/static-files/530bd7ed-a8c8-4687-af4a-8c129f740e09)
 
-Financial
-results
-FQ1 2026
-Safe harbor statement
-During the course of this meeting, we may make projections or other forward-looking statements regarding market demand
-and supply, market and pricing trends and drivers, the impact of technologies such as AI, contractual terms, cost reductions,
-our manufacturing projects and related investments, expected product volume production, our market position, expected
-
----
-
-## 3. [PDF] AMD CDNA™ 4 ARCHITECTURE `[📄]`
-
-🔗 [www.amd.com](https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/white-papers/amd-cdna-4-architecture-whitepaper.pdf)
-
-INTRODUCING
-
-AMD CDNA™ 4
-ARCHITECTURE
-Breakthrough AI and HPC Acceleration with Enhanced AI
-Capabilities, Advanced Precisions, and High Efficiency
-INTRODUCTION
-The data center landscape has been fundamentally transformed by GPUs and accelerated computing. Accelerated
-computing was initially embraced in the scientific community to complement existing general-purpose CPUs for
-particular workloads such as seismic analysis and molecular dynamics.
+          © 2025 TechSearch International, Inc.
+                       Data Centers Driving AI Growth
+• Applications driving growth
+  – Providing AI services to organizations
+    that cannot afford to build on their AI
+    models
+  – Managing large amounts of data such as
+    commercialization of 5G services, smart
 
 ---
 
-## Rejected candidates (6 total)
+## 2. State of the Semiconductor Industry - PwC `[📄]`
 
-- ❌ `blacklisted` — [en.wikipedia.org](https://en.wikipedia.org/wiki/High_Bandwidth_Memory) — _High Bandwidth Memory - Wikipedia_
+🔗 [pwc.com](https://www.pwc.com/gx/en/industries/technology/state-of-the-semiconductor-industry-report.pdf)
+
+State of the
+Semiconductor
+Industry
+
+Trends and drivers shaping
+the semiconductor landscape
+Table of Contents
+
+
+
+
+ Raising stakes towards a      Memory enters a new frontier
+ trillion-dollar industry
+
+
+
+
+ 03                            06
+ Automotive semis shift into   Adapting to decoupling:
+ higher gear                   Strategies for resilience
+
+
+
+
+ 13                            19
+ The renaissance of purpose-   Artificial intelligence—from
+ built silicon                 scale to diversity
+
+---
+
+## 3. PwC_Semiconductor and Beyond_2026 `[📄]`
+
+🔗 [pwc.com](https://www.pwc.com/gx/en/industries/technology/pwc-semiconductor-and-beyond-2026-full-report.pdf)
+
+Semiconductor and beyond
+Global semiconductor industry outlook 2026
+         1   Foreword
+         2   Demand Analysis
+             Semiconductors power innovation and everyday life
+
+         3   Supply Analysis
+             The race for semiconductor supremacy
+
+         4   What’s Next?
+             Opportunities in semiconductor : AI and beyond
+
+
+
+
+Agenda
+      Foreword
+      The semiconductor industry is undergoing rapid               Our deep industry expertise enables us to provide
+
+---
+
+## Rejected candidates (39 total)
+
 - ❌ `blocked: HTTP 403` — [www.semi.org](https://www.semi.org/sites/semi.org/files/2025-06/21_Vishal+Saroha.pdf) — _[PDF] Status of High-End Performance Packaging (2._
-- ❌ `domain not in allowed list (files.futurememorystorage.com)` — [files.futurememorystorage.com](https://files.futurememorystorage.com/proceedings/2025/20250807_DRAM-302-1-WEBB.pdf) — _[PDF] HBM Memory Future_
-- ❌ `domain not in allowed list (www.mitsui.com)` — [www.mitsui.com](https://www.mitsui.com/mgssi/en/report/detail/__icsFiles/afieldfile/2025/07/22/2507_m_ogawa_ex_e_1.pdf) — _[PDF] SEMICONDUCTOR MEMORY AT A TURNING POINT ― TH_
-- ❌ `domain not in allowed list (files.futurememorystorage.com)` — [files.futurememorystorage.com](https://files.futurememorystorage.com/proceedings/2025/20250807_DRAM-302-1_Bertolazzi.pdf) — _[PDF] High Bandwidth Memory_
-- ❌ `domain not in allowed list (indexes.nasdaq.com)` — [indexes.nasdaq.com](https://indexes.nasdaq.com/docs/202508+Semiconductor+Research+-+GSOX.pdf) — _[PDF] Nasdaq Global Indexes August 2025 - Semicond_
+- ❌ `domain not in allowed list (intuitionlabs.ai)` — [intuitionlabs.ai](https://intuitionlabs.ai/pdfs/nvidia-gb200-supply-chain-the-global-ecosystem-explained.pdf) — _[PDF] NVIDIA GB200 Supply Chain: The Global Ecosys_
+- ❌ `domain not in allowed list (imapsource.org)` — [imapsource.org](https://imapsource.org/article/91166-market-technology-trends-for-the-fanout-and-2-5d-3d-packaging-technology.pdf) — _[PDF] Market & Technology Trends for the Fan-out a_
+- ❌ `blocked: HTTP 403` — [investor.tsmc.com](https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-04/7630274eecc1197a4e3ea6a415f44a47204fe10a/TSMC+1Q25+Transcript.pdf) — _[PDF] Q1 2025 Taiwan Semiconductor Manufacturing C_
+- ❌ `domain not in allowed list (pdfs.semanticscholar.org)` — [pdfs.semanticscholar.org](https://pdfs.semanticscholar.org/d562/1659a14f35f3e5b2b7a8a8781d349a029ac8.pdf) — _[PDF] Electronic Chip Package and Co-Packaged Opti_
+- ❌ `domain not in allowed list (assets-malibu-life.s3.us-west-2.amazonaws.com)` — [assets-malibu-life.s3.us-west-2.amazonaws.com](https://assets-malibu-life.s3.us-west-2.amazonaws.com/system/uploads/fae/file/asset/1673/Third_Point_Q3_2025_Investor_Letter_TPIL.pdf) — _[PDF] Third Quarter 2025 Investor Letter - AWS_
+- ❌ `domain not in allowed list (www.mitsui.com)` — [www.mitsui.com](https://www.mitsui.com/mgssi/en/report/detail/__icsFiles/afieldfile/2025/03/28/2501btf_full_e.pdf) — _[PDF] Biz Tech Focus 2025 - Mitsui_
+- ❌ `domain not in allowed list (omdia.tech.informa.com)` — [omdia.tech.informa.com](https://omdia.tech.informa.com/-/media/tech/omdia/assetfamily/2025/12/04/2026-trends-to-watch-semiconductors/2026-trends-to-watch-semiconductors-pdf.pdf?rev=20ba016c0813415492b30454de400109&hash=68697FC5F73C2527AF90FF1AF0970C03) — _PDF 2026 Trends to Watch: Semiconductors_
+
+_...+31 more_
 

@@ -1,38 +1,38 @@
 [
   {
-    "title": "[PDF] Global X Robotics & Artificial Intelligence ETF - Semi-Annual Shareholder Report",
-    "url": "https://assets.globalxetfs.com/funds/documents/botz/prospectus-regulatory/Semi-Annual-Shareholder-Report.pdf",
-    "domain": "assets.globalxetfs.com",
+    "title": "rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-gb",
+    "url": "https://www.ishares.com/uk/individual/en/literature/fact-sheet/rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-gb.pdf",
+    "domain": "ishares.com",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
-    "content_type": "application/pdf",
-    "size_bytes": 258242,
+    "content_type": "text/html;charset=UTF-8",
+    "size_bytes": 375611,
     "fetch_status": "ok",
-    "summary": "Global X Funds\n\nGlobal X Robotics & Artificial Intelligence\nETF\nTicker: BOTZ\nPrincipal Listing Exchange: Nasdaq\nSemi-Annual Shareholder Report: May 31, 2025\nThis semi-annual shareholder report contains important information about the Global X Robotics & Artificial Intelligence ETF (the \"Fund\") for the period\nfrom December 1, 2024 to May 31, 2025. You can find additional information about the Fund at https://www.globalxetfs.com/funds/botz/."
+    "summary": "1 Source: BlackRock People & Money / YouGov Plc. as of October 2025.\niShares, part of the BlackRock family, specialises in exchange-traded funds (ETFs) engineered to help you meet your investment goals.\n-\nIndividual InvestorI manage my own money\n-\nProfessional InvestorsI consult with, or represent, organisations, beneficiaries or institutions\nThese terms and conditions govern your use of this website (www.ishares.com)."
   },
   {
-    "title": "[PDF] 2025 Summary Prospectus | Global X Robotics & Artificial Intelligence ETF",
-    "url": "https://assets.globalxetfs.com/dev/documents/botz/prospectus-regulatory/Summary-Prospectus.pdf",
-    "domain": "assets.globalxetfs.com",
+    "title": "rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-ch",
+    "url": "https://www.ishares.com/ch/individual/en/literature/fact-sheet/rbot-ishares-automation-robotics-ucits-etf-fund-fact-sheet-en-ch.pdf",
+    "domain": "ishares.com",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
-    "content_type": "application/pdf",
-    "size_bytes": 217124,
+    "content_type": "application/pdf;charset=UTF-8",
+    "size_bytes": 344659,
     "fetch_status": "ok",
-    "summary": "April 1, 2025\n\n                Global X Robotics & Artificial Intelligence ETF\n\n                                                       NASDAQ: BOTZ\n\n\n                                      2025 Summary Prospectus\n\nBefore you invest, you may want to review the Fund's Prospectus, which contains more information about the Fund and its risks."
+    "summary": "PASSIVE\n\n                 iShares Automation & Robotics UCITS ETF\n RBOT            U.S. Dollar (Accumulating)\n                 iShares IV plc\n                                                                                                                             December 2025\nUnless otherwise stated, Performance, Portfolio Breakdowns and Net Assets information as at: 31-Dec-2025. All other data\nas at 06-Jan-2026.\nThis document is marketing material. For Investors in Switzerland."
   },
   {
-    "title": "[PDF] Index Methodology Summary - Global X ETFs",
-    "url": "https://assets.globalxetfs.com/dev/documents/botz/Index-Methodology-Summary.pdf",
-    "domain": "assets.globalxetfs.com",
+    "title": "BOTZ - assets.globalxetfs.com",
+    "url": "https://assets.globalxetfs.com/dev/documents/botz/Fact-Sheet.pdf",
+    "domain": "globalxetfs.com",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 464112,
+    "size_bytes": 448230,
     "fetch_status": "ok",
-    "summary": "BOTZ\n                                                                                                                                     ETF Category:\n                                      Robotics & Artificial Intelligence ETF\n                                                                                                                                     Growth - Disruptive Technology"
+    "summary": "ETF Category: Thematic -\n\nBOTZ\n                                                                       Global X Robotics & Artificial\n                                                                                                                               Disruptive Technology\n                                                                       Intelligence ETF                                        As of 3/31/2025"
   }
 ]
