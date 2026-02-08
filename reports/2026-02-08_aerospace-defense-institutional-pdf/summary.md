@@ -1,47 +1,78 @@
 # Aerospace & Defense (Institutional PDF)
 
 - Date: 2026-02-08
-- 🔗 Link-only PDFs: 3
+- ✅ 3 PDF(s)
+- 📄 Full-text: 3
 
 ---
 
-## 1. [PDF] KPMG Global Economic and Geopolitical Outlook `[🔗 link-only]`
+## 1. Commercial Aerospace Insight Report | Accenture `[📄]`
 
-🔗 [assets.kpmg.com](https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/10/global-economic-outlook-webcast-recap.pdf)
+🔗 [www.accenture.com](https://www.accenture.com/content/dam/accenture/final/industry/aerospace-and-defense/document/Commercial-Aerospace-Insight-Report-April-2025.pdf)
 
-- Size: 819 KB | Status: text-too-short
+Navigating uncertain skies
+   Commercial Aerospace Insight Report
+              Authors                                                              Contributors
 
-_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_
-
----
-
-## 2. [PDF] Navigating Ukraine's Defense Tech Market October 2025 - EY `[🔗 link-only]`
-
-🔗 [www.ey.com](https://www.ey.com/content/dam/ey-unified-site/ey-com/en-ua/insights/defense-tech/navigating-ukraine-defense-tech-market.pdf)
-
-- Size: 20328 KB | Status: text-too-short
-
-_(PDF text extraction: text-too-short. PDF too large (20MB), kept as link. Kept as link-only.)_
+                                                                                   Abhigyan Chand
+                                      John Schmidt
+                                                                                   Matthieu Dupont
+                                      Aerospace and Defense Global Industry Lead
 
 ---
 
-## 3. [PDF] Accelerating sovereign defense ecosystems - KPMG International `[🔗 link-only]`
+## 2. [PDF] Emerging trends in aerospace and defense 2025 `[📄]`
 
-🔗 [assets.kpmg.com](https://assets.kpmg.com/content/dam/kpmgsites/sa/pdf/2026/accelerating-sovereign-defense-ecosystems.pdf.coredownload.inline.pdf)
+🔗 [assets.kpmg.com](https://assets.kpmg.com/content/dam/kpmg/sa/pdf/2025/emerging-trends-for-a-and-d.pdf)
 
-- Size: 415 KB | Status: text-too-short
+Emerging trends
+in aerospace and
+defense 2025
+Navigating a new era of innovation
+and resilience
 
-_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_
+
+KPMG International | kpmg.com
+
+
+
+KPMG. Make the Difference.
+Foreword
+The global aerospace and defense (A&D) sector is growing rapidly.
 
 ---
 
-## Rejected candidates (top 5)
+## 3. Emerging trends in aerospace and defense 2025 `[📄]`
 
-- ❌ `not-pdf: Content-Type: text/html;charset=utf-8` — [www.deloitte.com](https://www.deloitte.com/us/en/insights/industry/aerospace-defense/aerospace-and-defense-industry-outlook.html) — 2026 Aerospace and Defense Industry Outlook | Deloitte Insig
-- ❌ `not-pdf: Content-Type: text/html;charset=utf-8` — [kpmg.com](https://kpmg.com/xx/en/what-we-do/industries/industrial-manufacturing/aerospace-and-defense/emerging-trends.html) — Emerging trends in aerospace and defense 2025
-- ❌ `not-pdf: Content-Type: text/html; charset=UTF-8` — [www.pwc.com](https://www.pwc.com/us/en/industries/industrial-products/library/aerospace-defense-review-and-forecast.html) — Aerospace and defense industry performance and outlook: PwC
-- ❌ `not-pdf: Timeout 45s (attempt 2)` — [www.mckinsey.com](https://www.mckinsey.com/industries/aerospace-and-defense/our-insights) — Aerospace & Defense Insights | McKinsey & Company
-- ❌ `not-pdf: Content-Type: text/html; charset=UTF-8` — [www.aia-aerospace.org](https://www.aia-aerospace.org/news/american-aerospace-defense-industry-continues-economic-dominance/) — 2025 Facts & Figures: American Aerospace & Defense Industry 
+🔗 [assets.kpmg.com](https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/06/emerging-trends-for-a-and-d.pdf.coredownload.pdf)
 
-_...and 3 more rejected._
+Emerging trends
+in aerospace and
+defense 2025
+Navigating a new era of innovation
+and resilience
+
+
+KPMG International | kpmg.com
+
+
+
+KPMG. Make the Difference.
+Foreword
+The global aerospace and defense (A&D) sector is growing rapidly.
+
+---
+
+## Rejected candidates (16 total)
+
+- ❌ `blacklisted` — [en.wikipedia.org](https://en.wikipedia.org/wiki/Russian_Aerospace_Forces) — _Russian Aerospace Forces - Wikipedia_
+- ❌ `domain not in allowed list (assets.bbhub.io)` — [assets.bbhub.io](https://assets.bbhub.io/professional/sites/41/EU-Defense-Outlook.pdf) — _[PDF] Defense Spending Outlook - Bloomberg Profess_
+- ❌ `domain not in allowed list (www.raymondjames.com)` — [www.raymondjames.com](https://www.raymondjames.com/-/media/rj/dotcom/files/corporations-and-institutions/investment-banking/industry-insight/defense_and_space_quarterly.pdf) — _[PDF] Defense & Space Quarterly Market Report - Ra_
+- ❌ `domain not in allowed list (www.semiconductors.org)` — [www.semiconductors.org](https://www.semiconductors.org/wp-content/uploads/2025/07/SIA-State-of-the-Industry-Report-2025.pdf) — _[PDF] 2025 State of the U.S. Semiconductor Industr_
+- ❌ `domain not in allowed list (www.faa.gov)` — [www.faa.gov](https://www.faa.gov/data_research/aviation/aerospace_forecasts/2025-commercial-space.pdf) — _[PDF] Commercial Space | FAA Aerospace Forecast Fi_
+- ❌ `domain not in allowed list (publications.iadb.org)` — [publications.iadb.org](https://publications.iadb.org/publications/english/document/Aerospace-Industry-Current-Status-and-Trends-of-the-Global-Value-Chain.pdf) — _[PDF] Aerospace Industry: Current Status and Trend_
+- ❌ `domain not in allowed list (www.citigroup.com)` — [www.citigroup.com](https://www.citigroup.com/rcs/citigpa/storage/public/Defense_Industry_Working_Capital_Insights_Scaling_Up_Production_in_a_Dynamic_Environment.pdf) — _[PDF] Defense Industry Working Capital Insights: S_
+- ❌ `domain not in allowed list (www.aia-aerospace.org)` — [www.aia-aerospace.org](https://www.aia-aerospace.org/wp-content/uploads/FINAL-Aerospace-Industrys-Contribution-to-the-US-Economy_FinalShared-060225.pdf) — _[PDF] Contribution of the Aerospace Industry to th_
+
+_...+8 more_
 

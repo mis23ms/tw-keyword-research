@@ -1,38 +1,38 @@
 [
   {
-    "title": "[PDF] KPMG Global Economic and Geopolitical Outlook",
-    "url": "https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/10/global-economic-outlook-webcast-recap.pdf",
+    "title": "Commercial Aerospace Insight Report | Accenture",
+    "url": "https://www.accenture.com/content/dam/accenture/final/industry/aerospace-and-defense/document/Commercial-Aerospace-Insight-Report-April-2025.pdf",
+    "domain": "www.accenture.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 7078623,
+    "fetch_status": "ok",
+    "summary": "Navigating uncertain skies\n   Commercial Aerospace Insight Report\n\f              Authors                                                              Contributors\n\n                                                                                   Abhigyan Chand\n                                      John Schmidt\n                                                                                   Matthieu Dupont\n                                      Aerospace and Defense Global Industry Lead"
+  },
+  {
+    "title": "[PDF] Emerging trends in aerospace and defense 2025",
+    "url": "https://assets.kpmg.com/content/dam/kpmg/sa/pdf/2025/emerging-trends-for-a-and-d.pdf",
     "domain": "assets.kpmg.com",
     "lang": "en",
     "type": "PDF",
-    "link_only": true,
+    "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 839056,
-    "fetch_status": "text-too-short",
-    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+    "size_bytes": 2689289,
+    "fetch_status": "ok",
+    "summary": "Emerging trends\nin aerospace and\ndefense 2025\nNavigating a new era of innovation\nand resilience\n\n\nKPMG International | kpmg.com\n\n\n\nKPMG. Make the Difference.\n\fForeword\nThe global aerospace and defense (A&D) sector is growing rapidly."
   },
   {
-    "title": "[PDF] Navigating Ukraine's Defense Tech Market October 2025 - EY",
-    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-ua/insights/defense-tech/navigating-ukraine-defense-tech-market.pdf",
-    "domain": "www.ey.com",
-    "lang": "en",
-    "type": "PDF",
-    "link_only": true,
-    "content_type": "application/pdf",
-    "size_bytes": 20815941,
-    "fetch_status": "text-too-short",
-    "summary": "_(PDF text extraction: text-too-short. PDF too large (20MB), kept as link. Kept as link-only.)_"
-  },
-  {
-    "title": "[PDF] Accelerating sovereign defense ecosystems - KPMG International",
-    "url": "https://assets.kpmg.com/content/dam/kpmgsites/sa/pdf/2026/accelerating-sovereign-defense-ecosystems.pdf.coredownload.inline.pdf",
+    "title": "Emerging trends in aerospace and defense 2025",
+    "url": "https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/06/emerging-trends-for-a-and-d.pdf.coredownload.pdf",
     "domain": "assets.kpmg.com",
     "lang": "en",
     "type": "PDF",
-    "link_only": true,
+    "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 425734,
-    "fetch_status": "text-too-short",
-    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+    "size_bytes": 2689289,
+    "fetch_status": "ok",
+    "summary": "Emerging trends\nin aerospace and\ndefense 2025\nNavigating a new era of innovation\nand resilience\n\n\nKPMG International | kpmg.com\n\n\n\nKPMG. Make the Difference.\n\fForeword\nThe global aerospace and defense (A&D) sector is growing rapidly."
   }
 ]

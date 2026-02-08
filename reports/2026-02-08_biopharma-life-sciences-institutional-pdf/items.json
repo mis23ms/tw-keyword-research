@@ -1,38 +1,38 @@
 [
   {
-    "title": "[PDF] Reimagining life sciences Global Capability Centers | EY",
-    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/pdf/2025/ey-reimagining-life-sciences-global-capability-centers.pdf",
-    "domain": "www.ey.com",
-    "lang": "en",
-    "type": "PDF",
-    "link_only": true,
-    "content_type": "application/pdf",
-    "size_bytes": 4914196,
-    "fetch_status": "text-too-short",
-    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
-  },
-  {
-    "title": "[PDF] Mind over matter: The growing momentum of CNS innovation - IQVIA",
-    "url": "https://www.iqvia.com/-/media/iqvia/pdfs/emea/library/whitepaper/mind-over-matter-2025.pdf",
+    "title": "[PDF] The Global Use of Medicines 2025: Outlook to 2029 - IQVIA",
+    "url": "https://www.iqvia.com/-/media/iqvia/pdfs/events/presentation_global-meds-webinar_public.pdf",
     "domain": "www.iqvia.com",
     "lang": "en",
     "type": "PDF",
-    "link_only": true,
+    "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 3454313,
-    "fetch_status": "text-too-short",
-    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+    "size_bytes": 4948923,
+    "fetch_status": "ok",
+    "summary": "The Global Use of Medicines\n                                                                                2025: Outlook to 2029\n                                                                                Global Webinar\n\n\n\n\n                                                                                August               27, 2025\n\n\n\n\nCopyright © 2025 IQVIA. All rights reserved. IQVIA® is a registered trademark of IQVIA Inc."
   },
   {
-    "title": "[PDF] Fueling innovation, advancing equity : The power of partnerships and ... - EY",
-    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/insights/health/documents/2025/ey-fueling-innovation-advancing-equity.pdf",
-    "domain": "www.ey.com",
+    "title": "2024 RFI DCT REPORT: Advancing Clinical and Translational ...",
+    "url": "https://ncats.nih.gov/sites/default/files/2024-06/RFI-DCT-Report-for-public-website-FINAL-508.pdf",
+    "domain": "ncats.nih.gov",
     "lang": "en",
     "type": "PDF",
-    "link_only": true,
+    "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 7489095,
-    "fetch_status": "text-too-short",
-    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+    "size_bytes": 789067,
+    "fetch_status": "ok",
+    "summary": "Page |1\n\n\n\n 2024 RFI DCT REPORT\n Advancing Clinical and Translational Science\n through Accelerating the Decentralization of\n Clinical Trials\nINTRODUCTION\nThe mission of the National Center for Advancing Translational Sciences (NCATS) is to catalyze the generation of innovative methods\nand technologies that enhance the development, testing and dissemination of effective medical/behavioral interventions diagnostics\nand therapeutics across a wide range of human diseases and conditions."
+  },
+  {
+    "title": "Report on the ClinicalTrials.gov Modernization Effort",
+    "url": "https://www.nlm.nih.gov/od/bor/NLM_BOR_CTG_WG_Modernization_Update_Report_20241031_508.pdf",
+    "domain": "www.nlm.nih.gov",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 1667393,
+    "fetch_status": "ok",
+    "summary": "Report on the ClinicalTrials.gov Modernization Effort\n\n\n Summary of Progress: 2023-24\n\n\n November 2024\n\fReport on the ClinicalTrials.gov Modernization Effort | Summary of Progress: 2023–24\n\n\n\n\nContents\n1.    Introduction .............................................................................................................................................."
   }
 ]
