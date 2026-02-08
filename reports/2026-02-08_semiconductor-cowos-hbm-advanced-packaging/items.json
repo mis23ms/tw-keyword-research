@@ -1,38 +1,38 @@
 [
   {
-    "title": "AI Technology and the Markets - IEEE Electronics Packaging Society",
-    "url": "https://eps.ieee.org/images/files/HIR_Presentations/SEMICON_W_2025/Oct_8_Vardaman_.pdf",
-    "domain": "eps.ieee.org",
+    "title": "State of the Semiconductor Industry - PwC",
+    "url": "https://www.pwc.com/gx/en/industries/technology/state-of-the-semiconductor-industry-report.pdf",
+    "domain": "www.pwc.com",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 2035269,
+    "size_bytes": 5485537,
     "fetch_status": "ok",
-    "summary": "AI Technology and the Markets\n\n                                  E. Jan Vardaman, President and\n                                                         Founder\n\n\n\n\n          © 2025 TechSearch International, Inc.\n\f                       Data Centers Driving AI Growth\n• Applications driving growth\n  – Providing AI services to organizations\n    that cannot afford to build on their AI\n    models\n  – Managing large amounts of data such as\n    commercialization of 5G services, smart"
+    "summary": "State of the\nSemiconductor\nIndustry\n\nTrends and drivers shaping\nthe semiconductor landscape\n\fTable of Contents\n\n\n\n\n Raising stakes towards a      Memory enters a new frontier\n trillion-dollar industry\n\n\n\n\n 03                            06\n Automotive semis shift into   Adapting to decoupling:\n higher gear                   Strategies for resilience\n\n\n\n\n 13                            19\n The renaissance of purpose-   Artificial intelligence—from\n built silicon                 scale to diversity"
   },
   {
-    "title": "Next-gen silicon microdevices: key technologies and ... - IMEC",
-    "url": "https://drupal.imec-int.com/sites/default/files/2022-01/Whitepaper_LVM_FINAL.pdf",
-    "domain": "drupal.imec-int.com",
-    "lang": "en",
-    "type": "PDF",
-    "link_only": true,
-    "content_type": "application/pdf",
-    "size_bytes": 20259603,
-    "fetch_status": "too-large",
-    "summary": "_(PDF confirmed; text extraction: 20MB. Kept as link-only.)_"
-  },
-  {
-    "title": "Micron Breaks Ground on New HBM Advanced Packaging Facility ...",
-    "url": "https://investors.micron.com/node/48221/pdf",
-    "domain": "investors.micron.com",
+    "title": "PwC_Semiconductor and Beyond_2026",
+    "url": "https://www.pwc.com/gx/en/industries/technology/pwc-semiconductor-and-beyond-2026-full-report.pdf",
+    "domain": "www.pwc.com",
     "lang": "en",
     "type": "PDF",
     "link_only": false,
     "content_type": "application/pdf",
-    "size_bytes": 132303,
+    "size_bytes": 9665408,
     "fetch_status": "ok",
-    "summary": "Micron Breaks Ground on New HBM Advanced Packaging Facility in Singapore\nJanuary 8, 2025 at 9:00 PM EST\n\nApproximate $7 billion investment over the next several years to meet AI data center demand\n\nSINGAPORE, Jan. 08, 2025 (GLOBE NEWSWIRE) -- Micron Technology, Inc. (Nasdaq: MU) broke ground today on a new High-Bandwidth Memory\n(HBM) advanced packaging facility adjacent to the company’s current facilities in Singapore."
+    "summary": "Semiconductor and beyond\nGlobal semiconductor industry outlook 2026\n\f         1   Foreword\n         2   Demand Analysis\n             Semiconductors power innovation and everyday life\n\n         3   Supply Analysis\n             The race for semiconductor supremacy\n\n         4   What’s Next?\n             Opportunities in semiconductor : AI and beyond\n\n\n\n\nAgenda\n\f      Foreword\n      The semiconductor industry is undergoing rapid               Our deep industry expertise enables us to provide"
+  },
+  {
+    "title": "2025 PwC Network Sustainability Report",
+    "url": "https://www.pwc.com/gx/en/about/assets/2025-pwc-network-sustainability-report.pdf",
+    "domain": "www.pwc.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 11608456,
+    "fetch_status": "ok",
+    "summary": "2025 PwC\nNetwork\nSustainability\nReport\n\fTable of contents\n\n\n\n          Introduction                                              03\n\n          Our approach to reporting                                 04\n\n          Overview of the network, business model and value chain   05\n\n          Reporting boundary                                        08\n\n          Judgements and measurement uncertainties                  09\n\n          Materiality assessment                                    10"
   }
 ]

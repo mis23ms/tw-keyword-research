@@ -2,59 +2,96 @@
 
 - Date: 2026-02-08
 - ✅ 3 PDF(s)
-- 📄 Full-text: 2
-- 🔗 Link-only: 1
+- 📄 Full-text: 3
 
 ---
 
-## 1. AI Technology and the Markets - IEEE Electronics Packaging Society `[📄]`
+## 1. State of the Semiconductor Industry - PwC `[📄]`
 
-🔗 [eps.ieee.org](https://eps.ieee.org/images/files/HIR_Presentations/SEMICON_W_2025/Oct_8_Vardaman_.pdf)
+🔗 [www.pwc.com](https://www.pwc.com/gx/en/industries/technology/state-of-the-semiconductor-industry-report.pdf)
 
-AI Technology and the Markets
+State of the
+Semiconductor
+Industry
 
-                                  E. Jan Vardaman, President and
-                                                         Founder
+Trends and drivers shaping
+the semiconductor landscape
+Table of Contents
 
 
 
 
-          © 2025 TechSearch International, Inc.
-                       Data Centers Driving AI Growth
-• Applications driving growth
-  – Providing AI services to organizations
-    that cannot afford to build on their AI
-    models
-  – Managing large amounts of data such as
-    commercialization of 5G services, smart
+ Raising stakes towards a      Memory enters a new frontier
+ trillion-dollar industry
 
----
 
-## 2. Next-gen silicon microdevices: key technologies and ... - IMEC `[🔗 link-only]`
 
-🔗 [drupal.imec-int.com](https://drupal.imec-int.com/sites/default/files/2022-01/Whitepaper_LVM_FINAL.pdf)
 
-- Size: 19784 KB | Status: too-large
+ 03                            06
+ Automotive semis shift into   Adapting to decoupling:
+ higher gear                   Strategies for resilience
 
-_(PDF confirmed; text extraction: 20MB. Kept as link-only.)_
 
----
 
-## 3. Micron Breaks Ground on New HBM Advanced Packaging Facility ... `[📄]`
 
-🔗 [investors.micron.com](https://investors.micron.com/node/48221/pdf)
-
-Micron Breaks Ground on New HBM Advanced Packaging Facility in Singapore
-January 8, 2025 at 9:00 PM EST
-
-Approximate $7 billion investment over the next several years to meet AI data center demand
-
-SINGAPORE, Jan. 08, 2025 (GLOBE NEWSWIRE) -- Micron Technology, Inc. (Nasdaq: MU) broke ground today on a new High-Bandwidth Memory
-(HBM) advanced packaging facility adjacent to the company’s current facilities in Singapore.
+ 13                            19
+ The renaissance of purpose-   Artificial intelligence—from
+ built silicon                 scale to diversity
 
 ---
 
-## Rejected candidates (52 total)
+## 2. PwC_Semiconductor and Beyond_2026 `[📄]`
+
+🔗 [www.pwc.com](https://www.pwc.com/gx/en/industries/technology/pwc-semiconductor-and-beyond-2026-full-report.pdf)
+
+Semiconductor and beyond
+Global semiconductor industry outlook 2026
+         1   Foreword
+         2   Demand Analysis
+             Semiconductors power innovation and everyday life
+
+         3   Supply Analysis
+             The race for semiconductor supremacy
+
+         4   What’s Next?
+             Opportunities in semiconductor : AI and beyond
+
+
+
+
+Agenda
+      Foreword
+      The semiconductor industry is undergoing rapid               Our deep industry expertise enables us to provide
+
+---
+
+## 3. 2025 PwC Network Sustainability Report `[📄]`
+
+🔗 [www.pwc.com](https://www.pwc.com/gx/en/about/assets/2025-pwc-network-sustainability-report.pdf)
+
+2025 PwC
+Network
+Sustainability
+Report
+Table of contents
+
+
+
+          Introduction                                              03
+
+          Our approach to reporting                                 04
+
+          Overview of the network, business model and value chain   05
+
+          Reporting boundary                                        08
+
+          Judgements and measurement uncertainties                  09
+
+          Materiality assessment                                    10
+
+---
+
+## Rejected candidates (25 total)
 
 - ❌ `domain not in allowed list (www.hvvac.com)` — [www.hvvac.com](https://www.hvvac.com/ai-driven-semiconductor-heterogeneous-integration-advanced-packaging.html) — _AI-Driven Semiconductor Industry Enters the Hetero_
 - ❌ `domain not in allowed list (semianalysis.com)` — [semianalysis.com](https://semianalysis.com/2023/07/26/ai-expansion-supply-chain-analysis/?open=false) — _AI Expansion – Supply Chain Analysis For CoWoS And_
@@ -65,5 +102,5 @@ SINGAPORE, Jan. 08, 2025 (GLOBE NEWSWIRE) -- Micron Technology, Inc. (Nasdaq: MU
 - ❌ `domain not in allowed list (www.crispidea.com)` — [www.crispidea.com](https://www.crispidea.com/ai-server-bottlenecks/) — _AI Server Bottlenecks: Memory, Packaging & Power L_
 - ❌ `domain not in allowed list (info.fusionww.com)` — [info.fusionww.com](https://info.fusionww.com/blog/inside-the-ai-bottleneck-cowos-hbm-and-2-3nm-capacity-constraints-through-2027) — _Inside the AI Bottleneck: CoWoS , HBM , and 2–3nm _
 
-_...+44 more_
+_...+17 more_
 
