@@ -1,123 +1,73 @@
 {
   "jobs": [
     {
-      "keyword": "(HBM OR \"high bandwidth memory\" OR CoWoS OR \"advanced packaging\" OR \"2.5D\" OR \"3D\" OR TSV) (outlook OR report OR analysis OR forecast OR whitepaper) filetype:pdf -sustainability -esg -csr -ipo -migration",
+      "keyword": "HBM CoWoS advanced packaging semiconductor outlook report analysis filetype:pdf",
       "label": "Semiconductor: CoWoS / HBM / Advanced Packaging",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300,
+      "minlen": 100,
       "allowed_domains": [
-        "semi.org",
-        "imec-int.com",
-        "ieee.org",
-        "sia-online.org",
-        "deloitte.com",
-        "www2.deloitte.com",
-        "kpmg.com",
-        "assets.kpmg.com",
-        "ey.com",
-        "assets.ey.com",
-        "pwc.com",
-        "mckinsey.com",
-        "tsmc.com",
-        "asml.com",
-        "micron.com",
-        "samsung.com",
-        "skhynix.com",
-        "nvidia.com",
-        "amd.com",
-        "intel.com",
-        "spglobal.com",
-        "idc.com",
-        "gartner.com"
+        "semi.org", "imec-int.com", "ieee.org", "sia-online.org",
+        "deloitte.com", "kpmg.com", "ey.com", "pwc.com", "mckinsey.com",
+        "tsmc.com", "asml.com", "micron.com", "samsung.com",
+        "skhynix.com", "nvidia.com", "amd.com", "intel.com",
+        "spglobal.com", "idc.com", "gartner.com"
       ]
     },
     {
-      "keyword": "(TSMC OR \"Taiwan Semiconductor\") (\"quarterly results\" OR earnings OR \"investor presentation\" OR \"earnings conference\" OR \"annual report\" OR \"financial statements\") filetype:pdf",
+      "keyword": "TSMC quarterly results earnings investor presentation annual report financial filetype:pdf",
       "label": "TSMC IR & Earnings",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300,
+      "minlen": 100,
       "allowed_domains": [
-        "tsmc.com",
-        "sec.gov"
+        "tsmc.com", "sec.gov"
       ]
     },
     {
-      "keyword": "(BOTZ OR ROBO OR IRBO) (factsheet OR \"fact sheet\" OR holdings OR prospectus OR KIID OR \"annual report\") filetype:pdf",
+      "keyword": "BOTZ ROBO IRBO robotics automation ETF factsheet holdings prospectus filetype:pdf",
       "label": "Robotics ETF Factsheets (BOTZ/ROBO/IRBO)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 200,
+      "minlen": 100,
       "allowed_domains": [
-        "globalxetfs.com",
-        "roboglobal.com",
-        "ishares.com",
-        "ssga.com",
-        "invesco.com",
-        "sec.gov"
+        "globalxetfs.com", "roboglobal.com", "ishares.com",
+        "ssga.com", "invesco.com", "sec.gov"
       ]
     },
     {
-      "keyword": "(aerospace OR defense OR \"aerospace and defense\" OR A&D) (outlook OR report OR forecast OR analysis) filetype:pdf -sustainability -esg -csr",
+      "keyword": "aerospace defense industry outlook report forecast filetype:pdf",
       "label": "Aerospace & Defense (Institutional PDF)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300,
+      "minlen": 100,
       "allowed_domains": [
-        "deloitte.com",
-        "www2.deloitte.com",
-        "ey.com",
-        "assets.ey.com",
-        "pwc.com",
-        "kpmg.com",
-        "assets.kpmg.com",
-        "mckinsey.com",
-        "bcg.com",
-        "bain.com",
-        "accenture.com",
-        "rand.org",
-        "csis.org",
-        "iiss.org",
-        "sipri.org",
-        "aerospace.org",
-        "aiaa.org",
-        "spglobal.com"
+        "deloitte.com", "ey.com", "pwc.com", "kpmg.com",
+        "mckinsey.com", "bcg.com", "bain.com", "accenture.com",
+        "rand.org", "csis.org", "iiss.org", "sipri.org",
+        "aerospace.org", "aiaa.org", "spglobal.com"
       ]
     },
     {
-      "keyword": "(biopharma OR pharma OR \"life sciences\" OR \"clinical trials\") (outlook OR report OR forecast OR analysis OR trends) filetype:pdf -sustainability -esg -csr",
+      "keyword": "biopharma pharma life sciences clinical trials outlook report forecast filetype:pdf",
       "label": "BioPharma / Life Sciences (Institutional PDF)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300,
+      "minlen": 100,
       "allowed_domains": [
-        "iqvia.com",
-        "deloitte.com",
-        "www2.deloitte.com",
-        "ey.com",
-        "assets.ey.com",
-        "mckinsey.com",
-        "bcg.com",
-        "evaluate.com",
-        "pwc.com",
-        "kpmg.com",
-        "assets.kpmg.com",
-        "fda.gov",
-        "nih.gov",
-        "who.int",
-        "ncats.nih.gov",
-        "nlm.nih.gov"
+        "iqvia.com", "deloitte.com", "ey.com", "mckinsey.com",
+        "bcg.com", "evaluate.com", "pwc.com", "kpmg.com",
+        "fda.gov", "nih.gov", "who.int"
       ]
     }
   ]
