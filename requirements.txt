@@ -1,4 +1,4 @@
 requests>=2.31.0
 trafilatura>=1.8.0
 langdetect>=1.0.9
-duckduckgo-search>=4.0
+ddgs>=6.0
