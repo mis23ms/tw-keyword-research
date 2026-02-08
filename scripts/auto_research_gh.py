@@ -11,6 +11,12 @@ auto_research_gh.py — GitHub Actions 版關鍵字爬蟲
 輸出：
 - 每組關鍵字 → reports/YYYY-MM-DD_<slug>/summary.md + items.json
 - 全站 → index.md（最近 30 天報告索引）
+
+v3 changes:
+- 搜尋加 filetype:pdf 優先抓 PDF/報告型內容
+- Domain blacklist 過濾掉 Wikipedia/CNBC/LinkedIn 等非報告來源
+- URL whitelist pattern 保留含 presentation/factsheet/10-k 等的頁面
+- 雙輪搜尋：先搜 filetype:pdf，不夠再搜 report/outlook 補齊
 """
 
 import json
@@ -47,6 +53,61 @@ UA = {
         "Chrome/120.0 Safari/537.36"
     )
 }
+
+# ---------------------------------------------------------------------------
+# Domain blacklist — skip these domains entirely
+# ---------------------------------------------------------------------------
+DOMAIN_BLACKLIST = {
+    # General news / blogs
+    "wikipedia.org", "en.wikipedia.org",
+    "cnbc.com", "www.cnbc.com",
+    "linkedin.com", "www.linkedin.com",
+    "reddit.com", "www.reddit.com",
+    "quora.com", "www.quora.com",
+    "medium.com",
+    "facebook.com", "www.facebook.com",
+    "twitter.com", "x.com",
+    "youtube.com", "www.youtube.com",
+    "instagram.com", "www.instagram.com",
+    "tiktok.com", "www.tiktok.com",
+    "pinterest.com", "www.pinterest.com",
+    # Tabloid / general news
+    "buzzfeed.com", "www.buzzfeed.com",
+    "huffpost.com", "www.huffpost.com",
+    "dailymail.co.uk", "www.dailymail.co.uk",
+    # Generic aggregators
+    "scribd.com", "www.scribd.com",
+    "slideshare.net", "www.slideshare.net",
+    "issuu.com", "www.issuu.com",
+    "academia.edu", "www.academia.edu",
+    # China-based (per user preference)
+    "baidu.com", "www.baidu.com",
+    "zhihu.com", "www.zhihu.com",
+    "weibo.com", "www.weibo.com",
+    "bilibili.com", "www.bilibili.com",
+    "sohu.com", "www.sohu.com",
+    "sina.com.cn", "www.sina.com.cn",
+    "163.com", "www.163.com",
+    "qq.com", "www.qq.com",
+    "csdn.net", "www.csdn.net",
+    "tencent.com", "www.tencent.com",
+    "xinhuanet.com", "www.xinhuanet.com",
+    "people.com.cn", "www.people.com.cn",
+    "chinadaily.com.cn", "www.chinadaily.com.cn",
+}
+
+# ---------------------------------------------------------------------------
+# URL whitelist patterns — for non-PDF URLs, must match at least one
+# ---------------------------------------------------------------------------
+REPORT_URL_PATTERNS = re.compile(
+    r"(presentation|factsheet|fact-sheet|methodology|outlook|forecast|"
+    r"whitepaper|white-paper|annual-report|quarterly-report|"
+    r"10-k|10-q|10k|10q|earnings|investor|"
+    r"research-report|market-report|industry-report|"
+    r"supply-chain|analysis|briefing|executive-summary|"
+    r"\.pdf)",
+    re.IGNORECASE,
+)
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -97,6 +158,25 @@ def domain(url: str) -> str:
         return ""
 
 
+def is_blacklisted(url: str) -> bool:
+    """Check if URL domain is in blacklist (also checks parent domain)."""
+    d = domain(url)
+    if d in DOMAIN_BLACKLIST:
+        return True
+    # Check parent domain: e.g. "finance.yahoo.com" → "yahoo.com" not blocked
+    parts = d.split(".")
+    if len(parts) > 2:
+        parent = ".".join(parts[-2:])
+        if parent in DOMAIN_BLACKLIST:
+            return True
+    return False
+
+
+def is_report_url(url: str) -> bool:
+    """Check if URL looks like a report/presentation/PDF."""
+    return bool(REPORT_URL_PATTERNS.search(url))
+
+
 def slugify(text: str, max_len: int = 60) -> str:
     s = re.sub(r"[^\w\s-]", "", text.lower())
     s = re.sub(r"[\s_]+", "-", s).strip("-")
@@ -118,72 +198,113 @@ def make_summary(text: str, max_chars: int = MAX_SUMMARY_CHARS) -> str:
 # Search — ddgs first, duckduckgo_search fallback
 # ---------------------------------------------------------------------------
 
-def ddg_search_candidates(keyword: str, region: str, timelimit: str, max_results: int = 30):
-    last_err = None
-
-    # 1) Try ddgs (new package name)
-    try:
-        from ddgs import DDGS
-        with DDGS() as ddgs:
+def _do_ddgs_search(keyword: str, region: str, timelimit: str, max_results: int):
+    """Try ddgs package (new name)."""
+    from ddgs import DDGS
+    with DDGS() as ddgs:
+        try:
+            return list(ddgs.text(
+                keywords=keyword, region=region,
+                timelimit=timelimit, max_results=max_results,
+            ))
+        except TypeError:
             try:
-                res = list(ddgs.text(
-                    keywords=keyword,
-                    region=region,
-                    timelimit=timelimit,
-                    max_results=max_results,
+                return list(ddgs.text(
+                    query=keyword, region=region,
+                    timelimit=timelimit, max_results=max_results,
                 ))
             except TypeError:
-                try:
-                    res = list(ddgs.text(
-                        query=keyword,
-                        region=region,
-                        timelimit=timelimit,
-                        max_results=max_results,
-                    ))
-                except TypeError:
-                    res = list(ddgs.text(
-                        keyword,
-                        region=region,
-                        timelimit=timelimit,
-                        max_results=max_results,
-                    ))
+                return list(ddgs.text(
+                    keyword, region=region,
+                    timelimit=timelimit, max_results=max_results,
+                ))
+
+
+def _do_legacy_search(keyword: str, region: str, timelimit: str, max_results: int):
+    """Try duckduckgo_search package (legacy)."""
+    from duckduckgo_search import DDGS
+    backends = ["auto", "lite", "html"]
+    for be in backends:
+        try:
+            with DDGS() as ddgs:
+                res = list(ddgs.text(
+                    keywords=keyword, region=region,
+                    timelimit=timelimit, max_results=max_results,
+                    backend=be,
+                ))
+            if res:
+                print(f"  [OK] backend={be} candidates={len(res)} (legacy)")
+                return res
+        except Exception as e:
+            print(f"  [WARN] legacy backend={be}: {e}")
+            time.sleep(2.0)
+    return []
+
+
+def ddg_search(keyword: str, region: str, timelimit: str, max_results: int = 30):
+    """Search with ddgs, fallback to duckduckgo_search."""
+    # Try ddgs first
+    try:
+        res = _do_ddgs_search(keyword, region, timelimit, max_results)
         if res:
             print(f"  [OK] candidates={len(res)} (ddgs)")
             return res
     except ImportError:
-        print("  [INFO] ddgs not installed, trying duckduckgo_search...")
+        print("  [INFO] ddgs not installed, trying legacy...")
     except Exception as e:
-        last_err = e
-        print(f"  [WARN] ddgs failed: {e}")
+        print(f"  [WARN] ddgs: {e}")
         time.sleep(2.0)
 
-    # 2) Try duckduckgo_search (legacy)
+    # Fallback to legacy
     try:
-        from duckduckgo_search import DDGS
-        backends = ["auto", "lite", "html"]
-        for be in backends:
-            try:
-                with DDGS() as ddgs:
-                    res = list(ddgs.text(
-                        keywords=keyword,
-                        region=region,
-                        timelimit=timelimit,
-                        max_results=max_results,
-                        backend=be,
-                    ))
-                if res:
-                    print(f"  [OK] backend={be} candidates={len(res)} (duckduckgo_search)")
-                    return res
-            except Exception as e:
-                last_err = e
-                print(f"  [WARN] backend={be}: {e}")
-                time.sleep(2.0)
+        res = _do_legacy_search(keyword, region, timelimit, max_results)
+        if res:
+            return res
     except ImportError:
         pass
     except Exception as e:
-        last_err = e
+        print(f"  [WARN] legacy: {e}")
 
-    raise RuntimeError(f"Search failed: {last_err!r}")
+    return []
+
+
+def search_with_variants(keyword: str, region: str, timelimit: str, max_results: int = 30):
+    """
+    Two-round search strategy:
+    Round 1: keyword + filetype:pdf  (prioritize PDF reports)
+    Round 2: keyword + report outlook (catch HTML report pages)
+    Deduplicate across rounds.
+    """
+    all_results = []
+    seen_urls = set()
+
+    # Excluded terms to append to every search
+    excludes = "-wikipedia -cnbc -linkedin -reddit -medium"
+
+    # Round 1: PDF-focused search
+    q1 = f"{keyword} filetype:pdf {excludes}"
+    print(f"  [SEARCH] Round 1: {q1[:80]}...")
+    r1 = ddg_search(q1, region, timelimit, max_results)
+    for r in r1:
+        url = (r.get("href") or r.get("url") or "").strip()
+        if url and url not in seen_urls:
+            seen_urls.add(url)
+            all_results.append(r)
+
+    time.sleep(random.uniform(3.0, 5.0))
+
+    # Round 2: Report/outlook focused (catches HTML pages too)
+    q2 = f"{keyword} report outlook {excludes}"
+    print(f"  [SEARCH] Round 2: {q2[:80]}...")
+    r2 = ddg_search(q2, region, timelimit, max_results)
+    for r in r2:
+        url = (r.get("href") or r.get("url") or "").strip()
+        if url and url not in seen_urls:
+            seen_urls.add(url)
+            all_results.append(r)
+
+    print(f"  [SEARCH] Total unique candidates: {len(all_results)}")
+    return all_results
 
 
 # ---------------------------------------------------------------------------
@@ -221,6 +342,27 @@ def extract_article(html_text: str):
         return None
 
 
+def fetch_pdf_text(url: str, timeout: int = 20) -> dict | None:
+    """Download PDF and extract text with trafilatura or basic fallback."""
+    try:
+        r = requests.get(url, headers=UA, timeout=timeout, allow_redirects=True)
+        if r.status_code >= 400:
+            return None
+        content_type = (r.headers.get("content-type") or "").lower()
+        if "pdf" not in content_type and not url.lower().endswith(".pdf"):
+            # Not actually a PDF, treat as HTML
+            return extract_article(r.text)
+
+        # Try trafilatura on the raw content
+        text = trafilatura.extract(r.content, include_comments=False, favor_recall=True)
+        if text and len(text.strip()) > 100:
+            return {"title": url.split("/")[-1].replace(".pdf", ""), "text": text.strip()}
+
+        return None
+    except Exception:
+        return None
+
+
 # ---------------------------------------------------------------------------
 # Single keyword job
 # ---------------------------------------------------------------------------
@@ -238,11 +380,10 @@ def run_one_keyword(job: dict, date_str: str) -> dict | None:
     print(f"Keyword: {keyword}")
     print(f"  lang={lang} region={region} timelimit={timelimit} target={target}")
 
-    try:
-        max_results = max(40, target * 8)
-        candidates = ddg_search_candidates(keyword, region, timelimit, max_results=max_results)
-    except RuntimeError as e:
-        print(f"  [FAIL] {e}")
+    candidates = search_with_variants(keyword, region, timelimit, max_results=max(40, target * 8))
+
+    if not candidates:
+        print(f"  [FAIL] No search results at all.")
         return None
 
     seen = set()
@@ -263,16 +404,30 @@ def run_one_keyword(job: dict, date_str: str) -> dict | None:
             continue
         seen.add(nurl)
 
+        # --- Domain blacklist ---
+        if is_blacklisted(nurl):
+            print(f"  [SKIP] blacklisted: {domain(nurl)}")
+            continue
+
+        # --- For non-PDF URLs, must look like a report ---
+        is_pdf = nurl.lower().endswith(".pdf") or "pdf" in nurl.lower()
+        if not is_pdf and not is_report_url(nurl):
+            print(f"  [SKIP] not report-like: {nurl[:70]}")
+            continue
+
         d = domain(nurl)
         if per_domain.get(d, 0) >= max_per_domain:
             continue
 
         print(f"  Reading: {title[:55]}...")
-        html_text = fetch_html(nurl, timeout=15, retries=1)
-        if not html_text:
-            continue
 
-        data = extract_article(html_text)
+        # Fetch: PDF vs HTML
+        if is_pdf:
+            data = fetch_pdf_text(nurl, timeout=20)
+        else:
+            html_text = fetch_html(nurl, timeout=15, retries=1)
+            data = extract_article(html_text) if html_text else None
+
         if not data:
             continue
 
@@ -287,15 +442,19 @@ def run_one_keyword(job: dict, date_str: str) -> dict | None:
         final_title = (title or data.get("title") or "No Title").strip()
         summary = make_summary(text)
 
+        # Tag source type
+        source_type = "PDF" if is_pdf else "Report"
+
         items.append({
             "title": final_title,
             "url": nurl,
             "domain": d,
             "lang": dl,
+            "type": source_type,
             "summary": summary,
         })
         per_domain[d] = per_domain.get(d, 0) + 1
-        print(f"  [ADD] {len(items)}/{target} domain={d}")
+        print(f"  [ADD] {len(items)}/{target} [{source_type}] domain={d}")
 
         time.sleep(random.uniform(0.8, 1.5))
 
@@ -320,7 +479,8 @@ def run_one_keyword(job: dict, date_str: str) -> dict | None:
         f.write(f"- Lang: {lang} | Region: {region} | Time: {timelimit}\n")
         f.write(f"- Results: {len(items)}\n\n---\n\n")
         for i, it in enumerate(items, 1):
-            f.write(f"## {i}. {it['title']}\n\n")
+            tag = f" `[{it.get('type', 'Web')}]`"
+            f.write(f"## {i}. {it['title']}{tag}\n\n")
             f.write(f"🔗 [{it['domain']}]({it['url']})\n\n")
             f.write(f"{it['summary']}\n\n---\n\n")
 
@@ -389,7 +549,7 @@ def generate_index():
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         f.write("# 📊 Auto Keyword Research — Report Index\n\n")
         f.write(f"Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}\n\n")
-        f.write(f"Schedule: Every **Wednesday & Saturday** at 12:00 Taiwan Time\n\n")
+        f.write("Schedule: Every **Wednesday & Saturday** at 12:00 Taiwan Time\n\n")
         f.write("---\n\n")
 
         if not entries:
@@ -412,7 +572,7 @@ def generate_index():
 
 def main():
     print("=" * 60)
-    print("Auto Keyword Research (GitHub Actions)")
+    print("Auto Keyword Research v3 (GitHub Actions)")
     print("=" * 60)
 
     if not os.path.isfile(CONFIG_PATH):
