@@ -6,51 +6,53 @@
 
 ---
 
-## 1. Barclays Research Finds Humanoid Robotics On Track to Become a $200 Billion Market by 2035
+## 1. Humanoids Market Global Research Report 2025-2032: Leaders Unitree, UBTech, and Boston Dynamics Dominate, While Challengers Including Tesla and Agility Robotics Scale Through Innovation `[Report]`
 
-🔗 [home.barclays](https://home.barclays/news/press-releases/20260/01/barclays-research-finds-humanoid-robotics-on-track-to-become-a--/)
+🔗 [www.globenewswire.com](https://www.globenewswire.com/news-release/2026/02/05/3232750/28124/en/Humanoids-Market-Global-Research-Report-2025-2032-Leaders-Unitree-UBTech-and-Boston-Dynamics-Dominate-While-Challengers-Including-Tesla-and-Agility-Robotics-Scale-Through-Innovatio.html)
 
-Barclays Research Finds Humanoid Robotics On Track to Become a $200 Billion Market by 2035
-Physical AI Emerges as the Next Major Industrial Growth Wave
-LONDON, 14 January 2026 — Barclays Research today released a new Impact Series report The Future of Work: AI Gets Physical, highlighting humanoid robots as the next frontier for artificial intelligence.
-
----
-
-## 2. The Humanoid Robot Bubble Is Getting Hard to Ignore - Talking Logistics
-
-🔗 [talkinglogistics.com](https://talkinglogistics.com/2026/01/12/the-humanoid-robot-bubble-is-getting-hard-to-ignore/)
-
-The hype dial on humanoid robots went to 11 last week when Boston Dynamics unveiled the product version of its new Atlas robot at the Consumer Electronics Show in Las Vegas. Here are some details from the press release:
-Atlas is designed to be an enterprise grade humanoid robot that can perform a wide array of industrial tasks, from material handling to order fulfilment.
+Dublin, Feb. 05, 2026 (GLOBE NEWSWIRE) -- The "Humanoids Market, Global, 2025-2032" report has been added to ResearchAndMarkets.com's offering.
+The global Humanoid Robot Market size was estimated at USD 425.0 million in 2025 and is projected to reach USD 4.75 billion by 2032, growing at a CAGR of over 41.2% from 2026 to 2032.
 
 ---
 
-## 3. The Humanoids Have Arrived! At CES 2026 - KraneShares
+## 2. Humanoid Robot Stocks: CES 2026 Reveals Commercial Breakout | InvestorPlace `[Report]`
 
-🔗 [kraneshares.com](https://kraneshares.com/the-humanoids-have-arrived-at-ces-2026/)
+🔗 [investorplace.com](https://investorplace.com/hypergrowthinvesting/2026/01/humanoid-robot-stocks-ces-2026-reveals-commercial-breakout/)
 
-The Humanoids Have Arrived! At CES 2026
-By Joseph Dube, Head of Marketing
-By now, the headline statistics have been well publicized. Goldman Sachs estimates annual humanoid robot shipments could reach one million units by the early to mid-2030s.1 Morgan Stanley goes further, projecting more than one billion humanoids deployed globally by 2050.2 The numbers are eye-popping—but at this year’s Consumer Electronics Show (CES) in Las Vegas, I saw something more important than forecasts.
-
----
-
-## 4. Humanoid Robots Revolutionize Logistics: Safety Standards Update | DC Velocity
-
-🔗 [www.dcvelocity.com](https://www.dcvelocity.com/material-handling/robots-still-making-strides-in-logistics)
-
-Makers of humanoid robots are targeting logistics, specifically the warehouse, as they continue a steady march to integrate their human-looking machines into today’s increasingly automated workplaces.
+The Consumer Electronics Show (CES) feels like a big deal every year. But this year was different.
+At CES 2026, the show floor overflowed with many high-tech curiosities, as usual – a soft-plastic composter, smart Legos, an ultrasonic chef’s knife, even a ring that records conversations with a tap.
 
 ---
 
-## 5. Robotics Humanoid Industry Statistics: Market Data Report 2026
+## 3. Tesla's robotics ambitions rest on the knife-edge of US-China trade relations due to its supply chain — the majority of critical materials and suppliers are located in China | Tom's Hardware `[Report]`
 
-🔗 [worldmetrics.org](https://worldmetrics.org/robotics-humanoid-industry-statistics/)
+🔗 [www.tomshardware.com](https://www.tomshardware.com/tech-industry/teslas-robotics-ambitions-rest-on-the-knife-edge-of-us-china-trade-relations-due-to-its-supply-chain-the-majority-of-critical-materials-and-suppliers-are-located-in-china)
 
-Key Takeaways
-Key Findings
-The global humanoid robotics market size was valued at $1.3 billion in 2022 and is projected to reach $7.4 billion by 2030, registering a CAGR of 22.6% from 2023 to 2030
-By 2025, the service robot market (which includes humanoids) is expected to surpass $218 billion, with humanoids accounting for 8% of that share, according to a 2023 report by Grand View Research
+Tesla's robotics ambitions rest on the knife-edge of US-China trade relations due to its supply chain — the majority of critical materials and suppliers are located in China
+In a reversal of trade dynamics over cutting-edge silicon, China holds the cards in robotics manufacturing.
+Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.
+You are now subscribed
+Your newsletter sign-up was successful
+
+---
+
+## 4. Humanoid Robot Market Forecasts: A Landscape... | Humanoids Daily `[Report]`
+
+🔗 [www.humanoidsdaily.com](https://www.humanoidsdaily.com/news/humanoid-robot-market-forecasts-a-landscape-of-high-hopes-and-wide-disagreement)
+
+- Published on
+Humanoid Robot Market Forecasts: A Landscape of High Hopes and Wide Disagreement
+Beyond the Buzz: Sizing Up the Humanoid Opportunity
+The humanoid robot market is buzzing. Fueled by advancements in AI, robotics hardware, and pressing needs like labor shortages, the sector is attracting significant investment and attention. Recent market forecasts reflect this excitement, universally predicting substantial growth over the next decade.
+
+---
+
+## 5. UBTech’s US$237 million Fenglong deal tightens humanoid robot ... `[Report]`
+
+🔗 [www.scmp.com](https://www.scmp.com/business/china-business/article/3337708/ubtechs-us237-million-fenglong-deal-tightens-humanoid-robot-supply-chain)
+
+UBTech’s US$237 million Fenglong deal tightens humanoid robot supply chain
+Hong Kong-listed UBTech is buying a 43 per cent stake in Zhejiang Fenglong, as China’s robotics firms increasingly eye A-share acquisitions
 
 ---
 

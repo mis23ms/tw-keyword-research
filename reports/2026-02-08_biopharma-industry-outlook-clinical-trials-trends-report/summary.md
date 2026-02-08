@@ -6,55 +6,55 @@
 
 ---
 
-## 1. Clinical trends for 2025: A year of change | pharmaphorum
+## 1. Industry Outlook 2026: Biopharma Industry ... | BioPharm International `[Report]`
 
-🔗 [pharmaphorum.com](https://pharmaphorum.com/rd/clinical-trends-2025-year-change)
+🔗 [www.biopharminternational.com](https://www.biopharminternational.com/view/industry-outlook-2026-biopharma-industry-confronts-skills-shortage-with-strategic-automation-part-2-)
 
-Clinical trends for 2025: A year of change
-After 2024, which saw a steady recovery by the life sciences industry, it looks like 2025 is set to be a year of change and development, particularly in clinical trials.
-The good news is that investment has returned to the sector – for instance, according to JP Morgan’s Q3 2024 Biopharma Licensing and Venture report, $3 billion was raised across 16 biopharma IPOs on Nasdaq and the New York Stock Exchange.
-
----
-
-## 2. Biopharmaceutical Industry Trends Innovation and Future Outlook
-
-🔗 [www.precedenceresearch.com](https://www.precedenceresearch.com/insights/biopharmaceutical-industry-transformation-future-growth)
-
-The biopharmaceutical industry is at a turning point as science, regulation, and technology combine to speed up drug development and create better treatments for complex and previously hard-to-cure diseases.
-The biopharmaceutical industry is undergoing a structural transformation driven by advances in molecular science, data-driven discovery, and evolving healthcare economics.
+Industry Outlook 2026: Biopharma Industry Confronts Skills Shortage with Strategic Automation (Part 2)
+Biopharma manufacturing faces a global workforce crisis, driving adoption of continuous upstream automation to protect and scale capacity, says Eric Langer of BioPlan Associates, in the continuation of his industry outlook.
+*Full transcript available below
+The industry’s rapid growth—especially in
+Today, he notes, a significant share of facilities cannot fill critical roles:
 
 ---
 
-## 3. Clinical Trials Market Size, Share, Growth, Analysis, 2034 North America Clinical Trials Market Size, Trends, Share ... Biopharmaceutical Industry Trends Innovation and Future Outlook Top 6 Biopharma Industry Trends in 2026: Innovations ... 2026 Biopharma Outlook Infographic | Key Trends, Launches ... Global Biopharmaceuticals Market Future Outlook and Trends ...
+## 2. Report : Positive outlook for big pharma in 2017 | BioPharma Dive `[Report]`
 
-🔗 [www.fortunebusinessinsights.com](https://www.fortunebusinessinsights.com/clinical-trials-market-106930)
+🔗 [www.biopharmadive.com](https://www.biopharmadive.com/news/pharma-2017-outlook-ma-market/432779/)
 
-- Healthcare IT
-- /
--
-Clinical Trials Market
-"Designing Growth Strategies is in our DNA"
-The global clinical trials market size was valued at USD 64.94 billion in 2025 and is projected to grow from USD 69.27 billion in 2026 to USD 120.75 billion by 2034, exhibiting a CAGR of 7.20% during the forecast period. North America dominated the clinical trials market, accounting for a 43.90% market share in 2025.
-Clinical trials are a critical process in developing new therapies or medical devices.
+Dive Brief:
+- Poor near-term growth, pressure on foreign exchange rates from a strengthening U.S. dollar and political overhang are just a few of the things Jefferies analyst Jeffrey Holford thinks could weaken the pharma sector in 2017.
+- Even so, the analyst still anticipates plenty of R&D catalysts in the coming year and highlighted the potential for strong M&A in a December report.
+- Holford rates AbbVie and Eli Lilly as the top picks for U.S.
 
 ---
 
-## 4. 2026 Biopharma Outlook Infographic | Key Trends, Launches & Market Dynamics
+## 3. 2014 Biopharma cold-chain forecast | Pharmaceutical Commerce `[Report]`
 
-🔗 [www.evaluate.com](https://www.evaluate.com/thought-leadership/2026-biopharma-outlook-infographic/)
+🔗 [www.pharmaceuticalcommerce.com](https://www.pharmaceuticalcommerce.com/view/2014-biopharma-cold-chain-forecast)
 
-Biotech is back! But it’s not quite as simple as that.
-After years of volatility, the sector heads into 2026 with a renewed sense of possibility, buoyed by resurgent markets, intensified metabolic health competition, and the first tremors of a looming $300bn patent cliff.
+- Pharmaceutical Commerce - May/June 2014
+2014 Biopharma cold-chain forecast
+Global industry will spend $8.36 billion on cold chain logistics this year
+Fig. 1. Overall trend for biopharma and biopharma cold-chain product sales.
 
 ---
 
-## 5. Clinical Trials Market (Report) - pharmiweb.com
+## 4. Experts struggle to predict trial outcomes — and tend to be too... `[Report]`
 
-🔗 [www.pharmiweb.com](https://www.pharmiweb.com/press-release/2026-01-22/clinical-trials-market-report)
+🔗 [www.statnews.com](https://www.statnews.com/2018/01/22/clinical-trials-forecasting-outcomes/)
 
-Clinical Trials Market (Report)
-The clinical trials market is being driven by a combination of factors including increasing R&D budgets, shorter clinical timelines, and regulatory initiatives to facilitate easier study initiation.
-The global clinical trials market was valued at US $64.7 billion in 2024 and is forecast to grow at a CAGR of ~5.2 % between 2025–2035, reaching over US $112.9 billion by 2035.
+If researchers were better at forecasting the results of clinical trials — and, say, could avoid having to run trials that will inevitably fail — more resources could be devoted to trials that might succeed.
+But, it turns out, researchers might not be great at determining the likelihood of a trial’s success.
+
+---
+
+## 5. The biopharma outlook for 2025: Opportunities and challenges `[Report]`
+
+🔗 [pharmaphorum.com](https://pharmaphorum.com/market-access/biopharma-outlook-2025-opportunities-and-challenges)
+
+The biopharma outlook for 2025: Opportunities and challenges
+With the Federal Reserve poised to implement interest rate cuts (albeit fewer than earlier forecasts assumed) and FTC leadership turnover anticipated, there may be broader shifts in how capital is both sourced and used in the biopharma industry.
 
 ---
 
