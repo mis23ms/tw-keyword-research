@@ -1,13 +1,13 @@
 """
-auto_research_gh.py — GitHub Actions 版關鍵字爬蟲 v5 (final)
+auto_research_gh.py — GitHub Actions 版關鍵字爬蟲 v6
 
-v5 changes:
-- 30-day URL + title dedup: 不重複收錄已出現過的內容
-- min_hit = 2: 命中不足時標記 LOW-HIT，不硬塞垃圾
-- 三輪搜尋: site-specific → filetype:pdf → broad (逐步放寬)
-- Domain whitelist / blacklist
-- pdf_only mode
-- 年份過濾 (排除 2 年以上舊內容)
+v6 changes:
+- Strict PDF: Content-Type 必須是 application/pdf 才收，非 PDF 一律跳
+- target=3 per group, 5 groups = 最多 15 PDF
+- SKIP: 命中 <2 → 標記 SKIP，不硬塞新聞/PR
+- 30-day URL + title dedup
+- Domain whitelist/blacklist
+- 年份過濾
 
 安全性：
 - 無 shell=True / os.startfile / subprocess
@@ -41,7 +41,7 @@ REPORTS_DIR = os.path.join(REPO_ROOT, "reports")
 INDEX_PATH = os.path.join(REPO_ROOT, "index.md")
 RETENTION_DAYS = 30
 MAX_SUMMARY_CHARS = 500
-MIN_HIT = 2  # below this → mark as LOW-HIT, still generate summary
+MIN_HIT = 2
 CURRENT_YEAR = datetime.now(timezone.utc).year
 MIN_YEAR = CURRENT_YEAR - 2
 
@@ -54,40 +54,9 @@ UA = {
 }
 
 # ---------------------------------------------------------------------------
-# Domain whitelist — trusted sources (always accept)
-# ---------------------------------------------------------------------------
-DOMAIN_WHITELIST = {
-    # Big 4 + consulting
-    "deloitte.com", "mckinsey.com", "kpmg.com", "ey.com", "pwc.com",
-    "bcg.com", "bain.com", "accenture.com", "oliverwyman.com",
-    # Banks / asset managers
-    "goldmansachs.com", "morganstanley.com", "jpmorgan.com",
-    "blackrock.com", "ark-invest.com", "vanguard.com",
-    "ubs.com", "barclays.com", "citi.com", "creditsights.com",
-    "nomura.com", "jefferies.com",
-    # Semiconductor / tech IR
-    "tsmc.com", "investor.tsmc.com", "semi.org",
-    "asml.com", "intel.com", "nvidia.com", "amd.com",
-    # Research firms
-    "iqvia.com", "evaluate.com", "trendforce.com",
-    "idc.com", "gartner.com", "forrester.com",
-    "spglobal.com", "fitchratings.com", "moodys.com",
-    # Government / intl orgs
-    "imf.org", "worldbank.org", "oecd.org", "iea.org",
-    "fda.gov", "sec.gov", "bis.org", "wto.org",
-    "nist.gov", "energy.gov", "commerce.gov",
-    # Defense think tanks
-    "csis.org", "rand.org", "iiss.org", "sipri.org",
-    "aerospace.org", "aiaa.org",
-    # ETF providers
-    "globalxetfs.com", "etf.com", "ishares.com",
-}
-
-# ---------------------------------------------------------------------------
 # Domain blacklist
 # ---------------------------------------------------------------------------
 DOMAIN_BLACKLIST = {
-    # Social
     "wikipedia.org", "en.wikipedia.org",
     "linkedin.com", "www.linkedin.com",
     "reddit.com", "www.reddit.com",
@@ -99,7 +68,7 @@ DOMAIN_BLACKLIST = {
     "prnewswire.com", "www.prnewswire.com",
     "businesswire.com", "www.businesswire.com",
     "accesswire.com", "newswire.com",
-    # News aggregators / repackagers
+    # Aggregators
     "markets.financialcontent.com", "financialcontent.com",
     "markets.businessinsider.com",
     "researchandmarkets.com", "www.researchandmarkets.com",
@@ -144,17 +113,10 @@ def normalize_url(url: str) -> str:
         return ""
     try:
         p = urlparse(url)
-        q = [
-            (k, v)
-            for (k, v) in parse_qsl(p.query, keep_blank_values=True)
-            if k.lower()
-            not in {
-                "utm_source", "utm_medium", "utm_campaign",
-                "utm_term", "utm_content", "gclid", "fbclid",
-            }
-        ]
-        new_query = urlencode(q, doseq=True)
-        return urlunparse((p.scheme, p.netloc, p.path, p.params, new_query, ""))
+        q = [(k, v) for (k, v) in parse_qsl(p.query, keep_blank_values=True)
+             if k.lower() not in {"utm_source", "utm_medium", "utm_campaign",
+                                   "utm_term", "utm_content", "gclid", "fbclid"}]
+        return urlunparse((p.scheme, p.netloc, p.path, p.params, urlencode(q, doseq=True), ""))
     except Exception:
         return url
 
@@ -176,19 +138,6 @@ def is_blacklisted(url: str) -> bool:
     return d in DOMAIN_BLACKLIST or get_root_domain(d) in DOMAIN_BLACKLIST
 
 
-def is_whitelisted(url: str) -> bool:
-    d = get_domain(url)
-    if d in DOMAIN_WHITELIST:
-        return True
-    root = get_root_domain(d)
-    if root in DOMAIN_WHITELIST:
-        return True
-    for w in DOMAIN_WHITELIST:
-        if d.endswith("." + w):
-            return True
-    return False
-
-
 def is_pdf_url(url: str) -> bool:
     lower = url.lower().split("?")[0].split("#")[0]
     return lower.endswith(".pdf") or "/pdf/" in url.lower()
@@ -202,11 +151,8 @@ def has_old_year(text: str) -> bool:
 
 
 def normalize_title(title: str) -> str:
-    """Normalize title for dedup comparison."""
-    t = (title or "").lower().strip()
-    t = re.sub(r"[^\w\s]", "", t)
-    t = re.sub(r"\s+", " ", t).strip()
-    return t
+    t = re.sub(r"[^\w\s]", "", (title or "").lower())
+    return re.sub(r"\s+", " ", t).strip()
 
 
 def slugify(text: str, max_len: int = 60) -> str:
@@ -227,34 +173,29 @@ def make_summary(text: str, max_chars: int = MAX_SUMMARY_CHARS) -> str:
 
 
 # ---------------------------------------------------------------------------
-# 30-day dedup: load all URLs + titles from existing reports
+# 30-day dedup
 # ---------------------------------------------------------------------------
 
 def load_existing_dedup() -> tuple[set, set]:
-    """Scan reports/ for all items.json, return (urls_set, normalized_titles_set)."""
     urls = set()
     titles = set()
-
     if not os.path.isdir(REPORTS_DIR):
         return urls, titles
-
     for name in os.listdir(REPORTS_DIR):
-        items_path = os.path.join(REPORTS_DIR, name, "items.json")
-        if not os.path.isfile(items_path):
+        ip = os.path.join(REPORTS_DIR, name, "items.json")
+        if not os.path.isfile(ip):
             continue
         try:
-            with open(items_path, "r", encoding="utf-8") as f:
+            with open(ip, "r", encoding="utf-8") as f:
                 items = json.load(f)
             for it in items:
                 if it.get("url"):
                     urls.add(normalize_url(it["url"]))
-                if it.get("title"):
-                    nt = normalize_title(it["title"])
-                    if len(nt) > 10:  # skip very short titles
-                        titles.add(nt)
+                nt = normalize_title(it.get("title", ""))
+                if len(nt) > 10:
+                    titles.add(nt)
         except Exception:
             continue
-
     return urls, titles
 
 
@@ -262,156 +203,127 @@ def load_existing_dedup() -> tuple[set, set]:
 # Search
 # ---------------------------------------------------------------------------
 
-def _do_ddgs_search(keyword: str, region: str, timelimit: str, max_results: int):
+def _do_ddgs_search(keyword, region, timelimit, max_results):
     from ddgs import DDGS
     with DDGS() as ddgs:
         try:
-            return list(ddgs.text(
-                keywords=keyword, region=region,
-                timelimit=timelimit, max_results=max_results,
-            ))
+            return list(ddgs.text(keywords=keyword, region=region,
+                                  timelimit=timelimit, max_results=max_results))
         except TypeError:
             try:
-                return list(ddgs.text(
-                    query=keyword, region=region,
-                    timelimit=timelimit, max_results=max_results,
-                ))
+                return list(ddgs.text(query=keyword, region=region,
+                                      timelimit=timelimit, max_results=max_results))
             except TypeError:
-                return list(ddgs.text(
-                    keyword, region=region,
-                    timelimit=timelimit, max_results=max_results,
-                ))
+                return list(ddgs.text(keyword, region=region,
+                                      timelimit=timelimit, max_results=max_results))
 
 
-def _do_legacy_search(keyword: str, region: str, timelimit: str, max_results: int):
+def _do_legacy_search(keyword, region, timelimit, max_results):
     from duckduckgo_search import DDGS
     for be in ["auto", "lite", "html"]:
         try:
             with DDGS() as ddgs:
-                res = list(ddgs.text(
-                    keywords=keyword, region=region,
-                    timelimit=timelimit, max_results=max_results,
-                    backend=be,
-                ))
+                res = list(ddgs.text(keywords=keyword, region=region,
+                                     timelimit=timelimit, max_results=max_results, backend=be))
             if res:
-                print(f"    [OK] backend={be} ({len(res)}) (legacy)")
+                print(f"    [OK] {be} ({len(res)}) legacy")
                 return res
         except Exception as e:
-            print(f"    [WARN] legacy {be}: {e}")
+            print(f"    [WARN] {be}: {e}")
             time.sleep(2.0)
     return []
 
 
-def ddg_search(query: str, region: str, timelimit: str, max_results: int = 20):
+def ddg_search(query, region, timelimit, max_results=20):
     try:
         res = _do_ddgs_search(query, region, timelimit, max_results)
         if res:
-            print(f"    [OK] {len(res)} results (ddgs)")
+            print(f"    [OK] {len(res)} results")
             return res
     except ImportError:
         pass
     except Exception as e:
         print(f"    [WARN] ddgs: {e}")
         time.sleep(2.0)
-
     try:
         return _do_legacy_search(query, region, timelimit, max_results)
-    except ImportError:
+    except (ImportError, Exception):
         pass
-    except Exception as e:
-        print(f"    [WARN] legacy: {e}")
     return []
 
 
-def multi_round_search(keyword: str, region: str, timelimit: str, max_results: int = 20):
+def multi_round_search(keyword, region, timelimit, max_results=20):
     all_results = []
-    seen_urls = set()
+    seen = set()
 
     def add(results):
         for r in results:
             url = (r.get("href") or r.get("url") or "").strip()
-            if url and url not in seen_urls:
-                seen_urls.add(url)
+            if url and url not in seen:
+                seen.add(url)
                 all_results.append(r)
 
-    # R1: exact keyword from config
+    # R1: exact keyword
     print(f"  [R1] {keyword[:80]}...")
     add(ddg_search(keyword, region, timelimit, max_results))
     time.sleep(random.uniform(3.0, 5.0))
 
-    # R2: add filetype:pdf if not present
-    if "filetype:pdf" not in keyword.lower():
-        q2 = f"{keyword} filetype:pdf"
-        print(f"  [R2] +filetype:pdf ...")
-        add(ddg_search(q2, region, timelimit, max_results))
-        time.sleep(random.uniform(3.0, 5.0))
-
-    # R3: broaden (strip site: / filetype:, add generic terms)
+    # R2: broaden (strip site:, keep filetype:pdf + core terms)
     if len(all_results) < max_results:
         core = re.sub(r"site:\S+", "", keyword, flags=re.IGNORECASE)
-        core = re.sub(r"filetype:\S+", "", core, flags=re.IGNORECASE)
-        core = re.sub(r"\bOR\b", "", core)
+        core = re.sub(r"\bOR\b", " ", core)
         core = re.sub(r"\s+", " ", core).strip()
-        if core:
-            q3 = f"{core} report pdf -wikipedia -linkedin -reddit"
-            print(f"  [R3] broad: {q3[:70]}...")
-            add(ddg_search(q3, region, timelimit, max_results))
+        if core and core != keyword:
+            print(f"  [R2] broad: {core[:70]}...")
+            add(ddg_search(core, region, timelimit, max_results))
 
-    print(f"  [TOTAL] {len(all_results)} unique candidates")
+    print(f"  [TOTAL] {len(all_results)} candidates")
     return all_results
 
 
 # ---------------------------------------------------------------------------
-# Fetch & Extract
+# Fetch PDF — STRICT Content-Type check
 # ---------------------------------------------------------------------------
 
-def fetch_html(url: str, timeout: int = 15, retries: int = 1):
-    for attempt in range(retries + 1):
-        try:
-            r = requests.get(url, headers=UA, timeout=timeout, allow_redirects=True)
-            if r.status_code >= 400:
-                return None
-            r.encoding = r.apparent_encoding or "utf-8"
-            return r.text
-        except Exception:
-            if attempt < retries:
-                time.sleep(1.0)
-    return None
-
-
-def extract_article(html_text: str):
-    try:
-        text = trafilatura.extract(
-            html_text, include_comments=False,
-            include_tables=False, favor_recall=True,
-        )
-        if not text:
-            return None
-        m = re.search(r"<title[^>]*>(.*?)</title>", html_text, flags=re.I | re.S)
-        title = (re.sub(r"\s+", " ", m.group(1)).strip() if m else "").strip()
-        return {"title": title, "text": text.strip()}
-    except Exception:
-        return None
-
-
 def fetch_pdf_text(url: str, timeout: int = 20) -> dict | None:
+    """
+    Download URL. ONLY accept if Content-Type is application/pdf.
+    Non-PDF responses are rejected entirely (no HTML fallback).
+    """
     try:
         r = requests.get(url, headers=UA, timeout=timeout, allow_redirects=True, stream=True)
         if r.status_code >= 400:
             return None
+
+        content_type = (r.headers.get("content-type") or "").lower()
+
+        # STRICT: must be PDF
+        if "application/pdf" not in content_type:
+            # Exception: URL ends in .pdf but server sends wrong content-type
+            if not url.lower().split("?")[0].endswith(".pdf"):
+                print(f"    [REJECT] Not PDF: Content-Type={content_type[:40]}")
+                return None
+
+        # Size check
         cl = r.headers.get("content-length")
         if cl and int(cl) > 15_000_000:
-            print(f"    [SKIP] PDF too large")
+            print(f"    [SKIP] PDF too large: {int(cl)//1_000_000}MB")
             return None
+
         content = r.content
-        ct = (r.headers.get("content-type") or "").lower()
-        if "pdf" not in ct and not url.lower().endswith(".pdf"):
-            return extract_article(content.decode("utf-8", errors="replace"))
+
+        # Verify it's actually PDF binary (starts with %PDF)
+        if not content[:5].startswith(b"%PDF"):
+            print(f"    [REJECT] Not valid PDF binary")
+            return None
+
         text = trafilatura.extract(content, include_comments=False, favor_recall=True)
-        if text and len(text.strip()) > 100:
+        if text and len(text.strip()) > 50:
             fname = url.split("/")[-1].split("?")[0]
             title = fname.replace(".pdf", "").replace("-", " ").replace("_", " ").strip()
             return {"title": title, "text": text.strip()}
+
+        print(f"    [WARN] PDF extracted but too short or empty")
         return None
     except Exception as e:
         print(f"    [WARN] PDF error: {e}")
@@ -419,56 +331,36 @@ def fetch_pdf_text(url: str, timeout: int = 20) -> dict | None:
 
 
 # ---------------------------------------------------------------------------
-# Quality gate
-# ---------------------------------------------------------------------------
-
-def should_accept(url: str, pdf_only: bool) -> tuple[bool, str]:
-    if is_blacklisted(url):
-        return False, "blacklisted"
-    if is_pdf_url(url):
-        return True, "PDF"
-    if is_whitelisted(url):
-        if pdf_only:
-            return False, "whitelist-but-not-pdf"
-        return True, "Trusted"
-    if pdf_only:
-        return False, "not-pdf"
-    return False, "not-trusted"
-
-
-# ---------------------------------------------------------------------------
 # Single keyword job
 # ---------------------------------------------------------------------------
 
-def run_one_keyword(
-    job: dict, date_str: str,
-    prev_urls: set, prev_titles: set,
-) -> dict | None:
+def run_one_keyword(job, date_str, prev_urls, prev_titles) -> dict | None:
     keyword = job["keyword"]
     label = job.get("label", keyword[:50])
     lang = job.get("lang", "en")
     region = job.get("region", "us-en")
     timelimit = job.get("timelimit", "y")
-    target = job.get("target", 5)
-    minlen = job.get("minlen", 400)
+    target = job.get("target", 3)
+    minlen = job.get("minlen", 300)
     max_per_domain = job.get("max_per_domain", 2)
-    pdf_only = job.get("pdf_only", True)
 
     print(f"\n{'='*60}")
     print(f"[{label}]")
-    print(f"  pdf_only={pdf_only} target={target} minlen={minlen}")
+    print(f"  target={target} minlen={minlen}")
 
-    candidates = multi_round_search(keyword, region, timelimit, max_results=max(30, target * 6))
+    candidates = multi_round_search(keyword, region, timelimit, max_results=max(30, target * 10))
 
     if not candidates:
         print(f"  [FAIL] No search results.")
-        return _write_low_hit(label, keyword, date_str, [], "No search results returned")
+        return _write_skip(label, keyword, date_str, [], "No search results")
 
     seen = set()
     per_domain = {}
     items = []
-    skip_reasons = {"blacklisted": 0, "not-pdf": 0, "dedup-url": 0, "dedup-title": 0,
-                    "too-short": 0, "old-content": 0, "lang-mismatch": 0, "extract-fail": 0}
+    skips = {}
+
+    def skip(reason):
+        skips[reason] = skips.get(reason, 0) + 1
 
     for r in candidates:
         if len(items) >= target:
@@ -484,53 +376,48 @@ def run_one_keyword(
             continue
         seen.add(nurl)
 
-        # Quality gate
-        accept, reason = should_accept(nurl, pdf_only)
-        if not accept:
-            skip_reasons[reason] = skip_reasons.get(reason, 0) + 1
+        # Blacklist
+        if is_blacklisted(nurl):
+            skip("blacklisted")
             continue
 
         # 30-day URL dedup
         if nurl in prev_urls:
-            skip_reasons["dedup-url"] += 1
-            print(f"  [DEDUP] URL already in past 30d: {nurl[:60]}")
+            skip("dedup-url")
+            print(f"  [DEDUP] {nurl[:60]}")
             continue
 
         # 30-day title dedup
         nt = normalize_title(title)
         if nt and len(nt) > 10 and nt in prev_titles:
-            skip_reasons["dedup-title"] += 1
-            print(f"  [DEDUP] Title already in past 30d: {title[:50]}")
+            skip("dedup-title")
             continue
 
         d = get_domain(nurl)
         if per_domain.get(d, 0) >= max_per_domain:
             continue
 
-        print(f"  Fetch [{reason}]: {title[:50]}...")
+        print(f"  Fetch: {title[:50]}...")
 
-        if is_pdf_url(nurl):
-            data = fetch_pdf_text(nurl, timeout=20)
-        else:
-            html_text = fetch_html(nurl, timeout=15, retries=1)
-            data = extract_article(html_text) if html_text else None
+        # STRICT PDF fetch — no HTML fallback
+        data = fetch_pdf_text(nurl, timeout=20)
 
         if not data:
-            skip_reasons["extract-fail"] += 1
+            skip("fetch-fail-or-not-pdf")
             continue
 
         text = (data.get("text") or "").strip()
         if len(text) < minlen:
-            skip_reasons["too-short"] += 1
+            skip("too-short")
             continue
 
         if has_old_year(text):
-            skip_reasons["old-content"] += 1
+            skip("old-content")
             continue
 
         dl = detect_lang(text[:1500])
         if not lang_ok(dl, lang):
-            skip_reasons["lang-mismatch"] += 1
+            skip("lang-mismatch")
             continue
 
         final_title = (title or data.get("title") or "No Title").strip()
@@ -541,37 +428,29 @@ def run_one_keyword(
             "url": nurl,
             "domain": d,
             "lang": dl,
-            "type": reason,
-            "trusted": is_whitelisted(nurl),
+            "type": "PDF",
             "summary": summary,
         })
         per_domain[d] = per_domain.get(d, 0) + 1
-
-        # Add to dedup sets for this run
         prev_urls.add(nurl)
         if nt and len(nt) > 10:
             prev_titles.add(nt)
 
-        trust = " ✅" if is_whitelisted(nurl) else ""
-        print(f"  [ADD] {len(items)}/{target} [{reason}]{trust} {d}")
-
+        print(f"  [ADD] {len(items)}/{target} ✅ {d}")
         time.sleep(random.uniform(0.8, 1.5))
 
-    # Print skip summary
-    skips = {k: v for k, v in skip_reasons.items() if v > 0}
     if skips:
         print(f"  [SKIPS] {skips}")
 
-    # Check min_hit
+    # Min hit check
     if len(items) < MIN_HIT:
-        return _write_low_hit(label, keyword, date_str, items,
-                              f"Only {len(items)} hits (min={MIN_HIT}). Skips: {skips}")
+        return _write_skip(label, keyword, date_str, items,
+                           f"Only {len(items)} PDFs (need {MIN_HIT}). Skips: {skips}")
 
-    # Write output
-    return _write_output(label, keyword, date_str, items, pdf_only)
+    return _write_output(label, keyword, date_str, items)
 
 
-def _write_output(label, keyword, date_str, items, pdf_only) -> dict:
+def _write_output(label, keyword, date_str, items) -> dict:
     slug = slugify(label or keyword)
     folder_name = f"{date_str}_{slug}"
     folder_path = os.path.join(REPORTS_DIR, folder_name)
@@ -583,19 +462,17 @@ def _write_output(label, keyword, date_str, items, pdf_only) -> dict:
     with open(os.path.join(folder_path, "summary.md"), "w", encoding="utf-8") as f:
         f.write(f"# {label}\n\n")
         f.write(f"- Date: {date_str}\n")
-        f.write(f"- Results: {len(items)} | PDF-only: {pdf_only}\n\n---\n\n")
+        f.write(f"- Sources: {len(items)} PDF(s)\n\n---\n\n")
         for i, it in enumerate(items, 1):
-            trust = " ✅" if it.get("trusted") else ""
-            f.write(f"## {i}. {it['title']} `[{it['type']}]`{trust}\n\n")
+            f.write(f"## {i}. {it['title']} `[PDF]`\n\n")
             f.write(f"🔗 [{it['domain']}]({it['url']})\n\n")
             f.write(f"{it['summary']}\n\n---\n\n")
 
-    print(f"  [DONE] {len(items)} sources → {folder_name}/")
+    print(f"  [DONE] {len(items)} PDFs → {folder_name}/")
     return {"keyword": label, "folder": folder_name, "count": len(items), "status": "OK"}
 
 
-def _write_low_hit(label, keyword, date_str, items, reason) -> dict:
-    """Still write a summary, but mark as LOW-HIT."""
+def _write_skip(label, keyword, date_str, items, reason) -> dict:
     slug = slugify(label or keyword)
     folder_name = f"{date_str}_{slug}"
     folder_path = os.path.join(REPORTS_DIR, folder_name)
@@ -607,46 +484,45 @@ def _write_low_hit(label, keyword, date_str, items, reason) -> dict:
     with open(os.path.join(folder_path, "summary.md"), "w", encoding="utf-8") as f:
         f.write(f"# {label}\n\n")
         f.write(f"- Date: {date_str}\n")
-        f.write(f"- ⚠️ **LOW-HIT**: {reason}\n")
-        f.write(f"- Results: {len(items)}\n\n---\n\n")
+        f.write(f"- ⚠️ **SKIP**: {reason}\n")
+        f.write(f"- Sources: {len(items)} PDF(s)\n\n---\n\n")
         if items:
             for i, it in enumerate(items, 1):
-                trust = " ✅" if it.get("trusted") else ""
-                f.write(f"## {i}. {it['title']} `[{it['type']}]`{trust}\n\n")
+                f.write(f"## {i}. {it['title']} `[PDF]`\n\n")
                 f.write(f"🔗 [{it['domain']}]({it['url']})\n\n")
                 f.write(f"{it['summary']}\n\n---\n\n")
         else:
-            f.write("_No qualified sources found this run._\n\n")
-            f.write(f"Search attempted: `{keyword[:100]}`\n")
+            f.write("_No qualified PDFs found this run._\n\n")
+            f.write(f"Query: `{keyword[:120]}`\n")
 
-    print(f"  [LOW-HIT] {len(items)} sources → {folder_name}/ — {reason}")
-    return {"keyword": label, "folder": folder_name, "count": len(items), "status": "LOW-HIT"}
+    print(f"  [SKIP] {len(items)} PDFs → {folder_name}/ — {reason}")
+    return {"keyword": label, "folder": folder_name, "count": len(items), "status": "SKIP"}
 
 
 # ---------------------------------------------------------------------------
-# Cleanup old reports (>30 days)
+# Cleanup
 # ---------------------------------------------------------------------------
 
 def cleanup_old_reports():
     if not os.path.isdir(REPORTS_DIR):
         return
-    cutoff_str = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime("%Y-%m-%d")
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime("%Y-%m-%d")
     removed = 0
     for name in sorted(os.listdir(REPORTS_DIR)):
         fp = os.path.join(REPORTS_DIR, name)
         if not os.path.isdir(fp):
             continue
         m = re.match(r"^(\d{4}-\d{2}-\d{2})_", name)
-        if m and m.group(1) < cutoff_str:
+        if m and m.group(1) < cutoff:
             shutil.rmtree(fp)
             removed += 1
             print(f"  [CLEANUP] {name}")
     if removed:
-        print(f"  [CLEANUP] Removed {removed} old reports")
+        print(f"  [CLEANUP] Removed {removed}")
 
 
 # ---------------------------------------------------------------------------
-# Generate index.md
+# Index
 # ---------------------------------------------------------------------------
 
 def generate_index():
@@ -664,35 +540,31 @@ def generate_index():
             m = re.match(r"^(\d{4}-\d{2}-\d{2})_", name)
             date_str = m.group(1) if m else "unknown"
 
-            # Read items for stats
             count = 0
-            trusted = 0
-            low_hit = False
+            is_skip = False
             ip = os.path.join(fp, "items.json")
             if os.path.isfile(ip):
                 try:
                     with open(ip, "r", encoding="utf-8") as jf:
-                        items = json.load(jf)
-                    count = len(items)
-                    trusted = sum(1 for it in items if it.get("trusted"))
+                        count = len(json.load(jf))
                 except Exception:
                     pass
-            # Check if LOW-HIT
             with open(sp, "r", encoding="utf-8") as f:
-                content = f.read(500)
-                if "LOW-HIT" in content:
-                    low_hit = True
+                if "SKIP" in f.read(500):
+                    is_skip = True
 
-            entries.append({
-                "date": date_str, "folder": name, "keyword": first_line,
-                "count": count, "trusted": trusted, "low_hit": low_hit,
-            })
+            # Only list in index if count > 0
+            if count > 0:
+                entries.append({
+                    "date": date_str, "folder": name,
+                    "keyword": first_line, "count": count, "skip": is_skip,
+                })
 
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         f.write("# 📊 Auto Keyword Research — Report Index\n\n")
         f.write(f"Last updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}\n\n")
         f.write("Schedule: Every **Saturday** at 12:00 Taiwan Time\n\n")
-        f.write("Sources: PDF reports from trusted institutions (Big 4, banks, think tanks, IR)\n\n")
+        f.write("Sources: PDF-only from trusted institutions\n\n")
         f.write("---\n\n")
         if not entries:
             f.write("_No reports yet._\n")
@@ -702,10 +574,9 @@ def generate_index():
                 if e["date"] != current_date:
                     current_date = e["date"]
                     f.write(f"### {current_date}\n\n")
-                badge = f" ({e['trusted']}✅)" if e["trusted"] else ""
-                warn = " ⚠️" if e["low_hit"] else ""
+                warn = " ⚠️" if e["skip"] else ""
                 f.write(f"- [{e['keyword']}](reports/{e['folder']}/summary.md)"
-                        f" — {e['count']} sources{badge}{warn}\n")
+                        f" — {e['count']} PDF(s){warn}\n")
             f.write("\n")
     print(f"\n[INDEX] {len(entries)} entries")
 
@@ -716,7 +587,7 @@ def generate_index():
 
 def main():
     print("=" * 60)
-    print("Auto Keyword Research v5 (GitHub Actions)")
+    print("Auto Keyword Research v6 (PDF-only)")
     print("=" * 60)
 
     if not os.path.isfile(CONFIG_PATH):
@@ -732,12 +603,10 @@ def main():
         sys.exit(1)
 
     print(f"Loaded {len(jobs)} jobs")
-
     os.makedirs(REPORTS_DIR, exist_ok=True)
 
-    # Load 30-day dedup
     prev_urls, prev_titles = load_existing_dedup()
-    print(f"Dedup loaded: {len(prev_urls)} URLs, {len(prev_titles)} titles from past {RETENTION_DAYS}d")
+    print(f"Dedup: {len(prev_urls)} URLs, {len(prev_titles)} titles")
 
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     results = []
@@ -755,20 +624,18 @@ def main():
             print(f"  [WAIT] {wait:.1f}s...")
             time.sleep(wait)
 
-    # Cleanup
     print(f"\n{'='*60}")
-    print(f"Cleanup: >30 days...")
     cleanup_old_reports()
     generate_index()
 
-    # Summary
-    print(f"\n{'='*60}")
     ok = [r for r in results if r["status"] == "OK"]
-    low = [r for r in results if r["status"] == "LOW-HIT"]
-    print(f"FINISHED: {len(ok)} OK, {len(low)} LOW-HIT, {len(jobs)-len(results)} FAILED")
+    skip = [r for r in results if r["status"] == "SKIP"]
+    fail = len(jobs) - len(results)
+    print(f"\n{'='*60}")
+    print(f"DONE: {len(ok)} OK | {len(skip)} SKIP | {fail} FAIL")
     for r in results:
-        icon = "✓" if r["status"] == "OK" else "⚠️"
-        print(f"  {icon} {r['keyword']} → {r['count']} sources [{r['status']}]")
+        icon = "✅" if r["status"] == "OK" else "⚠️"
+        print(f"  {icon} {r['keyword']} → {r['count']} PDF(s) [{r['status']}]")
     print("=" * 60)
 
 
