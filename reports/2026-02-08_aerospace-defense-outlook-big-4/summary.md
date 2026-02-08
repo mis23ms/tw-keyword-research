@@ -1,7 +1,7 @@
 # Aerospace & Defense Outlook (Big 4)
 
 - Date: 2026-02-08
-- ⚠️ **LOW-HIT**: Only 0 hits (min=2). Skips: {'extract-fail': 10, 'whitelist-but-not-pdf': 20}
+- ⚠️ **LOW-HIT**: Only 0 hits (min=2). Skips: {'extract-fail': 11, 'whitelist-but-not-pdf': 19}
 - Results: 0
 
 ---
