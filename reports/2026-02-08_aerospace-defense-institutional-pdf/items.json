@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "title": "[PDF] KPMG Global Economic and Geopolitical Outlook",
+    "url": "https://assets.kpmg.com/content/dam/kpmgsites/xx/pdf/2025/10/global-economic-outlook-webcast-recap.pdf",
+    "domain": "assets.kpmg.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 839056,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  },
+  {
+    "title": "[PDF] Navigating Ukraine's Defense Tech Market October 2025 - EY",
+    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-ua/insights/defense-tech/navigating-ukraine-defense-tech-market.pdf",
+    "domain": "www.ey.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 20815941,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. PDF too large (20MB), kept as link. Kept as link-only.)_"
+  },
+  {
+    "title": "[PDF] Accelerating sovereign defense ecosystems - KPMG International",
+    "url": "https://assets.kpmg.com/content/dam/kpmgsites/sa/pdf/2026/accelerating-sovereign-defense-ecosystems.pdf.coredownload.inline.pdf",
+    "domain": "assets.kpmg.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 425734,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  }
+]

@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "title": "[PDF] The priorities, insights, and challenges of wealth managers",
+    "url": "https://www.ssga.com/library-content/assets/pdf/emea/insights/2025/state-street-european-wealth-report-2025.pdf",
+    "domain": "www.ssga.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 1347468,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  },
+  {
+    "title": "[PDF] Beliefs, behaviors, and the future of finance - State Street Global Advisors",
+    "url": "https://www.ssga.com/library-content/assets/pdf/north-america/equities/2025/inside-the-mind-of-the-retail-investor.pdf",
+    "domain": "www.ssga.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 2922794,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "keyword": "Semiconductor: CoWoS / HBM / Advanced Packaging",
+    "folder": "2026-02-08_semiconductor-cowos-hbm-advanced-packaging",
+    "count": 0,
+    "full_text": 0,
+    "link_only": 0,
+    "status": "SKIP"
+  },
+  {
+    "keyword": "TSMC Official IR / Earnings",
+    "folder": "2026-02-08_tsmc-official-ir-earnings",
+    "count": 0,
+    "full_text": 0,
+    "link_only": 0,
+    "status": "SKIP"
+  },
+  {
+    "keyword": "Robotics ETF Factsheets (BOTZ/ROBO/IRBO)",
+    "folder": "2026-02-08_robotics-etf-factsheets-botzroboirbo",
+    "count": 2,
+    "full_text": 0,
+    "link_only": 2,
+    "status": "OK"
+  },
+  {
+    "keyword": "Aerospace & Defense (Institutional PDF)",
+    "folder": "2026-02-08_aerospace-defense-institutional-pdf",
+    "count": 3,
+    "full_text": 0,
+    "link_only": 3,
+    "status": "OK"
+  },
+  {
+    "keyword": "BioPharma / Life Sciences (Institutional PDF)",
+    "folder": "2026-02-08_biopharma-life-sciences-institutional-pdf",
+    "count": 3,
+    "full_text": 0,
+    "link_only": 3,
+    "status": "OK"
+  }
+]

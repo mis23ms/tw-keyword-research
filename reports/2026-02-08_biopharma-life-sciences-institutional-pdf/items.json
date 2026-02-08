@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "title": "[PDF] Reimagining life sciences Global Capability Centers | EY",
+    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/pdf/2025/ey-reimagining-life-sciences-global-capability-centers.pdf",
+    "domain": "www.ey.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 4914196,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  },
+  {
+    "title": "[PDF] Mind over matter: The growing momentum of CNS innovation - IQVIA",
+    "url": "https://www.iqvia.com/-/media/iqvia/pdfs/emea/library/whitepaper/mind-over-matter-2025.pdf",
+    "domain": "www.iqvia.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 3454313,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  },
+  {
+    "title": "[PDF] Fueling innovation, advancing equity : The power of partnerships and ... - EY",
+    "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/insights/health/documents/2025/ey-fueling-innovation-advancing-equity.pdf",
+    "domain": "www.ey.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 7489095,
+    "fetch_status": "text-too-short",
+    "summary": "_(PDF text extraction: text-too-short. Extracted only 0 chars. Kept as link-only.)_"
+  }
+]
