@@ -28,58 +28,10 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      - name: Skip if already succeeded this ISO week
-        run: |
-          python - <<'PY'
-          import json, os
-          from datetime import datetime, timezone
-
-          p = os.path.join('reports', '.run_state.json')
-          if not os.path.exists(p):
-              print('No run state; continue.')
-              raise SystemExit(0)
-          try:
-              st = json.load(open(p, 'r', encoding='utf-8'))
-          except Exception as e:
-              print('Failed to read run state; continue:', e)
-              raise SystemExit(0)
-
-          iso = datetime.now(timezone.utc).isocalendar()
-          cur = f"{iso.year}-W{iso.week:02d}"
-          last = (st.get('last_success_iso_week') or '').strip()
-          print('Current ISO week:', cur)
-          print('Last success ISO week:', last)
-          if last == cur:
-              print('Already succeeded this week; skip remaining steps.')
-              # Mark skip flag for subsequent steps.
-              with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env:
-                  env.write('SKIP_WEEK=1\n')
-          PY
-
       - name: Run keyword research
-        if: env.SKIP_WEEK != '1'
         run: python scripts/auto_research_gh.py
 
-      - name: Skip commit if no successful jobs
-        if: env.SKIP_WEEK != '1'
-        run: |
-          python - <<'PY'
-          import json, os
-          p = os.path.join('reports', '_latest_run.json')
-          if not os.path.exists(p):
-              print('No latest_run.json; nothing to commit.')
-              raise SystemExit(0)
-          data = json.load(open(p, 'r', encoding='utf-8'))
-          ok = any(r.get('job_success') for r in data if isinstance(r, dict))
-          print('Any job_success:', ok)
-          if not ok:
-              print('No successful jobs; skip commit.')
-              with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env:
-                  env.write('SKIP_COMMIT=1\n')
-          PY
-
       - name: Commit and push reports
-        if: env.SKIP_WEEK != '1' && env.SKIP_COMMIT != '1'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
