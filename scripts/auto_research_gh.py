@@ -188,7 +188,11 @@ def load_existing_dedup():
     urls, titles = set(), set()
     if not os.path.isdir(REPORTS_DIR):
         return urls, titles
+    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     for name in os.listdir(REPORTS_DIR):
+        # Skip today's folders so reruns on the same day don't dedup against themselves.
+        if name.startswith(date_str + "_"):
+            continue
         ip = os.path.join(REPORTS_DIR, name, "items.json")
         if not os.path.isfile(ip):
             continue
@@ -560,8 +564,8 @@ def _report(label, keyword, date_str, items, target, rejected):
     full = sum(1 for i in items if not i.get("link_only"))
     link = sum(1 for i in items if i.get("link_only"))
     status = "SKIP" if cnt == 0 else "OK"
-    # Job success (for index inclusion): at least one full-text PDF.
-    job_success = full >= 1
+    # Job success (for index inclusion): at least one PDF (full-text or link-only).
+    job_success = cnt >= 1
 
     with open(os.path.join(path, "items.json"), "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=2)
@@ -636,56 +640,89 @@ def cleanup():
 # ───────────────────────── index ─────────────────────────
 
 def gen_index(run_results):
-    """Generate index for *this run only*.
+    """Generate index by scanning all reports.
 
     - Always write reports/_latest_run.json (used by workflow gates)
-    - index.md includes only jobs that are job_success (>=1 full-text PDF)
+    - index.md lists ALL historical report folders that have items.json with len(items) > 0
+    - Folders generated in this run are marked as 🆕
     """
+    # Persist latest run metadata for workflow gates.
     with open(LATEST_RUN_PATH, "w", encoding="utf-8") as f:
         json.dump(run_results, f, ensure_ascii=False, indent=2)
 
-    # Only list this run's successful jobs.
+    # Folders produced in this run (for 🆕 marker).
+    new_folders = {r.get("folder") for r in run_results if int(r.get("count", 0)) > 0 and r.get("folder")}
+
     entries = []
-    for r in run_results:
-        if not r.get("job_success"):
-            continue
-        m = re.match(r"^(\d{4}-\d{2}-\d{2})_", r.get("folder", ""))
-        dt = m.group(1) if m else "?"
-        entries.append({
-            "date": dt,
-            "folder": r["folder"],
-            "kw": r.get("keyword", ""),
-            "count": int(r.get("count", 0)),
-            "full": int(r.get("full_text", 0)),
-            "lo": int(r.get("link_only", 0)),
-        })
+    if os.path.isdir(REPORTS_DIR):
+        for folder in sorted(os.listdir(REPORTS_DIR)):
+            fp = os.path.join(REPORTS_DIR, folder)
+            if not os.path.isdir(fp):
+                continue
+            ip = os.path.join(fp, "items.json")
+            if not os.path.isfile(ip):
+                continue
+            try:
+                with open(ip, "r", encoding="utf-8") as f:
+                    items = json.load(f)
+            except Exception:
+                continue
+            if not isinstance(items, list) or len(items) == 0:
+                continue
+
+            # Date prefix
+            m = re.match(r"^(\d{4}-\d{2}-\d{2})_", folder)
+            dt = m.group(1) if m else "?"
+
+            # Label from summary.md (first heading), fallback to folder slug
+            label = folder
+            sp = os.path.join(fp, "summary.md")
+            if os.path.isfile(sp):
+                try:
+                    with open(sp, "r", encoding="utf-8") as sf:
+                        first = sf.readline().strip()
+                        if first.startswith("# "):
+                            label = first[2:].strip()
+                except Exception:
+                    pass
+
+            full = sum(1 for i in items if not i.get("link_only"))
+            lo = sum(1 for i in items if i.get("link_only"))
+            entries.append({
+                "date": dt,
+                "folder": folder,
+                "label": label,
+                "count": len(items),
+                "full": full,
+                "lo": lo,
+                "is_new": folder in new_folders,
+            })
+
+    # Sort by date (desc), then label
+    entries.sort(key=lambda x: (x["date"], x["label"]), reverse=True)
 
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         f.write("# 📊 Auto Keyword Research — Report Index\n\n")
         f.write(f"Updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}\n\n")
         f.write("Schedule: **Saturday** 12:00 Taiwan Time | Sources: Institutional PDF\n\n---\n\n")
+
         if not entries:
-            f.write("_No successful jobs in this run._\n")
-        else:
-            # Keep deterministic order: newest folders first.
-            entries.sort(key=lambda x: x["folder"], reverse=True)
-            cd = ""
-            for e in entries:
-                if e["date"] != cd:
-                    cd = e["date"]
-                    f.write(f"### {cd}\n\n")
-                p = []
-                if e["full"]:
-                    p.append(f"{e['full']}📄")
-                if e["lo"]:
-                    p.append(f"{e['lo']}🔗")
-                info = "+".join(p) if p else "0"
-                f.write(f"- [{e['kw']}](reports/{e['folder']}/summary.md) — {info} 🆕\n")
-            f.write("\n")
-    print(f"[INDEX] {len(entries)} successful-job entries")
+            f.write("> No reports found yet.\n")
+            return
 
+        # Group by date
+        cur = None
+        for e in entries:
+            if e["date"] != cur:
+                cur = e["date"]
+                f.write(f"\n## {cur}\n\n")
+            badge = " 🆕" if e["is_new"] else ""
+            f.write(f"- [{e['label']}](reports/{e['folder']}/summary.md) — {e['count']} ")
+            f.write("📄" if e["full"] else " ")
+            if e["lo"]:
+                f.write(" 🔗")
+            f.write(badge + "\n")
 
-# ───────────────────────── main ─────────────────────────
 
 def main():
     global HAS_PDFTOTEXT
@@ -797,4 +834,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
