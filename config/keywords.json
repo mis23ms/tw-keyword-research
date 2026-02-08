@@ -1,7 +1,7 @@
 {
   "jobs": [
     {
-      "keyword": "HBM CoWoS advanced packaging semiconductor outlook report analysis filetype:pdf -sustainability -esg -ipo -prospectus",
+      "keyword": "(\"HBM\" OR \"high bandwidth memory\" OR \"CoWoS\" OR \"advanced packaging\" OR \"2.5D\" OR \"3D packaging\" OR \"chiplet\") (supply chain OR capacity OR bottleneck OR substrate OR OSAT OR ABF OR assembly OR packaging) (outlook OR report OR analysis OR whitepaper OR roadmap) filetype:pdf -sustainability -esg -csr -brochure -catalog -datasheet",
       "label": "Semiconductor: CoWoS / HBM / Advanced Packaging",
       "lang": "en",
       "region": "us-en",
@@ -9,11 +9,23 @@
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "semi.org", "imec-int.com", "ieee.org", "sia-online.org",
-        "deloitte.com", "kpmg.com", "ey.com", "pwc.com", "mckinsey.com",
-        "tsmc.com", "asml.com", "micron.com", "samsung.com",
-        "skhynix.com", "nvidia.com", "amd.com", "intel.com",
-        "spglobal.com", "idc.com", "gartner.com"
+        "imec-int.com",
+        "ieee.org",
+        "sia-online.org",
+        "deloitte.com",
+        "kpmg.com",
+        "ey.com",
+        "pwc.com",
+        "mckinsey.com",
+        "tsmc.com",
+        "asml.com",
+        "micron.com",
+        "samsung.com",
+        "skhynix.com",
+        "nvidia.com",
+        "amd.com",
+        "intel.com",
+        "spglobal.com"
       ]
     },
     {
@@ -25,7 +37,8 @@
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "tsmc.com", "sec.gov"
+        "tsmc.com",
+        "sec.gov"
       ]
     },
     {
@@ -37,7 +50,12 @@
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "globalxetfs.com", "roboglobal.com", "ishares.com", "sec.gov"
+        "globalxetfs.com",
+        "roboglobal.com",
+        "ishares.com",
+        "ssga.com",
+        "invesco.com",
+        "sec.gov"
       ]
     },
     {
@@ -49,10 +67,21 @@
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "deloitte.com", "ey.com", "pwc.com", "kpmg.com",
-        "mckinsey.com", "bcg.com", "bain.com", "accenture.com",
-        "rand.org", "csis.org", "iiss.org", "sipri.org",
-        "aerospace.org", "aiaa.org", "spglobal.com"
+        "deloitte.com",
+        "ey.com",
+        "pwc.com",
+        "kpmg.com",
+        "mckinsey.com",
+        "bcg.com",
+        "bain.com",
+        "accenture.com",
+        "rand.org",
+        "csis.org",
+        "iiss.org",
+        "sipri.org",
+        "aerospace.org",
+        "aiaa.org",
+        "spglobal.com"
       ]
     },
     {
@@ -64,9 +93,17 @@
       "target": 3,
       "minlen": 100,
       "allowed_domains": [
-        "iqvia.com", "deloitte.com", "ey.com", "mckinsey.com",
-        "bcg.com", "evaluate.com", "pwc.com", "kpmg.com",
-        "fda.gov", "nih.gov", "who.int"
+        "iqvia.com",
+        "deloitte.com",
+        "ey.com",
+        "mckinsey.com",
+        "bcg.com",
+        "evaluate.com",
+        "pwc.com",
+        "kpmg.com",
+        "fda.gov",
+        "nih.gov",
+        "who.int"
       ]
     }
   ]
