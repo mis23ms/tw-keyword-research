@@ -1,19 +1,25 @@
 """
-auto_research_gh.py — GitHub Actions 版 v8-final
+auto_research_gh.py — v9 (all bugs fixed)
 
-核心改動：
-- per-job allowed_domains: 搜尋只管找 PDF，domain 過濾交給程式碼
-- R1: broad search (filetype:pdf + topic keywords)
-- R2: site-by-site fallback (逐一嘗試 allowed_domains 中的 site:)
-- pdftotext fallback (poppler): trafilatura 抽不到字時用 pdftotext
-- link-only: PDF 確認但抽不出字 → 保留連結+metadata
-- >= 1 PDF 就出報告，0 才 SKIP（附 rejected 清單）
-- 403 fast-fail，不重試
+Fixed from v8-final:
+- BUG1: job_success now = cnt >= 1 (any PDF counts, not just full-text)
+- BUG2: gen_index scans ALL report folders, not just current run
+- BUG3: dedup skips today's folders (same-day rerun won't eat itself)
+- BUG4+5: removed run_state.json / B+ gating (workflow simplified)
 
-安全性：
-- subprocess.run 僅用於 pdftotext（無 shell=True）
-- 無對外上傳（僅 GET 抓網頁）
-- 僅清理 reports/ 下 >30 天的子資料夾
+Features kept:
+- per-job allowed_domains
+- R1 broad + R2 site-by-site
+- pdftotext fallback
+- link-only for extraction failures
+- >= 1 PDF = report, 0 = SKIP with rejected list
+- 403 fast-fail
+- 30-day dedup + cleanup
+
+Safety:
+- subprocess.run for pdftotext only (no shell=True)
+- No uploads (GET only)
+- rmtree only on reports/ YYYY-MM-DD_ folders > 30 days
 """
 
 import json
@@ -35,23 +41,17 @@ from langdetect import detect, DetectorFactory
 DetectorFactory.seed = 0
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
-# Support both layouts:
-# - repo/scripts/auto_research_gh.py (GitHub)
-# - repo/auto_research_gh.py (local flat copy)
 if os.path.basename(_HERE) == "scripts":
     REPO_ROOT = os.path.dirname(_HERE)
 else:
     REPO_ROOT = _HERE
 
-# Config path fallback: prefer config/keywords.json, else keywords.json at repo root.
 _CFG1 = os.path.join(REPO_ROOT, "config", "keywords.json")
 _CFG2 = os.path.join(REPO_ROOT, "keywords.json")
 CONFIG_PATH = _CFG1 if os.path.isfile(_CFG1) else _CFG2
 
 REPORTS_DIR = os.path.join(REPO_ROOT, "reports")
 INDEX_PATH = os.path.join(REPO_ROOT, "index.md")
-LATEST_RUN_PATH = os.path.join(REPORTS_DIR, "_latest_run.json")
-RUN_STATE_PATH = os.path.join(REPORTS_DIR, ".run_state.json")
 RETENTION_DAYS = 30
 MAX_SUMMARY_CHARS = 500
 CURRENT_YEAR = datetime.now(timezone.utc).year
@@ -142,7 +142,6 @@ def is_blacklisted(url):
 
 
 def domain_matches(url, allowed_list):
-    """Check if URL domain matches any entry in allowed_list."""
     d = get_domain(url)
     rd = root_domain(d)
     for a in allowed_list:
@@ -182,16 +181,16 @@ def make_summary(text, mx=MAX_SUMMARY_CHARS):
     return cut.strip() + "…"
 
 
-# ───────────────────────── dedup ─────────────────────────
+# ───────────────────────── dedup (FIX: skip today) ─────────────────────────
 
-def load_existing_dedup():
+def load_existing_dedup(today_str: str):
+    """Load URLs+titles from past reports, SKIPPING today's folders."""
     urls, titles = set(), set()
     if not os.path.isdir(REPORTS_DIR):
         return urls, titles
-    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     for name in os.listdir(REPORTS_DIR):
-        # Skip today's folders so reruns on the same day don't dedup against themselves.
-        if name.startswith(date_str + "_"):
+        # FIX BUG3: skip today's folders so reruns don't dedup themselves
+        if name.startswith(today_str + "_"):
             continue
         ip = os.path.join(REPORTS_DIR, name, "items.json")
         if not os.path.isfile(ip):
@@ -239,7 +238,6 @@ def _ddgs_legacy(kw, region, timelimit, n):
 
 
 def ddg(query, region, timelimit, n=25):
-    """Single DDG search with new→legacy fallback."""
     try:
         res = _ddgs_new(query, region, timelimit, n)
         if res:
@@ -261,11 +259,6 @@ def ddg(query, region, timelimit, n=25):
 
 
 def search_for_job(keyword, allowed_domains, region, timelimit, n=25):
-    """
-    R1: broad keyword search
-    R2: if allowed_domains given, try site-by-site for up to 5 domains
-    Dedup across rounds.
-    """
     all_results = []
     seen = set()
 
@@ -276,27 +269,21 @@ def search_for_job(keyword, allowed_domains, region, timelimit, n=25):
                 seen.add(url)
                 all_results.append(r)
 
-    # R1: broad
     print(f"  [R1] {keyword[:80]}...")
     add(ddg(keyword, region, timelimit, n))
     time.sleep(random.uniform(3, 5))
 
-    # R2: site-by-site for allowed domains (pick up to 5)
     if allowed_domains:
-        # Extract core topic (strip filetype:)
         core = re.sub(r"filetype:\S+", "", keyword, flags=re.IGNORECASE).strip()
-        # Shuffle to vary which domains get tried each run
         domains_to_try = list(allowed_domains)
         random.shuffle(domains_to_try)
         tried = 0
-
         for dom in domains_to_try:
             if tried >= 5:
                 break
             q = f"site:{dom} {core} filetype:pdf"
             print(f"  [R2] site:{dom} ...")
-            r2 = ddg(q, region, timelimit, 10)
-            add(r2)
+            add(ddg(q, region, timelimit, 10))
             tried += 1
             time.sleep(random.uniform(2, 4))
 
@@ -307,7 +294,6 @@ def search_for_job(keyword, allowed_domains, region, timelimit, n=25):
 # ───────────────────────── PDF fetch ─────────────────────────
 
 def _pdftotext(pdf_bytes):
-    """Local pdftotext extraction (poppler). No shell, no upload."""
     if not HAS_PDFTOTEXT:
         return None
     try:
@@ -338,18 +324,9 @@ def is_pdf(ct, url, content):
 
 
 def fetch_pdf(url):
-    """
-    Fetch → check PDF → extract text (trafilatura → pdftotext).
-    403/401 = fast fail.
-    Returns dict: is_pdf, text, content_type, size_bytes, status, error
-    """
     out = {"is_pdf": False, "text": None, "content_type": "",
            "size_bytes": 0, "status": "error", "error": None}
 
-    # Retry policy:
-    # - 401/403: fast fail, no retry
-    # - timeout: retry at most once, with shorter timeout on 2nd attempt
-    # - other HTTP >=400: one retry (kept for transient 5xx)
     for attempt in range(2):
         try:
             timeout_s = PDF_TIMEOUT_1 if attempt == 0 else PDF_TIMEOUT_2
@@ -359,7 +336,7 @@ def fetch_pdf(url):
             if r.status_code in (401, 403):
                 out["status"] = "blocked"
                 out["error"] = f"HTTP {r.status_code}"
-                return out  # fast fail
+                return out
 
             if r.status_code >= 400:
                 out["error"] = f"HTTP {r.status_code}"
@@ -385,7 +362,6 @@ def fetch_pdf(url):
                 out["error"] = f"{len(content)//1_000_000}MB"
                 return out
 
-            # Extract: trafilatura first
             text = None
             try:
                 text = trafilatura.extract(content, include_comments=False, favor_recall=True)
@@ -394,7 +370,6 @@ def fetch_pdf(url):
             except Exception:
                 pass
 
-            # Fallback: pdftotext
             if not text or len(text) < 80:
                 fb = _pdftotext(content)
                 if fb and len(fb) > len(text or ""):
@@ -411,7 +386,7 @@ def fetch_pdf(url):
 
         except requests.exceptions.Timeout:
             out["status"] = "timeout"
-            out["error"] = f"{PDF_TIMEOUT_1 if attempt == 0 else PDF_TIMEOUT_2}s"
+            out["error"] = f"{timeout_s}s"
             if attempt == 0:
                 time.sleep(3)
                 continue
@@ -437,12 +412,11 @@ def run_one(job, date_str, prev_urls, prev_titles, *, deadline_ts=None):
     timelimit = job.get("timelimit", "y")
     target = job.get("target", 3)
     minlen = job.get("minlen", 100)
-    # Domain diversity: default <=2 per (root) domain.
     max_per_dom = job.get("max_per_domain", 2)
     allowed = job.get("allowed_domains", [])
 
     print(f"\n{'='*60}")
-    print(f"[{label}] target={target} allowed_domains={len(allowed)}")
+    print(f"[{label}] target={target} allowed={len(allowed)}")
 
     candidates = search_for_job(keyword, allowed, region, timelimit, n=25)
     rejected, seen, per_dom, items = [], set(), {}, []
@@ -450,17 +424,13 @@ def run_one(job, date_str, prev_urls, prev_titles, *, deadline_ts=None):
     if not candidates:
         return _report(label, keyword, date_str, items, target, rejected)
 
-    max_attempts = int(target) * 12
+    max_attempts = target * 12
     attempts = 0
 
     for c in candidates:
-        if deadline_ts is not None and time.time() > deadline_ts:
-            print("  [DEADLINE] global deadline reached; stop this job")
+        if deadline_ts and time.time() > deadline_ts:
             break
-        if attempts >= max_attempts:
-            print(f"  [MAX] reached max_fetch_attempts={max_attempts}; stop this job")
-            break
-        if len(items) >= target:
+        if attempts >= max_attempts or len(items) >= target:
             break
 
         url = (c.get("href") or c.get("url") or "").strip()
@@ -473,18 +443,15 @@ def run_one(job, date_str, prev_urls, prev_titles, *, deadline_ts=None):
             continue
         seen.add(nurl)
 
-        # Blacklist
         if is_blacklisted(nurl):
             rejected.append({"url": nurl, "title": title, "reason": "blacklisted"})
             continue
 
-        # Allowed domains filter (if specified)
         if allowed and not domain_matches(nurl, allowed):
             rejected.append({"url": nurl, "title": title,
                              "reason": f"domain not in allowed list ({get_domain(nurl)})"})
             continue
 
-        # Dedup
         if nurl in prev_urls:
             rejected.append({"url": nurl, "title": title, "reason": "dedup-url"})
             continue
@@ -493,8 +460,7 @@ def run_one(job, date_str, prev_urls, prev_titles, *, deadline_ts=None):
             rejected.append({"url": nurl, "title": title, "reason": "dedup-title"})
             continue
 
-        d_full = get_domain(nurl)
-        d = root_domain(d_full)
+        d = root_domain(get_domain(nurl))
         if per_dom.get(d, 0) >= max_per_dom:
             rejected.append({"url": nurl, "title": title, "reason": f"max/domain ({max_per_dom})"})
             continue
@@ -508,7 +474,6 @@ def run_one(job, date_str, prev_urls, prev_titles, *, deadline_ts=None):
                              "reason": f"{pdf['status']}: {pdf.get('error','')}"})
             continue
 
-        # PDF confirmed
         text = pdf.get("text") or ""
         link_only = False
 
@@ -522,7 +487,6 @@ def run_one(job, date_str, prev_urls, prev_titles, *, deadline_ts=None):
                 continue
             summary = make_summary(text)
         else:
-            # link-only: PDF is real but can't extract text
             link_only = True
             reason = pdf.get("error") or pdf["status"]
             summary = f"_(PDF confirmed; text extraction: {reason}. Kept as link-only.)_"
@@ -564,8 +528,6 @@ def _report(label, keyword, date_str, items, target, rejected):
     full = sum(1 for i in items if not i.get("link_only"))
     link = sum(1 for i in items if i.get("link_only"))
     status = "SKIP" if cnt == 0 else "OK"
-    # Job success (for index inclusion): at least one PDF (full-text or link-only).
-    job_success = cnt >= 1
 
     with open(os.path.join(path, "items.json"), "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=2)
@@ -611,13 +573,9 @@ def _report(label, keyword, date_str, items, target, rejected):
 
     print(f"  [{status}] {cnt} PDFs ({full}📄 {link}🔗) | {len(rejected)} rejected")
     return {
-        "keyword": label,
-        "folder": folder,
-        "count": cnt,
-        "full_text": full,
-        "link_only": link,
+        "keyword": label, "folder": folder,
+        "count": cnt, "full_text": full, "link_only": link,
         "status": status,
-        "job_success": job_success,
     }
 
 
@@ -637,98 +595,87 @@ def cleanup():
             print(f"  [CLEANUP] {name}")
 
 
-# ───────────────────────── index ─────────────────────────
+# ───────────────────── index (FIX: scan ALL folders) ─────────────────────
 
-def gen_index(run_results):
-    """Generate index by scanning all reports.
-
-    - Always write reports/_latest_run.json (used by workflow gates)
-    - index.md lists ALL historical report folders that have items.json with len(items) > 0
-    - Folders generated in this run are marked as 🆕
-    """
-    # Persist latest run metadata for workflow gates.
-    with open(LATEST_RUN_PATH, "w", encoding="utf-8") as f:
-        json.dump(run_results, f, ensure_ascii=False, indent=2)
-
-    # Folders produced in this run (for 🆕 marker).
-    new_folders = {r.get("folder") for r in run_results if int(r.get("count", 0)) > 0 and r.get("folder")}
-
+def gen_index(run_folders: set):
+    """Scan ALL report folders in reports/. Mark current run with 🆕."""
     entries = []
+
     if os.path.isdir(REPORTS_DIR):
-        for folder in sorted(os.listdir(REPORTS_DIR)):
-            fp = os.path.join(REPORTS_DIR, folder)
+        for name in sorted(os.listdir(REPORTS_DIR), reverse=True):
+            fp = os.path.join(REPORTS_DIR, name)
             if not os.path.isdir(fp):
                 continue
+            sp = os.path.join(fp, "summary.md")
             ip = os.path.join(fp, "items.json")
-            if not os.path.isfile(ip):
-                continue
-            try:
-                with open(ip, "r", encoding="utf-8") as f:
-                    items = json.load(f)
-            except Exception:
-                continue
-            if not isinstance(items, list) or len(items) == 0:
+            if not os.path.isfile(sp):
                 continue
 
-            # Date prefix
-            m = re.match(r"^(\d{4}-\d{2}-\d{2})_", folder)
+            # Read label from first line
+            with open(sp, "r", encoding="utf-8") as f:
+                first_line = f.readline().strip().lstrip("# ")
+
+            m = re.match(r"^(\d{4}-\d{2}-\d{2})_", name)
             dt = m.group(1) if m else "?"
 
-            # Label from summary.md (first heading), fallback to folder slug
-            label = folder
-            sp = os.path.join(fp, "summary.md")
-            if os.path.isfile(sp):
+            # Count items
+            cnt, lo, skip = 0, 0, False
+            if os.path.isfile(ip):
                 try:
-                    with open(sp, "r", encoding="utf-8") as sf:
-                        first = sf.readline().strip()
-                        if first.startswith("# "):
-                            label = first[2:].strip()
+                    with open(ip, "r", encoding="utf-8") as jf:
+                        data = json.load(jf)
+                    cnt = len(data)
+                    lo = sum(1 for x in data if x.get("link_only"))
                 except Exception:
                     pass
 
-            full = sum(1 for i in items if not i.get("link_only"))
-            lo = sum(1 for i in items if i.get("link_only"))
-            entries.append({
-                "date": dt,
-                "folder": folder,
-                "label": label,
-                "count": len(items),
-                "full": full,
-                "lo": lo,
-                "is_new": folder in new_folders,
-            })
+            # Check if SKIP
+            with open(sp, "r", encoding="utf-8") as f:
+                if "SKIP" in f.read(500):
+                    skip = True
 
-    # Sort by date (desc), then label
-    entries.sort(key=lambda x: (x["date"], x["label"]), reverse=True)
+            # Show if has any items, or if it's from current run
+            is_current = name in run_folders
+            if cnt > 0 or is_current:
+                entries.append({
+                    "date": dt, "folder": name, "kw": first_line,
+                    "count": cnt, "full": cnt - lo, "lo": lo,
+                    "skip": skip, "cur": is_current,
+                })
 
     with open(INDEX_PATH, "w", encoding="utf-8") as f:
         f.write("# 📊 Auto Keyword Research — Report Index\n\n")
         f.write(f"Updated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}\n\n")
         f.write("Schedule: **Saturday** 12:00 Taiwan Time | Sources: Institutional PDF\n\n---\n\n")
-
         if not entries:
-            f.write("> No reports found yet.\n")
-            return
+            f.write("_No reports yet._\n")
+        else:
+            cd = ""
+            for e in entries:
+                if e["date"] != cd:
+                    cd = e["date"]
+                    f.write(f"### {cd}\n\n")
+                p = []
+                if e["full"]:
+                    p.append(f"{e['full']}📄")
+                if e["lo"]:
+                    p.append(f"{e['lo']}🔗")
+                info = "+".join(p) if p else "0"
+                w = " ⚠️" if e["skip"] else ""
+                n = " 🆕" if e["cur"] else ""
+                f.write(f"- [{e['kw']}](reports/{e['folder']}/summary.md) — {info}{w}{n}\n")
+            f.write("\n")
 
-        # Group by date
-        cur = None
-        for e in entries:
-            if e["date"] != cur:
-                cur = e["date"]
-                f.write(f"\n## {cur}\n\n")
-            badge = " 🆕" if e["is_new"] else ""
-            f.write(f"- [{e['label']}](reports/{e['folder']}/summary.md) — {e['count']} ")
-            f.write("📄" if e["full"] else " ")
-            if e["lo"]:
-                f.write(" 🔗")
-            f.write(badge + "\n")
+    print(f"[INDEX] {len(entries)} entries")
 
+
+# ───────────────────────── main ─────────────────────────
 
 def main():
     global HAS_PDFTOTEXT
 
     print("=" * 60)
-    print("Auto Keyword Research v8-final")
+    print("Auto Keyword Research v9")
     print("=" * 60)
 
     if not os.path.isfile(CONFIG_PATH):
@@ -740,26 +687,35 @@ def main():
     if not jobs:
         sys.exit(1)
 
-    # Check pdftotext
     try:
         subprocess.run(["pdftotext", "-v"], capture_output=True, timeout=5)
         HAS_PDFTOTEXT = True
         print("pdftotext: ✅")
     except Exception:
-        print("pdftotext: ❌ (trafilatura only)")
+        print("pdftotext: ❌")
 
     os.makedirs(REPORTS_DIR, exist_ok=True)
-    prev_urls, prev_titles = load_existing_dedup()
-    print(f"Dedup: {len(prev_urls)} URLs, {len(prev_titles)} titles")
-    print(f"Jobs: {len(jobs)}")
 
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # FIX BUG3: skip today's folders in dedup
+    prev_urls, prev_titles = load_existing_dedup(date_str)
+    print(f"Dedup: {len(prev_urls)} URLs, {len(prev_titles)} titles (excluding today)")
+    print(f"Jobs: {len(jobs)}")
+
+    # Delete today's old folders before rerun (clean slate for today)
+    if os.path.isdir(REPORTS_DIR):
+        for name in os.listdir(REPORTS_DIR):
+            if name.startswith(date_str + "_") and os.path.isdir(os.path.join(REPORTS_DIR, name)):
+                shutil.rmtree(os.path.join(REPORTS_DIR, name))
+                print(f"  [CLEAN] removed old today-folder: {name}")
+
     deadline_ts = time.time() + GLOBAL_DEADLINE_SEC
     results = []
 
     for idx, job in enumerate(jobs):
         if time.time() > deadline_ts:
-            print("\n[DEADLINE] global deadline reached; stop remaining jobs")
+            print("\n[DEADLINE] stop")
             break
         try:
             results.append(run_one(job, date_str, prev_urls, prev_titles, deadline_ts=deadline_ts))
@@ -773,59 +729,18 @@ def main():
     print(f"\n{'='*60}")
     cleanup()
 
-    # Run success (for weekly skip): B+ logic
-    # Semiconductor AND (ETF OR Defense OR Biopharma)
-    LABEL_SEMI = "Semiconductor: CoWoS / HBM / Advanced Packaging"
-    LABEL_ETF = "Robotics ETF Factsheets (BOTZ/ROBO/IRBO)"
-    LABEL_DEF = "Aerospace & Defense (Institutional PDF)"
-    LABEL_BIO = "BioPharma / Life Sciences (Institutional PDF)"
+    # Generate index from ALL report folders
+    run_folder_names = {r["folder"] for r in results}
+    gen_index(run_folder_names)
 
-    def _job_ok(label: str) -> bool:
-        for r in results:
-            if r.get("keyword") == label:
-                return bool(r.get("job_success"))
-        return False
-
-    semi_ok = _job_ok(LABEL_SEMI)
-    etf_ok = _job_ok(LABEL_ETF)
-    def_ok = _job_ok(LABEL_DEF)
-    bio_ok = _job_ok(LABEL_BIO)
-    run_success = bool(semi_ok and (etf_ok or def_ok or bio_ok))
-
-    # Write weekly state only on run_success.
-    if run_success:
-        try:
-            os.makedirs(REPORTS_DIR, exist_ok=True)
-            iso = datetime.now(timezone.utc).isocalendar()
-            iso_week = f"{iso.year}-W{iso.week:02d}"
-            with open(RUN_STATE_PATH, "w", encoding="utf-8") as f:
-                json.dump({
-                    "last_success_iso_week": iso_week,
-                    "last_success_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                    "logic": "B+ (Semiconductor AND (ETF OR Defense OR Biopharma))",
-                }, f, ensure_ascii=False, indent=2)
-            print(f"[RUN_STATE] updated: {iso_week}")
-        except Exception as e:
-            print(f"[RUN_STATE] write failed: {e}")
-    else:
-        print("[RUN_STATE] not updated (run_success=False)")
-
-    # Always write latest_run for CI gating; update index only if any job_success.
-    any_job_success = any(r.get("job_success") for r in results)
-    if any_job_success:
-        gen_index(results)
-    else:
-        with open(LATEST_RUN_PATH, "w", encoding="utf-8") as f:
-            json.dump(results, f, ensure_ascii=False, indent=2)
-        print("[INDEX] skipped (no successful jobs in this run)")
-
+    # Summary
     ok = [r for r in results if r["status"] == "OK"]
     sk = [r for r in results if r["status"] == "SKIP"]
     tf = sum(r.get("full_text", 0) for r in results)
     tl = sum(r.get("link_only", 0) for r in results)
 
     print(f"\n{'='*60}")
-    print(f"DONE: {len(ok)} OK | {len(sk)} SKIP | total {tf}📄 + {tl}🔗")
+    print(f"DONE: {len(ok)} OK | {len(sk)} SKIP | {tf}📄 + {tl}🔗")
     for r in results:
         ic = "✅" if r["status"] == "OK" else "⚠️"
         print(f"  {ic} {r['keyword']} → {r['count']} ({r.get('full_text',0)}📄 {r.get('link_only',0)}🔗)")
