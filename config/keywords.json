@@ -1,49 +1,74 @@
 {
   "jobs": [
     {
-      "keyword": "HBM OR high bandwidth memory OR CoWoS OR advanced packaging OR chip packaging OR 2.5D OR 3D OR TSV outlook OR report OR forecast OR bottleneck OR capacity site:tsmc.com OR site:investor.tsmc.com OR site:asml.com OR site:imec-int.com OR site:semianalysis.com OR site:deloitte.com filetype:pdf",
+      "keyword": "HBM CoWoS advanced packaging semiconductor outlook report analysis filetype:pdf",
       "label": "Semiconductor: CoWoS / HBM / Advanced Packaging",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300
+      "minlen": 100,
+      "allowed_domains": [
+        "semi.org", "imec-int.com", "ieee.org", "sia-online.org",
+        "deloitte.com", "kpmg.com", "ey.com", "pwc.com", "mckinsey.com",
+        "tsmc.com", "asml.com", "micron.com", "samsung.com",
+        "skhynix.com", "nvidia.com", "amd.com", "intel.com",
+        "spglobal.com", "idc.com", "gartner.com"
+      ]
     },
     {
-      "keyword": "site:investor.tsmc.com OR site:tsmc.com earnings OR results OR investor presentation OR transcript OR quarterly results OR annual report filetype:pdf",
-      "label": "TSMC Official IR / Earnings",
+      "keyword": "TSMC quarterly results earnings investor presentation annual report filetype:pdf",
+      "label": "TSMC IR & Earnings",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 200
+      "minlen": 100,
+      "allowed_domains": [
+        "tsmc.com", "sec.gov"
+      ]
     },
     {
-      "keyword": "BOTZ OR ROBO OR IRBO factsheet OR fact sheet OR prospectus OR holdings OR methodology site:globalxetfs.com OR site:robo-global.com OR site:ishares.com OR site:ssga.com OR site:invesco.com filetype:pdf",
+      "keyword": "BOTZ ROBO IRBO robotics automation ETF factsheet holdings prospectus filetype:pdf",
       "label": "Robotics ETF Factsheets (BOTZ/ROBO/IRBO)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 200
+      "minlen": 100,
+      "allowed_domains": [
+        "globalxetfs.com", "roboglobal.com", "ishares.com",
+        "ssga.com", "invesco.com", "sec.gov"
+      ]
     },
     {
-      "keyword": "aerospace OR defense OR defence outlook OR report OR forecast OR industry outlook OR market outlook site:deloitte.com OR site:ey.com OR site:pwc.com OR site:kpmg.com OR site:rand.org OR site:csis.org filetype:pdf",
+      "keyword": "aerospace defense industry outlook report forecast filetype:pdf",
       "label": "Aerospace & Defense (Institutional PDF)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300
+      "minlen": 100,
+      "allowed_domains": [
+        "deloitte.com", "ey.com", "pwc.com", "kpmg.com",
+        "mckinsey.com", "bcg.com", "bain.com", "accenture.com",
+        "rand.org", "csis.org", "iiss.org", "sipri.org",
+        "aerospace.org", "aiaa.org", "spglobal.com"
+      ]
     },
     {
-      "keyword": "biopharma OR life sciences OR pharma OR clinical trials OR R&D outlook OR report OR forecast OR trends OR industry outlook site:iqvia.com OR site:deloitte.com OR site:ey.com OR site:mckinsey.com OR site:bcg.com OR site:evaluate.com filetype:pdf",
+      "keyword": "biopharma pharma life sciences clinical trials outlook report forecast filetype:pdf",
       "label": "BioPharma / Life Sciences (Institutional PDF)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 3,
-      "minlen": 300
+      "minlen": 100,
+      "allowed_domains": [
+        "iqvia.com", "deloitte.com", "ey.com", "mckinsey.com",
+        "bcg.com", "evaluate.com", "pwc.com", "kpmg.com",
+        "fda.gov", "nih.gov", "who.int"
+      ]
     }
   ]
 }
