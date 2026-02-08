@@ -1,18 +1,8 @@
 {
   "jobs": [
     {
-      "keyword": "semiconductor industry outlook 2025 2026 pdf site:deloitte.com OR site:mckinsey.com OR site:kpmg.com OR site:ey.com OR site:pwc.com OR site:semi.org",
-      "label": "Semiconductor / CoWoS / HBM Outlook",
-      "lang": "en",
-      "region": "us-en",
-      "timelimit": "m",
-      "target": 5,
-      "minlen": 600,
-      "pdf_only": true
-    },
-    {
-      "keyword": "site:investor.tsmc.com filetype:pdf presentation OR results OR earnings OR transcript",
-      "label": "TSMC Earnings & IR",
+      "keyword": "site:deloitte.com filetype:pdf semiconductor industry outlook 2025 2026",
+      "label": "Semiconductor Outlook (Deloitte)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
@@ -21,33 +11,43 @@
       "pdf_only": true
     },
     {
-      "keyword": "humanoid robot market outlook forecast 2025 2026 pdf site:mckinsey.com OR site:goldmansachs.com OR site:morganstanley.com OR site:ark-invest.com OR site:iea.org",
-      "label": "Humanoid Robot Industry Outlook",
+      "keyword": "filetype:pdf HBM high bandwidth memory advanced packaging outlook report site:deloitte.com OR site:ey.com OR site:bcg.com OR site:mckinsey.com",
+      "label": "HBM / Advanced Packaging (Big Consulting)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 5,
-      "minlen": 600,
+      "minlen": 400,
       "pdf_only": true
     },
     {
-      "keyword": "aerospace defense industry outlook 2025 2026 pdf site:deloitte.com OR site:ey.com OR site:pwc.com OR site:kpmg.com OR site:bain.com OR site:bcg.com",
-      "label": "Aerospace & Defense Outlook",
+      "keyword": "site:tsmc.com filetype:pdf investor presentation results earnings transcript",
+      "label": "TSMC IR & Earnings",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 5,
-      "minlen": 600,
+      "minlen": 300,
       "pdf_only": true
     },
     {
-      "keyword": "biopharma industry outlook clinical trials 2025 2026 pdf site:mckinsey.com OR site:deloitte.com OR site:ey.com OR site:iqvia.com OR site:evaluate.com",
-      "label": "BioPharma Industry Outlook",
+      "keyword": "filetype:pdf aerospace defense industry outlook 2025 2026 site:deloitte.com OR site:ey.com OR site:pwc.com OR site:kpmg.com",
+      "label": "Aerospace & Defense Outlook (Big 4)",
       "lang": "en",
       "region": "us-en",
       "timelimit": "y",
       "target": 5,
-      "minlen": 600,
+      "minlen": 400,
+      "pdf_only": true
+    },
+    {
+      "keyword": "filetype:pdf biopharma industry outlook 2025 2026 site:mckinsey.com OR site:bcg.com OR site:deloitte.com OR site:ey.com",
+      "label": "BioPharma Outlook (Big Consulting)",
+      "lang": "en",
+      "region": "us-en",
+      "timelimit": "y",
+      "target": 5,
+      "minlen": 400,
       "pdf_only": true
     }
   ]
