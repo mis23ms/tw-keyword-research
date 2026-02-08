@@ -42,34 +42,57 @@ Navigating uncertain skies
 
 ---
 
-## 3. Bain 2023 GRI Index - Bain & Company `[📄]`
+## 3. SPACE THREAT ASSESSMENT 2024 - Aerospace Security `[📄]`
 
-🔗 [bain.com](https://www.bain.com/contentassets/6b37083d53dc4e9aa676993fa0c4c7dc/updated-gri-report-2023.pdf)
+🔗 [csis.org](http://aerospace.csis.org/wp-content/uploads/2024/04/240417_Swope_SpaceThreatAssessment_2024.pdf)
 
-Bain 2023
-GRI Index
+APRIL 2024         A REPORT OF
+                      THE CSIS
+                    AEROSPACE
+                      SECURITY
+                       PROJECT
 
 
 
-Disclosure            2023 Response
-1 - Foundation 2021   Bain and Company (or “Bain”) has reported in accordance with the GRI Standards for the
-                      period 1st January 2023 – 31st December 2023.
-                      GRI 1: Foundation 2021
-CEO Statement
- Our deep commitment to sustainability guides our actions as a firm.
+
+SPACE
+T H R E AT
+ASSESSMENT
+2024
+Authors
+CLAYTON SWOPE
+KARI A. BINGEN
+MAKENA YOUNG
+MADELEINE CHANG
+STEPHANIE SONGER
+JEREMY TAMMELLEO
+Foreword
+ERIC FANNING
+APRIL 2024
+
+
+
+
+SPACE
+T H R E AT
+ASSESSMENT
+2024
+Authors
+CLAYTON SWOPE
+KARI A.
 
 ---
 
-## Rejected candidates (44 total)
+## Rejected candidates (22 total)
 
-- ❌ `domain not in allowed list (www.darley.com)` — [www.darley.com](https://www.darley.com/wp-content/uploads/2025/10/2025-Aerospace-and-Defense-Industry-Outlook-_-Deloitte-Insights.pdf) — _2025 Aerospace and Defense Industry Outlook | Delo_
-- ❌ `domain not in allowed list (uhy-us.com)` — [uhy-us.com](https://uhy-us.com/media/u51fkmws/aerospace-analysis_2025_08-pages.pdf) — _Aerospace Industry Market Analysis - uhy-us.com_
-- ❌ `domain not in allowed list (www.faa.gov)` — [www.faa.gov](https://www.faa.gov/data_research/aviation/aerospace_forecasts/FY-2025-2045-Full-Forecast-Document-and-Tables.pdf) — _FAA Aerospace Forecast Fiscal Years 2025 2045_
-- ❌ `domain not in allowed list (www.objectiveibv.com)` — [www.objectiveibv.com](https://www.objectiveibv.com/wp-content/uploads/2025/05/Objective-Aerospace-Defense-Industry-Report-Q1-2025-Final.pdf) — _Industry Report - A&D_
-- ❌ `domain not in allowed list (www.cascadiacapital.com)` — [www.cascadiacapital.com](https://www.cascadiacapital.com/wp-content/uploads/Cascadia-Aerospace-and-Defense-Industry-Report-_-February-2024.pdf) — _Cascadia Aerospace and Defense Industry Report_
-- ❌ `not-pdf: CT: text/html;charset=utf-8` — [www.deloitte.com](https://www.deloitte.com/us/en/insights/industry/aerospace-defense/aerospace-and-defense-industry-outlook.html) — _2026 Aerospace and Defense Industry Outlook | Delo_
-- ❌ `domain not in allowed list (www.startus-insights.com)` — [www.startus-insights.com](https://www.startus-insights.com/innovators-guide/aerospace-and-defense-industry-outlook-key-data/) — _Aerospace and Defense Industry Outlook 2026 [Free _
-- ❌ `domain not in allowed list (www.zionmarketresearch.com)` — [www.zionmarketresearch.com](https://www.zionmarketresearch.com/report/aerospace-and-defense-market) — _Aerospace and Defense Market Size, Share, Growth, _
+- ❌ `blacklisted` — [en.wikipedia.org](https://en.wikipedia.org/wiki/Russian_Aerospace_Forces) — _Russian Aerospace Forces - Wikipedia_
+- ❌ `domain not in allowed list (www.marketresearch.com)` — [www.marketresearch.com](https://www.marketresearch.com/Barnes-Reports-v2737/Global-Forecast-Automated-Sortation-System-43189743/) — _2026 Global Forecast for Automated Sortation Syste_
+- ❌ `domain not in allowed list (www.armyrecognition.com)` — [www.armyrecognition.com](https://www.armyrecognition.com/) — _Defense News security global military army equipme_
+- ❌ `domain not in allowed list (finviz.com)` — [finviz.com](https://finviz.com/news/302474/rbc-q4-deep-dive-aerospace-defense-demand-lifts-results-industrial-outlook-improves) — _RBC Q4 Deep Dive: Aerospace & Defense Demand Lifts_
+- ❌ `domain not in allowed list (defence-industry.eu)` — [defence-industry.eu](https://defence-industry.eu/) — _Defence Industry Europe_
+- ❌ `domain not in allowed list (www.reuters.com)` — [www.reuters.com](https://www.reuters.com/business/aerospace-defense/wars-raise-profit-outlook-us-defense-industry-2024-2023-12-18/) — _reuters.com/business/ aerospace - defense /wars-ra_
+- ❌ `domain not in allowed list (aeromorning.com)` — [aeromorning.com](https://aeromorning.com/en/honeywells-latest-global-business-aviation-outlook-promising-growth-for-the-next-decade/) — _Honeywell’s latest Global Business Aviation Outloo_
+- ❌ `domain not in allowed list (boeing.mediaroom.com)` — [boeing.mediaroom.com](https://boeing.mediaroom.com/2020-10-06-Boeing-Forecasts-Challenging-Near-Term-Aerospace-Market-with-Resilience-in-Long-Term) — _Boeing Forecasts Challenging Near-Term Aerospace M_
 
-_...+36 more_
+_...+14 more_
 

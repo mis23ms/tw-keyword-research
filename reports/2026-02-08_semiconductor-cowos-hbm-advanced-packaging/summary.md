@@ -6,7 +6,21 @@
 
 ---
 
-## 1. Advanced Packaging in the Era of HPC and AI - IEEE `[📄]`
+## 1. Substrate Market Outlook `[📄]`
+
+🔗 [ieee.org](https://attend.ieee.org/buss/wp-content/uploads/sites/693/T02-Vardaman.pdf)
+
+IEEE Build-Up Substrate Symposium (BUSS’25)                                                                               May 8, 2025
+
+
+
+
+                       Substrate Market Outlook
+                                                   E.
+
+---
+
+## 2. Advanced Packaging in the Era of HPC and AI - IEEE `[📄]`
 
 🔗 [ieee.org](https://eps.ieee.org/images/files/HIR_Presentations/Keynote_1_day_2_Advanced_Packaging_in_the_era_of_HPC.pdf)
 
@@ -33,63 +47,26 @@ Contents                                  • HBM
 
 ---
 
-## 2. PwC Semiconductor and Beyond 2026 `[📄]`
+## 3. [PDF] ITT_2025_Panther_Lake_Recap1.pdf - Intel `[📄]`
 
-🔗 [pwc.com](https://www.pwc.com/gx/en/industries/technology/pwc-semiconductor-and-beyond-2026-full-report.pdf)
+🔗 [intel.com](https://cdrdv2-public.intel.com/866361/ITT_2025_Panther_Lake_Recap1.pdf)
 
-Semiconductor and beyond
-Global semiconductor industry outlook 2026
-         1   Foreword
-         2   Demand Analysis
-             Semiconductors power innovation and everyday life
-
-         3   Supply Analysis
-             The race for semiconductor supremacy
-
-         4   What’s Next?
-             Opportunities in semiconductor : AI and beyond
-
-
-
-
-Agenda
-      Foreword
-      The semiconductor industry is undergoing rapid               Our deep industry expertise enables us to provide
+Statements in this presentation that refer to business outlook, plans, and expectations are forward-looking statements that involve risks and uncertainties. Such
+statements may include, but not be limited to, those regarding: our business plans, strategy and leadership and anticipated benefits therefrom; future products,
+services and technologies, and the expected goals, timeline, ramps, progress, availability, production, regulation and benefits of such products, services and
 
 ---
 
-## 3. [PDF] Earnings Presentation: 4Q 2025 Financial Results - Samsung `[📄]`
+## Rejected candidates (39 total)
 
-🔗 [samsung.com](https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2025_4Q_conference_eng.pdf)
+- ❌ `blacklisted` — [en.wikipedia.org](https://en.wikipedia.org/wiki/High_Bandwidth_Memory) — _High Bandwidth Memory - Wikipedia_
+- ❌ `domain not in allowed list (www.semi.org)` — [www.semi.org](https://www.semi.org/sites/semi.org/files/2025-06/21_Vishal+Saroha.pdf) — _[PDF] Status of High-End Performance Packaging (2._
+- ❌ `domain not in allowed list (imapsource.org)` — [imapsource.org](https://imapsource.org/article/91166-market-technology-trends-for-the-fanout-and-2-5d-3d-packaging-technology.pdf) — _[PDF] Market & Technology Trends for the Fan-out a_
+- ❌ `domain not in allowed list (aionet.tech)` — [aionet.tech](https://aionet.tech/KAIST_HBM_Roadmap.pdf) — _[PDF] HBM Roadmap Ver 1.7 Workshop by KAIST TERALA_
+- ❌ `domain not in allowed list (files.futurememorystorage.com)` — [files.futurememorystorage.com](https://files.futurememorystorage.com/proceedings/2025/20250807_DRAM-302-1_Bertolazzi.pdf) — _[PDF] High Bandwidth Memory_
+- ❌ `domain not in allowed list (chipscalereview.com)` — [chipscalereview.com](https://chipscalereview.com/wp-content/uploads/2025/01/Chip-Scale-Review_January-February_2025-digital.pdf) — _[PDF] contents - Chip Scale Review_
+- ❌ `domain not in allowed list (www.mitsui.com)` — [www.mitsui.com](https://www.mitsui.com/mgssi/en/report/detail/__icsFiles/afieldfile/2025/07/22/2507_m_ogawa_ex_e_1.pdf) — _[PDF] SEMICONDUCTOR MEMORY AT A TURNING POINT - Mi_
+- ❌ `domain not in allowed list (www.semiconductors.org)` — [www.semiconductors.org](https://www.semiconductors.org/wp-content/uploads/2025/10/Grand-Challenge-RD-Priorities-for-U.S.-Government-Semiconductor-Investments-October-2025.pdf) — _[PDF] Grand Challenge R&D Priorities for U.S. Gove_
 
-SAMSUNG
-ELECTRONICS
-
-
-
-Earnings Presentation:
-4Q 2025 Financial Results
-Disclaimer
-
-The financial information in this document are consolidated earnings results based on K-IFRS.
-
-This document is provided for the convenience of investors only before the external audit on our 4Q 2025 financial results is completed.
-The Audit outcomes may cause some parts of this document to change.
-
-This document contains "forward-looking statements" - that is statements related to future not past events.
-
----
-
-## Rejected candidates (28 total)
-
-- ❌ `domain not in allowed list (www.sensofar.com)` — [www.sensofar.com](https://www.sensofar.com/wp-content/uploads/2025/05/wp06-05a-en-white-paper-advance-packaging-preview.pdf) — _Advanced packaging and heterogeneous integration_
-- ❌ `domain not in allowed list (medias.yolegroup.com)` — [medias.yolegroup.com](https://medias.yolegroup.com/uploads/2023/04/advanced-packaging_ssi_2023_yole_sch_updated-1.pdf) — _Presentation - Yole Group Advanced Packaging in th_
-- ❌ `domain not in allowed list (chipletsummit.com)` — [chipletsummit.com](https://chipletsummit.com/proceeding_files/a0q5f0000044zma/20240208_K-5_Salama.PDF) — _Advanced Packaging in the Era of Chiplets_
-- ❌ `domain not in allowed list (documents.thermofisher.com)` — [documents.thermofisher.com](https://documents.thermofisher.com/TFS-Assets/MSD/Application-Notes/helios-hydra-pfib-3d-reconstructions-en.pdf) — _Achieving accurate 3D defect detection and failure_
-- ❌ `domain not in allowed list (medias.yolegroup.com)` — [medias.yolegroup.com](https://medias.yolegroup.com/uploads/2023/09/advanced-packaging-trends-semicont-taiwan-2023-yole.pdf) — _Advanced Packaging trends - Yole Group_
-- ❌ `domain not in allowed list (newsletter.semianalysis.com)` — [newsletter.semianalysis.com](https://newsletter.semianalysis.com/p/scaling-the-memory-wall-the-rise-and-roadmap-of-hbm) — _Scaling the Memory Wall: The Rise and Roadmap of H_
-- ❌ `domain not in allowed list (tspasemiconductor.substack.com)` — [tspasemiconductor.substack.com](https://tspasemiconductor.substack.com/p/the-infinite-ai-compute-loop-hbm) — _The Infinite AI Compute Loop: HBM Big Three + TSMC_
-- ❌ `domain not in allowed list (dnn-tech.com)` — [dnn-tech.com](https://dnn-tech.com/advanced-packaging-guide-pt5/) — _Advanced Packaging Guide (Pt. 5): 2026 Supply Chai_
-
-_...+20 more_
+_...+31 more_
 

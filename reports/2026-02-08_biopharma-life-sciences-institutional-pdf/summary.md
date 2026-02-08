@@ -6,73 +6,81 @@
 
 ---
 
-## 1. Presentation - Evaluate `[📄]`
+## 1. Future of Health | Strategy& - PwC `[📄]`
 
-🔗 [evaluate.com](https://www.evaluate.com/wp-content/uploads/2024/02/World-Preview-Webinar_FINAL_0.pdf)
+🔗 [pwc.com](https://www.pwc.com/co/es/prensa/Articulos/strategy-and-future-of-health.pdf)
 
-PHARMA’S AGE OF
-UNCERTAINTY
-WORLD PREVIEW 2023 TO 2028
-
-
-1 Evaluate 2023   I   Copyright © 2023 Evaluate Ltd. All rights reserved.   Source: Evaluate Pharma© (Jun 2023)
-TODAY’S PRESENTERS
-World preview 2022 to 2023
+Future of
+Health
+How to transform
+BioPharma for
+the upcoming
+LIFEcare system
 
 
 
 
-                                                                                                                  PAUL VERDIN
-                                                                                                                  VP, Head of Consulting
-
----
-
-## 2. TRANSFORM - Evaluate `[📄]`
-
-🔗 [evaluate.com](https://www.evaluate.com/wp-content/uploads/2023/11/Evaluate-Omnium-Brochure.pdf)
-
-TRANSFORM
-asset potential assessment
-with a richer understanding
-of risk and return.
-
-
-
-
-In today’s complex biopharma landscape, you need
-an accurate and complete view of the market, so
-you can thoroughly assess the development risk and
-commercial potential of assets in development.
-CLOSE KEY INSIGHT GAPS
-The biopharma industry continues to invest far more in clinical failure
-than success.
+#FutureOfHealth
+Contacts
+Global                                  United Kingdom                        Japan
+Ron Chopoorian                          Thalita Marinho                       Daisuke Baba
+Global Health Industries Leader         Partner,                              Partner,
+Partner,                                PwC Strategy& UK                      PwC Strategy& Japan
 
 ---
 
-## 3. Review - accessdata.fda.gov `[📄]`
+## 2. Pharmacovigilance_exsummary7 - PwC `[📄]`
 
-🔗 [fda.gov](https://www.accessdata.fda.gov/drugsatfda_docs/nda/2025/210496Orig1s017MultidisciplineR.pdf)
+🔗 [pwc.com](https://www.pwc.com/il/he/publications/assets/10unlocking_the_power.pdf)
 
-NDA/BLA Multi-disciplinary Review and Evaluation NDA 210496
-               BRAFTOVI® (encorafenib)
+EXECUTIVE SUMMARY
 
-               NDA/BLA Multi-disciplinary Review and Evaluation
 
-               Disclaimer: FDA review was conducted in conjunction with other regulatory authorities under
-               Project Orbis. FDA collaborated with Health Canada (HC).
+
+
+Unlocking the power of pharmacovigilance*
+An adaptive approach to an evolving drug safety environment
+PricewaterhouseCoopers’ Health Research Institute
+The idea that controlled clinical trials can    1.	Align and clarify roles, responsibilities,   have already begun to evaluate and
+establish product safety and effectiveness         and communications                            enhance their pharmacovigilance practices
 
 ---
 
-## Rejected candidates (37 total)
+## 3. Supercharging your Biopharma Teams with Agentic AI Teammates `[📄]`
+
+🔗 [bcg.com](https://media-publications.bcg.com/Supercharging-your-Biopharma-Teams-with-Agentic-AI-Teammates.pdf?utm_description=organic&utm_topic=none&utm_geo=global&linkId=795470132)
+
+Supercharging your
+Biopharma Teams with
+Agentic AI Teammates
+March 2025
+
+
+
+
+     Article List Subtitle
+     • Article Title Bullet List 1 Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing
+       Elit Sed Do Eiusmod Tempor
+
+     • Article Title Bullet List 2 Lorem Ipsum Dolor Sit Amet
+
+     • Article Title Bullet List 3 Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing
+       Elit Sed Do
+
+     • Article Title Bullet List 4 Lorem Ipsum Dolor Sit Amet Consectetur
+
+---
+
+## Rejected candidates (36 total)
 
 - ❌ `domain not in allowed list (www.wcgclinical.com)` — [www.wcgclinical.com](https://www.wcgclinical.com/wp-content/uploads/2025/01/Trends-and-Insights-for-2025.pdf) — _2025 Clinical Trial Trends & Insights_
 - ❌ `domain not in allowed list (makingpharmaindustry.it)` — [makingpharmaindustry.it](https://makingpharmaindustry.it/wp-content/uploads/2025/03/iqvia-institute-rd-trends-2025-forweb.pdf) — _Global Trends in R&D 2025 - makingpharmaindustry.i_
-- ❌ `blocked: HTTP 403` — [web-assets.bcg.com](https://web-assets.bcg.com/9b/75/1c0db8bf4ee5b159b1d732ab6f1e/focusing-on-innovation-amid-complexity-jan-2025.pdf) — _Biopharma Trends 2025 - web-assets.bcg.com_
 - ❌ `domain not in allowed list (pharmaphorum.com)` — [pharmaphorum.com](https://pharmaphorum.com/sites/default/files/2025-01/Life-Sciences-Industry-Report-2025-pt4.pdf) — _LIFE SCIENCES INDUSTRY REPORT 2025 - pharmaphorum._
+- ❌ `blocked: HTTP 403` — [web-assets.bcg.com](https://web-assets.bcg.com/9b/75/1c0db8bf4ee5b159b1d732ab6f1e/focusing-on-innovation-amid-complexity-jan-2025.pdf) — _Biopharma Trends 2025 - web-assets.bcg.com_
 - ❌ `domain not in allowed list (resources.indegene.com)` — [resources.indegene.com](https://resources.indegene.com/indegene/articles/global-life-sciences-industry-trends-2025.pdf) — _Global Life Sciences Industry Trends 2025_
-- ❌ `domain not in allowed list (www.jpmorgan.com)` — [www.jpmorgan.com](https://www.jpmorgan.com/content/dam/jpmorgan/documents/cb/insights/outlook/jpm-biopharma-deck-q4-2025.pdf) — _Q4 2025 Biopharma Licensing and Venture Report - J_
-- ❌ `domain not in allowed list (www.gibsondunn.com)` — [www.gibsondunn.com](https://www.gibsondunn.com/wp-content/uploads/2025/01/Life-Sciences-2025-Outlook-Brochure.pdf) — _LIFE SCIENCES_
-- ❌ `domain not in allowed list (www.gayaherald.com)` — [www.gayaherald.com](https://www.gayaherald.com/story/350997/pi3k-inhibitors-market-clinical-trials-outlook-evaluating-25-drug-candidates-across-20-active-companies-by-delveinsight.html) — _PI3K Inhibitors Market & Clinical Trials Outlook :_
+- ❌ `domain not in allowed list (www.lek.com)` — [www.lek.com](https://www.lek.com/sites/default/files/insights/pdf-attachments/clinical-biopharma-outlook.pdf) — _L.E.K. Consulting s Clinical and eClinical Pharma _
+- ❌ `domain not in allowed list (fticommunications.com)` — [fticommunications.com](https://fticommunications.com/wp-content/uploads/2023/12/FTI-Consulting-Healthcare-Life-Sciences-Outlook-2024.pdf) — _FTI CONSULTING SURVEY: HEALTHCARE & LIFE SCIENCES _
+- ❌ `not-pdf: CT: text/html; charset=UTF-8` — [www.evaluate.com](https://www.evaluate.com/thought-leadership/2026-biopharma-outlook-infographic/) — _2026 Biopharma Outlook Infographic | Key Trends, L_
 
-_...+29 more_
+_...+28 more_
 
