@@ -1,0 +1,14 @@
+[
+  {
+    "title": "AMD CHIPLET ECOSYSTEM",
+    "url": "https://www.amd.com/content/dam/amd/en/documents/solutions/technologies/chiplet-architecture-white-paper.pdf",
+    "domain": "amd.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 4328462,
+    "fetch_status": "ok",
+    "summary": "AMD CHIPLET ECOSYSTEM\n                         WHITEPAPER | DECEMBER 09, 2024\n\n\n\n\nWHITEPAPER: AMD CHIPLET ECOSYSTEM | DECEMBER 2024         1\n\f      This white paper provides an overview of AMD’s implementation of chiplet technology. This document also provides a high-level\n      overview of chiplet technology, its advantages, challenges, and solutions for chiplet integration."
+  }
+]
