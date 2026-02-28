@@ -1,0 +1,26 @@
+[
+  {
+    "title": "[PDF] FORM 10-K NVIDIA CORPORATION - Cloudfront.net",
+    "url": "https://investor.nvidia.com/files/doc_financials/2026/q4/10K-NVDA.pdf",
+    "domain": "nvidia.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 1048995,
+    "fetch_status": "ok",
+    "summary": "Table of Contents\n\n                                                                                        UNITED STATES\n                                                                            SECURITIES AND EXCHANGE COMMISSION\n                                                                                    Washington, D.C."
+  },
+  {
+    "title": "[PDF] Highlights - NVIDIA",
+    "url": "https://images.nvidia.com/nvimages/gtc/pdf/GTC2025_Highlights_v2.pdf",
+    "domain": "nvidia.com",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "application/pdf",
+    "size_bytes": 26181641,
+    "fetch_status": "too-large",
+    "summary": "_(PDF confirmed; text extraction: 26MB. Kept as link-only.)_"
+  }
+]
