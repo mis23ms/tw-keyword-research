@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Survey of Chiplet Technology: SoC Architecture, Interconnect, EDA ...",
+    "url": "https://ieeexplore.ieee.org/iel8/5503868/11313699/11265742.pdf",
+    "domain": "ieee.org",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": true,
+    "content_type": "text/html;charset=UTF-8",
+    "size_bytes": 6819,
+    "fetch_status": "no-text",
+    "summary": "_(PDF confirmed; text extraction: extracted 0 chars. Kept as link-only.)_"
+  },
+  {
+    "title": "5G/6G and Aerospace / Defense Tim Lee, IEEE-USA President Timothy ...",
+    "url": "https://attend.ieee.org/buss/wp-content/uploads/sites/693/F07-Lee.pdf",
+    "domain": "ieee.org",
+    "lang": "en",
+    "type": "PDF",
+    "link_only": false,
+    "content_type": "application/pdf",
+    "size_bytes": 4807589,
+    "fetch_status": "ok",
+    "summary": "IEEE Build-Up Substrate Symposium (BUSS'25)                                                                                                  May 8-9, 2025\n\n\n\n\n                                            Build-Up Substrate Symposium\n                                            9 May 2025\n\n        The Impact of Policy on Advanced Semiconductors Ecosystem for Aerospace & Defense\n        IEEE HIR TWG Co-Chair – 5G/6G and Aerospace / Defense\n        Tim Lee, IEEE-USA President"
+  }
+]
